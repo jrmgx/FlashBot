@@ -1,10 +1,3 @@
-//
-//  FlashBotApp.swift
-//  FlashBot
-//
-//  Created by Jerome Gangneux on 15/08/2022.
-//
-
 import SwiftUI
 
 @main

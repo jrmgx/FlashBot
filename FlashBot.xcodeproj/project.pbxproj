@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		022389E928AA9ED100DB95BB /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389E828AA9ED100DB95BB /* AvatarView.swift */; };
+		022389ED28AAA53D00DB95BB /* LessonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389EC28AAA53D00DB95BB /* LessonModel.swift */; };
+		022389EF28AAA5A600DB95BB /* ChatItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389EE28AAA5A600DB95BB /* ChatItemModel.swift */; };
+		022389F128AAA86300DB95BB /* ChatItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389F028AAA86300DB95BB /* ChatItemRowView.swift */; };
+		022389F328AAA90900DB95BB /* LessonDataFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389F228AAA90900DB95BB /* LessonDataFake.swift */; };
+		022389F528AAA96C00DB95BB /* ChatItemDataFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389F428AAA96C00DB95BB /* ChatItemDataFake.swift */; };
+		022389F728AAAC1200DB95BB /* LessonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389F628AAAC1200DB95BB /* LessonListView.swift */; };
+		022389F928AAAC5300DB95BB /* LessonRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389F828AAAC5300DB95BB /* LessonRowView.swift */; };
+		022389FB28AAD3B900DB95BB /* LessonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389FA28AAD3B900DB95BB /* LessonDetailView.swift */; };
+		02238A0028AADC9300DB95BB /* ChatItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389FF28AADC9300DB95BB /* ChatItemListView.swift */; };
 		02C2DC7F28AA9AEE00E1281F /* FlashBotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2DC7E28AA9AEE00E1281F /* FlashBotApp.swift */; };
 		02C2DC8128AA9AEE00E1281F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2DC8028AA9AEE00E1281F /* ContentView.swift */; };
 		02C2DC8328AA9AF200E1281F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02C2DC8228AA9AF200E1281F /* Assets.xcassets */; };
@@ -16,6 +26,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		022389E828AA9ED100DB95BB /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		022389EC28AAA53D00DB95BB /* LessonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonModel.swift; sourceTree = "<group>"; };
+		022389EE28AAA5A600DB95BB /* ChatItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatItemModel.swift; sourceTree = "<group>"; };
+		022389F028AAA86300DB95BB /* ChatItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatItemRowView.swift; sourceTree = "<group>"; };
+		022389F228AAA90900DB95BB /* LessonDataFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDataFake.swift; sourceTree = "<group>"; };
+		022389F428AAA96C00DB95BB /* ChatItemDataFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatItemDataFake.swift; sourceTree = "<group>"; };
+		022389F628AAAC1200DB95BB /* LessonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonListView.swift; sourceTree = "<group>"; };
+		022389F828AAAC5300DB95BB /* LessonRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonRowView.swift; sourceTree = "<group>"; };
+		022389FA28AAD3B900DB95BB /* LessonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetailView.swift; sourceTree = "<group>"; };
+		022389FF28AADC9300DB95BB /* ChatItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatItemListView.swift; sourceTree = "<group>"; };
 		02C2DC7B28AA9AEE00E1281F /* FlashBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02C2DC7E28AA9AEE00E1281F /* FlashBotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashBotApp.swift; sourceTree = "<group>"; };
 		02C2DC8028AA9AEE00E1281F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,6 +56,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		022389EA28AAA50700DB95BB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				02C2DC8028AA9AEE00E1281F /* ContentView.swift */,
+				022389FC28AADBCC00DB95BB /* Lesson */,
+				022389FE28AADBE100DB95BB /* ChatItem */,
+				022389FD28AADBD500DB95BB /* Helper */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		022389EB28AAA51800DB95BB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				022389EC28AAA53D00DB95BB /* LessonModel.swift */,
+				022389EE28AAA5A600DB95BB /* ChatItemModel.swift */,
+				022389F228AAA90900DB95BB /* LessonDataFake.swift */,
+				022389F428AAA96C00DB95BB /* ChatItemDataFake.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		022389FC28AADBCC00DB95BB /* Lesson */ = {
+			isa = PBXGroup;
+			children = (
+				022389F628AAAC1200DB95BB /* LessonListView.swift */,
+				022389F828AAAC5300DB95BB /* LessonRowView.swift */,
+				022389FA28AAD3B900DB95BB /* LessonDetailView.swift */,
+			);
+			path = Lesson;
+			sourceTree = "<group>";
+		};
+		022389FD28AADBD500DB95BB /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				022389E828AA9ED100DB95BB /* AvatarView.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		022389FE28AADBE100DB95BB /* ChatItem */ = {
+			isa = PBXGroup;
+			children = (
+				022389FF28AADC9300DB95BB /* ChatItemListView.swift */,
+				022389F028AAA86300DB95BB /* ChatItemRowView.swift */,
+			);
+			path = ChatItem;
+			sourceTree = "<group>";
+		};
 		02C2DC7228AA9AEE00E1281F = {
 			isa = PBXGroup;
 			children = (
@@ -56,7 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				02C2DC7E28AA9AEE00E1281F /* FlashBotApp.swift */,
-				02C2DC8028AA9AEE00E1281F /* ContentView.swift */,
+				022389EB28AAA51800DB95BB /* Models */,
+				022389EA28AAA50700DB95BB /* Views */,
 				02C2DC8228AA9AF200E1281F /* Assets.xcassets */,
 				02C2DC8728AA9AF200E1281F /* Persistence.swift */,
 				02C2DC8928AA9AF200E1281F /* FlashBot.xcdatamodeld */,
@@ -143,10 +213,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				022389F328AAA90900DB95BB /* LessonDataFake.swift in Sources */,
 				02C2DC8B28AA9AF200E1281F /* FlashBot.xcdatamodeld in Sources */,
+				022389FB28AAD3B900DB95BB /* LessonDetailView.swift in Sources */,
 				02C2DC8828AA9AF200E1281F /* Persistence.swift in Sources */,
+				022389F528AAA96C00DB95BB /* ChatItemDataFake.swift in Sources */,
+				02238A0028AADC9300DB95BB /* ChatItemListView.swift in Sources */,
+				022389EF28AAA5A600DB95BB /* ChatItemModel.swift in Sources */,
+				022389F728AAAC1200DB95BB /* LessonListView.swift in Sources */,
 				02C2DC8128AA9AEE00E1281F /* ContentView.swift in Sources */,
+				022389ED28AAA53D00DB95BB /* LessonModel.swift in Sources */,
 				02C2DC7F28AA9AEE00E1281F /* FlashBotApp.swift in Sources */,
+				022389E928AA9ED100DB95BB /* AvatarView.swift in Sources */,
+				022389F928AAAC5300DB95BB /* LessonRowView.swift in Sources */,
+				022389F128AAA86300DB95BB /* ChatItemRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
