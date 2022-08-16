@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct LessonListView: View {
+    var lessonDataFake: [Lesson] = []
     var body: some View {
         NavigationView {
             List(lessonDataFake) { lesson in

@@ -1,11 +1,11 @@
 import SwiftUI
 
 struct ChatItemRowView: View {
-    var chatItem: ChatItemModel
+    var chatItem: ChatItem
     var body: some View {
-        if chatItem.fromBot {
+        if chatItem.from {
             HStack {
-                Text(chatItem.content)
+                Text(chatItem.safeContent)
                     .colorInvert()
                     .padding()
                     .background(.blue)
@@ -14,7 +14,7 @@ struct ChatItemRowView: View {
         } else {
             HStack {
                 Spacer()
-                Text(chatItem.content)
+                Text(chatItem.safeContent)
                     .padding()
                     .background(.gray)
             }
@@ -23,6 +23,7 @@ struct ChatItemRowView: View {
 }
 
 struct ChatItemRowView_Previews: PreviewProvider {
+    static var chatItemDataFake: [ChatItem] = []
     static var previews: some View {
         Group {
             ChatItemRowView(chatItem: chatItemDataFake[1])
