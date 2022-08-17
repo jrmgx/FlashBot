@@ -12,8 +12,8 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="lastPlayedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="chatItems" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChatItem" inverseName="lesson" inverseEntity="ChatItem"/>
-        <relationship name="lessonEntries" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LessonEntry" inverseName="lesson" inverseEntity="LessonEntry"/>
+        <relationship name="chatItems" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ChatItem" inverseName="lesson" inverseEntity="ChatItem"/>
+        <relationship name="lessonEntries" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LessonEntry" inverseName="lesson" inverseEntity="LessonEntry"/>
     </entity>
     <entity name="LessonEntry" representedClassName="LessonEntry" syncable="YES">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>

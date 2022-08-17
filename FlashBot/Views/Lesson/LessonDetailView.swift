@@ -1,7 +1,9 @@
 import SwiftUI
 
 struct LessonDetailView: View {
+    
     var lesson: Lesson
+    
     var body: some View {
         //ScrollView {
         //    Text(lesson.title)
@@ -13,8 +15,10 @@ struct LessonDetailView: View {
 }
 
 struct LessonDetailView_Previews: PreviewProvider {
-    static var lessonDataFake: [Lesson] = []
+    
+    static var previewViewContext = PersistenceController.preview.container.viewContext
+    
     static var previews: some View {
-        LessonDetailView(lesson: lessonDataFake[1])
+        LessonDetailView(lesson: FakeData.LessonList(viewContext: previewViewContext)[1])
     }
 }

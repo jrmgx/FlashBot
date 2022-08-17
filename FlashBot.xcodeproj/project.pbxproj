@@ -9,12 +9,15 @@
 /* Begin PBXBuildFile section */
 		0205001628AC33BD003074F0 /* FlashBot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0205001428AC33BD003074F0 /* FlashBot.xcdatamodeld */; };
 		0205001828AC33C3003074F0 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0205001728AC33C3003074F0 /* Persistence.swift */; };
-		0205002D28AC36DE003074F0 /* ChatItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0205002728AC36DE003074F0 /* ChatItem+CoreDataClass.swift */; };
-		0205002E28AC36DE003074F0 /* ChatItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0205002828AC36DE003074F0 /* ChatItem+CoreDataProperties.swift */; };
-		0205002F28AC36DE003074F0 /* Lesson+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0205002928AC36DE003074F0 /* Lesson+CoreDataClass.swift */; };
-		0205003028AC36DE003074F0 /* Lesson+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0205002A28AC36DE003074F0 /* Lesson+CoreDataProperties.swift */; };
-		0205003128AC36DE003074F0 /* LessonEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0205002B28AC36DE003074F0 /* LessonEntry+CoreDataClass.swift */; };
-		0205003228AC36DE003074F0 /* LessonEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0205002C28AC36DE003074F0 /* LessonEntry+CoreDataProperties.swift */; };
+		0205003428ACBDD4003074F0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0205003328ACBDD4003074F0 /* SettingsView.swift */; };
+		0205003628ACBE13003074F0 /* LessonSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0205003528ACBE13003074F0 /* LessonSettingView.swift */; };
+		0222AD9A28ACC1610017FCE9 /* FakeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222AD9928ACC1610017FCE9 /* FakeData.swift */; };
+		0222ADA428ACC8CB0017FCE9 /* Lesson+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222ADA128ACC8CB0017FCE9 /* Lesson+CoreDataProperties.swift */; };
+		0222ADA528ACC8CB0017FCE9 /* LessonEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222ADA228ACC8CB0017FCE9 /* LessonEntry+CoreDataProperties.swift */; };
+		0222ADA628ACC8CB0017FCE9 /* ChatItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222ADA328ACC8CB0017FCE9 /* ChatItem+CoreDataProperties.swift */; };
+		0222ADAA28ACC9020017FCE9 /* ChatItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222ADA728ACC9020017FCE9 /* ChatItem+CoreDataClass.swift */; };
+		0222ADAB28ACC9020017FCE9 /* LessonEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222ADA828ACC9020017FCE9 /* LessonEntry+CoreDataClass.swift */; };
+		0222ADAC28ACC9020017FCE9 /* Lesson+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222ADA928ACC9020017FCE9 /* Lesson+CoreDataClass.swift */; };
 		022389E928AA9ED100DB95BB /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389E828AA9ED100DB95BB /* AvatarView.swift */; };
 		022389F128AAA86300DB95BB /* ChatItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389F028AAA86300DB95BB /* ChatItemRowView.swift */; };
 		022389F728AAAC1200DB95BB /* LessonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389F628AAAC1200DB95BB /* LessonListView.swift */; };
@@ -30,18 +33,22 @@
 /* Begin PBXFileReference section */
 		0205001528AC33BD003074F0 /* FlashBot.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FlashBot.xcdatamodel; sourceTree = "<group>"; };
 		0205001728AC33C3003074F0 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		0205002728AC36DE003074F0 /* ChatItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatItem+CoreDataClass.swift"; sourceTree = "<group>"; };
-		0205002828AC36DE003074F0 /* ChatItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		0205002928AC36DE003074F0 /* Lesson+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lesson+CoreDataClass.swift"; sourceTree = "<group>"; };
-		0205002A28AC36DE003074F0 /* Lesson+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lesson+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		0205002B28AC36DE003074F0 /* LessonEntry+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LessonEntry+CoreDataClass.swift"; sourceTree = "<group>"; };
-		0205002C28AC36DE003074F0 /* LessonEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LessonEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0205003328ACBDD4003074F0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		0205003528ACBE13003074F0 /* LessonSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LessonSettingView.swift; path = FlashBot/Views/LessonSettingView.swift; sourceTree = SOURCE_ROOT; };
+		0222AD9928ACC1610017FCE9 /* FakeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeData.swift; sourceTree = "<group>"; };
+		0222ADA128ACC8CB0017FCE9 /* Lesson+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lesson+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0222ADA228ACC8CB0017FCE9 /* LessonEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LessonEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0222ADA328ACC8CB0017FCE9 /* ChatItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0222ADA728ACC9020017FCE9 /* ChatItem+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatItem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0222ADA828ACC9020017FCE9 /* LessonEntry+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LessonEntry+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0222ADA928ACC9020017FCE9 /* Lesson+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Lesson+CoreDataClass.swift"; sourceTree = "<group>"; };
 		022389E828AA9ED100DB95BB /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		022389F028AAA86300DB95BB /* ChatItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatItemRowView.swift; sourceTree = "<group>"; };
 		022389F628AAAC1200DB95BB /* LessonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonListView.swift; sourceTree = "<group>"; };
 		022389F828AAAC5300DB95BB /* LessonRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonRowView.swift; sourceTree = "<group>"; };
 		022389FA28AAD3B900DB95BB /* LessonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetailView.swift; sourceTree = "<group>"; };
 		022389FF28AADC9300DB95BB /* ChatItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatItemListView.swift; sourceTree = "<group>"; };
+		0284044E28ACCFEB00E5DDDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		02C2DC7B28AA9AEE00E1281F /* FlashBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02C2DC7E28AA9AEE00E1281F /* FlashBotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashBotApp.swift; sourceTree = "<group>"; };
 		02C2DC8028AA9AEE00E1281F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -64,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				02C2DC8028AA9AEE00E1281F /* ContentView.swift */,
+				0205003328ACBDD4003074F0 /* SettingsView.swift */,
 				022389FC28AADBCC00DB95BB /* Lesson */,
 				022389FE28AADBE100DB95BB /* ChatItem */,
 				022389FD28AADBD500DB95BB /* Helper */,
@@ -75,12 +83,12 @@
 			isa = PBXGroup;
 			children = (
 				0205001428AC33BD003074F0 /* FlashBot.xcdatamodeld */,
-				0205002728AC36DE003074F0 /* ChatItem+CoreDataClass.swift */,
-				0205002828AC36DE003074F0 /* ChatItem+CoreDataProperties.swift */,
-				0205002928AC36DE003074F0 /* Lesson+CoreDataClass.swift */,
-				0205002A28AC36DE003074F0 /* Lesson+CoreDataProperties.swift */,
-				0205002B28AC36DE003074F0 /* LessonEntry+CoreDataClass.swift */,
-				0205002C28AC36DE003074F0 /* LessonEntry+CoreDataProperties.swift */,
+				0222ADA928ACC9020017FCE9 /* Lesson+CoreDataClass.swift */,
+				0222ADA128ACC8CB0017FCE9 /* Lesson+CoreDataProperties.swift */,
+				0222ADA828ACC9020017FCE9 /* LessonEntry+CoreDataClass.swift */,
+				0222ADA228ACC8CB0017FCE9 /* LessonEntry+CoreDataProperties.swift */,
+				0222ADA728ACC9020017FCE9 /* ChatItem+CoreDataClass.swift */,
+				0222ADA328ACC8CB0017FCE9 /* ChatItem+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -91,6 +99,7 @@
 				022389F628AAAC1200DB95BB /* LessonListView.swift */,
 				022389F828AAAC5300DB95BB /* LessonRowView.swift */,
 				022389FA28AAD3B900DB95BB /* LessonDetailView.swift */,
+				0205003528ACBE13003074F0 /* LessonSettingView.swift */,
 			);
 			path = Lesson;
 			sourceTree = "<group>";
@@ -99,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				022389E828AA9ED100DB95BB /* AvatarView.swift */,
+				0222AD9928ACC1610017FCE9 /* FakeData.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -131,6 +141,7 @@
 		02C2DC7D28AA9AEE00E1281F /* FlashBot */ = {
 			isa = PBXGroup;
 			children = (
+				0284044E28ACCFEB00E5DDDA /* Info.plist */,
 				02C2DC7E28AA9AEE00E1281F /* FlashBotApp.swift */,
 				0205001728AC33C3003074F0 /* Persistence.swift */,
 				022389EB28AAA51800DB95BB /* Models */,
@@ -219,20 +230,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0205003228AC36DE003074F0 /* LessonEntry+CoreDataProperties.swift in Sources */,
+				0222ADA528ACC8CB0017FCE9 /* LessonEntry+CoreDataProperties.swift in Sources */,
 				022389FB28AAD3B900DB95BB /* LessonDetailView.swift in Sources */,
 				0205001828AC33C3003074F0 /* Persistence.swift in Sources */,
+				0222ADA428ACC8CB0017FCE9 /* Lesson+CoreDataProperties.swift in Sources */,
+				0222ADAB28ACC9020017FCE9 /* LessonEntry+CoreDataClass.swift in Sources */,
+				0222ADAC28ACC9020017FCE9 /* Lesson+CoreDataClass.swift in Sources */,
 				02238A0028AADC9300DB95BB /* ChatItemListView.swift in Sources */,
+				0222ADAA28ACC9020017FCE9 /* ChatItem+CoreDataClass.swift in Sources */,
 				022389F728AAAC1200DB95BB /* LessonListView.swift in Sources */,
+				0205003428ACBDD4003074F0 /* SettingsView.swift in Sources */,
 				02C2DC8128AA9AEE00E1281F /* ContentView.swift in Sources */,
+				0222ADA628ACC8CB0017FCE9 /* ChatItem+CoreDataProperties.swift in Sources */,
 				0205001628AC33BD003074F0 /* FlashBot.xcdatamodeld in Sources */,
-				0205002E28AC36DE003074F0 /* ChatItem+CoreDataProperties.swift in Sources */,
-				0205002D28AC36DE003074F0 /* ChatItem+CoreDataClass.swift in Sources */,
 				02C2DC7F28AA9AEE00E1281F /* FlashBotApp.swift in Sources */,
-				0205003028AC36DE003074F0 /* Lesson+CoreDataProperties.swift in Sources */,
-				0205003128AC36DE003074F0 /* LessonEntry+CoreDataClass.swift in Sources */,
-				0205002F28AC36DE003074F0 /* Lesson+CoreDataClass.swift in Sources */,
+				0222AD9A28ACC1610017FCE9 /* FakeData.swift in Sources */,
 				022389E928AA9ED100DB95BB /* AvatarView.swift in Sources */,
+				0205003628ACBE13003074F0 /* LessonSettingView.swift in Sources */,
 				022389F928AAAC5300DB95BB /* LessonRowView.swift in Sources */,
 				022389F128AAA86300DB95BB /* ChatItemRowView.swift in Sources */,
 			);
@@ -365,9 +379,11 @@
 				DEVELOPMENT_ASSET_PATHS = "\"FlashBot/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = FlashBot/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Flash Bot";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -393,9 +409,11 @@
 				DEVELOPMENT_ASSET_PATHS = "\"FlashBot/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = FlashBot/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Flash Bot";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

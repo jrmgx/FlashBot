@@ -1,10 +1,12 @@
 import SwiftUI
 
 struct LessonListView: View {
-    var lessonDataFake: [Lesson] = []
+    
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
     var body: some View {
         NavigationView {
-            List(lessonDataFake) { lesson in
+            List(FakeData.LessonList(viewContext: managedObjectContext)) { lesson in
                 NavigationLink {
                     LessonDetailView(lesson: lesson)
                 } label: {

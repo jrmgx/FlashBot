@@ -7,14 +7,12 @@ struct ContentView: View {
                 .tabItem {
                     Label("Menu", systemImage: "list.dash")
                 }
-            Text("Test")
+            SettingsView()
                 .tabItem{
                     Label("Text", systemImage: "list.dash")
                 }
         }
     }
-    
-    
 }
 
 struct ContentView_Previews: PreviewProvider {

@@ -1,9 +1,11 @@
 import SwiftUI
 
 struct ChatItemListView: View {
-    var chatItemDataFake: [ChatItem] = []
+    
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
     var body: some View {
-        List(chatItemDataFake) { chatItem in
+        List(FakeData.ChatItemList(viewContext: managedObjectContext)) { chatItem in
             ChatItemRowView(chatItem: chatItem)
         }
     }
