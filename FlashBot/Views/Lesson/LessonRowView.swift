@@ -11,13 +11,12 @@ struct LessonRowView: View {
 
 struct LessonView_Previews: PreviewProvider {
     
-    static var previewViewContext = PersistenceController.preview.container.viewContext
-    
     static var previews: some View {
         Group {
-            LessonRowView(lesson: FakeData.LessonList(viewContext: previewViewContext)[0])
-            LessonRowView(lesson: FakeData.LessonList(viewContext: previewViewContext)[1])
+            LessonRowView(lesson: PersistenceController.preview.fakeLessons[0])
+            LessonRowView(lesson: PersistenceController.preview.fakeLessons[1])
         }
+        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
         .previewLayout(.fixed(width: 300, height: 70))
     }
 }

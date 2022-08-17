@@ -7,7 +7,7 @@ struct LessonDetailView: View {
     var body: some View {
         //ScrollView {
         //    Text(lesson.title)
-            ChatItemListView()
+            ChatItemListView(lesson: lesson)
         //}
         .navigationTitle(lesson.title ?? "")
         .navigationBarTitleDisplayMode(.inline)
@@ -15,10 +15,8 @@ struct LessonDetailView: View {
 }
 
 struct LessonDetailView_Previews: PreviewProvider {
-    
-    static var previewViewContext = PersistenceController.preview.container.viewContext
-    
     static var previews: some View {
-        LessonDetailView(lesson: FakeData.LessonList(viewContext: previewViewContext)[1])
+        LessonDetailView(lesson: PersistenceController.preview.fakeLessons[0])
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

@@ -2,10 +2,14 @@ import SwiftUI
 
 struct ChatItemListView: View {
     
-    @Environment(\.managedObjectContext) var managedObjectContext
+    var lesson: Lesson
+
+//    @FetchRequest(sortDescriptors: [
+//        SortDescriptor(\.postedAt, order: .reverse)
+//    ]) var chatItems: FetchedResults<ChatItem>
     
     var body: some View {
-        List(FakeData.ChatItemList(viewContext: managedObjectContext)) { chatItem in
+        List(lesson.safeChatItems) { chatItem in
             ChatItemRowView(chatItem: chatItem)
         }
     }
@@ -13,6 +17,7 @@ struct ChatItemListView: View {
 
 struct ChatItemListView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatItemListView()
+        ChatItemListView(lesson: PersistenceController.preview.fakeLessons[0])
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

@@ -13,6 +13,28 @@ extension Lesson {
     @NSManaged public var title: String?
     @NSManaged public var chatItems: NSSet?
     @NSManaged public var lessonEntries: NSSet?
+    
+    public var safeLastPlayedAt: Date {
+        lastPlayedAt ?? Date.now
+    }
+    
+    public var safeTitle: String {
+        title ?? "No Title"
+    }
+        
+    public var safeLessonEntries: [LessonEntry] {
+        let set = lessonEntries as? Set<LessonEntry> ?? []
+        return set.sorted {
+            $0.score < $1.score
+        }
+    }
+    
+    public var safeChatItems: [ChatItem] {
+        let set = chatItems as? Set<ChatItem> ?? []
+        return set.sorted {
+            $0.safePostedAt < $1.safePostedAt
+        }
+    }
 
 }
 

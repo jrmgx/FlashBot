@@ -2,7 +2,8 @@ import SwiftUI
 
 @main
 struct FlashBotApp: App {
-    let persistenceController = PersistenceController.shared
+    
+    @StateObject private var persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {

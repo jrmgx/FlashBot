@@ -26,13 +26,12 @@ struct ChatItemRowView: View {
 
 struct ChatItemRowView_Previews: PreviewProvider {
     
-    static var previewViewContext = PersistenceController.preview.container.viewContext
-    
     static var previews: some View {
         Group {
-            ChatItemRowView(chatItem: FakeData.ChatItemList(viewContext: previewViewContext)[1])
-            ChatItemRowView(chatItem: FakeData.ChatItemList(viewContext: previewViewContext)[2])
+            ChatItemRowView(chatItem: PersistenceController.preview.fakeChatItems[0])
+            ChatItemRowView(chatItem: PersistenceController.preview.fakeChatItems[2])
         }
+        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
         .previewLayout(.fixed(width: 300, height: 70))
     }
 }
