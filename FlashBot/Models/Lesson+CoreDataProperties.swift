@@ -1,6 +1,12 @@
 import Foundation
 import CoreData
 
+public enum LessonSate: Int16 {
+    case unknown
+    case setup_presenting
+    case setup_wait_for_lesson_title
+    case setup_wait_for_lesson_entries
+}
 
 extension Lesson {
 
@@ -13,13 +19,50 @@ extension Lesson {
     @NSManaged public var title: String?
     @NSManaged public var chatItems: NSSet?
     @NSManaged public var lessonEntries: NSSet?
+    @NSManaged public var state: Int16
+
+    @nonobjc public class func nouveau(context: NSManagedObjectContext) -> Lesson {
+        let l = Lesson(context: context)
+        l.id = UUID()
+        l.lastPlayedAt = Date.now
+        l.state = LessonSate.setup_presenting.rawValue
+        return l
+    }
+    
+    public func appendBotMessage(text: String) {
+        guard let managedObjectContext = managedObjectContext else {
+            print("Could not get managedObjectContext while appendBotMessage")
+            return
+        }
+        
+        let c = ChatItem.nouveau(context: managedObjectContext)
+        c.content = text
+        c.fromBot = true
+        addToChatItems(c)
+    }
+    
+    public func appendUserMessage(text: String) {
+        guard let managedObjectContext = managedObjectContext else {
+            print("Could not get managedObjectContext while appendBotMessage")
+            return
+        }
+        
+        let c = ChatItem.nouveau(context: managedObjectContext)
+        c.content = text
+        c.fromBot = false
+        addToChatItems(c)
+    }
+    
+    public var safeSate: LessonSate {
+        get { LessonSate.init(rawValue: state) ?? LessonSate.unknown }
+    }
     
     public var safeLastPlayedAt: Date {
-        lastPlayedAt ?? Date.now
+        get { lastPlayedAt ?? Date.now }
     }
     
     public var safeTitle: String {
-        title ?? "No Title"
+        get { title ?? "No Title" }
     }
         
     public var safeLessonEntries: [LessonEntry] {
@@ -35,6 +78,11 @@ extension Lesson {
             $0.safePostedAt < $1.safePostedAt
         }
     }
+    
+//    override public func willChangeValue(forKey key: String) {
+//        super.willChangeValue(forKey: key)
+//        self.objectWillChange.send()
+//    }
 
 }
 

@@ -14,21 +14,21 @@ class PersistenceController: ObservableObject {
         let chatItem1 = ChatItem(context: viewContext)
         chatItem1.id = UUID()
         chatItem1.content = "Hello"
-        chatItem1.from = true
+        chatItem1.fromBot = true
         chatItem1.postedAt = Date(timeIntervalSinceNow: 1000)
         chatItem1.type = 1
         
         let chatItem2 = ChatItem(context: viewContext)
         chatItem2.id = UUID()
         chatItem2.content = "This is a message"
-        chatItem2.from = true
+        chatItem2.fromBot = true
         chatItem2.postedAt = Date(timeIntervalSinceNow: 2000)
         chatItem2.type = 1
         
         let chatItem3 = ChatItem(context: viewContext)
         chatItem3.id = UUID()
         chatItem3.content = "Gato"
-        chatItem3.from = false
+        chatItem3.fromBot = false
         chatItem3.postedAt = Date(timeIntervalSinceNow: 3000)
         chatItem3.type = 2
         
@@ -42,15 +42,23 @@ class PersistenceController: ObservableObject {
         lesson1.addToChatItems(chatItem2)
         lesson1.addToChatItems(chatItem3)
         
+        for i in 0..<20 {
+            var chatItem = ChatItem(context: viewContext)
+            chatItem.id = UUID()
+            chatItem.content = "Message \(i)"
+            chatItem.fromBot = i % 2 == 0
+            chatItem.postedAt = Date(timeIntervalSinceNow: 3500 + Double(i))
+            chatItem.type = 1
+            lesson1.addToChatItems(chatItem)
+        }
+        
         let lesson2 = Lesson(context: viewContext)
         lesson2.id = UUID()
         lesson2.lastPlayedAt = Date(timeIntervalSinceNow: 5000)
         lesson2.title = "Electronic"
         
         result.fakeLessons = [lesson1, lesson2]
-        
-        try? viewContext.save()
-        
+                
         do {
             try viewContext.save()
         } catch {
@@ -66,6 +74,7 @@ class PersistenceController: ObservableObject {
 
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "FlashBot")
+        
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }

@@ -2,10 +2,10 @@ import SwiftUI
 
 struct LessonRowView: View {
     
-    var lesson: Lesson
+    @StateObject var lesson: Lesson
     
     var body: some View {
-        Text(lesson.title ?? "")
+        Text(lesson.safeTitle)
     }
 }
 

@@ -2,10 +2,10 @@ import SwiftUI
 
 struct ChatItemRowView: View {
     
-    var chatItem: ChatItem
+    @StateObject var chatItem: ChatItem
     
     var body: some View {
-        if chatItem.from {
+        if chatItem.fromBot {
             HStack {
                 Text(chatItem.safeContent)
                     .colorInvert()

@@ -4,25 +4,27 @@ import CoreData
 struct LessonListView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(sortDescriptors: [
-        SortDescriptor(\.lastPlayedAt)
-    ]) var lessons: FetchedResults<Lesson>
-
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.lastPlayedAt)]) var lessons: FetchedResults<Lesson>
+    @State private var isShowingDetailView = false
+    
     var body: some View {
         NavigationView {
             VStack {
-//                Button("ok") {
-//                    let l = Lesson(context: managedObjectContext)
-//                    l.id = UUID()
-//                    l.title = "Random \(Date.now)"
-//                    try? managedObjectContext.save()
-//                }
                 List(lessons) { lesson in
                     NavigationLink {
                         LessonDetailView(lesson: lesson)
                     } label: {
                         LessonRowView(lesson: lesson)
                     }
+                }
+                NavigationLink(
+                    destination: LessonDetailView(lesson: Lesson.nouveau(context: managedObjectContext)),
+                    isActive: $isShowingDetailView
+                ) {
+                    EmptyView()
+                }
+                Button("New Lesson") {
+                    isShowingDetailView = true
                 }
             }
         }
@@ -32,7 +34,10 @@ struct LessonListView: View {
 
 struct LessonListView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonListView()
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        Group {
+            LessonListView()
+                .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+            LessonListView()
+        }
     }
 }
