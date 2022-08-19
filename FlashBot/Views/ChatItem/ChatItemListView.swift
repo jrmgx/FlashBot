@@ -1,6 +1,7 @@
 import SwiftUI
+import Combine
 
-struct ChatItemListView: View {
+struct ChatItemListView: View, KeyboardReadable {
     
     @StateObject var lesson: Lesson
 
@@ -9,17 +10,35 @@ struct ChatItemListView: View {
 //        SortDescriptor(\.postedAt, order: .reverse)
 //    ]) var chatItems: FetchedResults<ChatItem>
 
+    @State private var isKeyboardVisible = false
+    
+    private func scrollBottom(scrollViewProxy: ScrollViewProxy, animate: Bool) {
+        guard !lesson.safeChatItems.isEmpty else { return }
+        Task {
+            if animate {
+                withAnimation(Animation.easeInOut) {
+                    scrollViewProxy.scrollTo(lesson.safeChatItems.last!.id, anchor: .top)
+                }
+            } else {
+                scrollViewProxy.scrollTo(lesson.safeChatItems.last!.id, anchor: .top)
+            }
+        }
+    }
+    
     var body: some View {
         
         ScrollViewReader { scrollViewProxy in
             List(lesson.safeChatItems) { chatItem in
                 ChatItemRowView(chatItem: chatItem).id(chatItem.id)
             }
+            .onAppear {
+                scrollBottom(scrollViewProxy: scrollViewProxy, animate: false)
+            }
             .onReceive(lesson.objectWillChange) { _ in
-                guard !lesson.safeChatItems.isEmpty else { return }
-                Task {
-                    scrollViewProxy.scrollTo(lesson.safeChatItems.last!.id, anchor: .top)
-                }
+                scrollBottom(scrollViewProxy: scrollViewProxy, animate: true)
+            }
+            .onReceive(keyboardPublisher) { _ in
+                scrollBottom(scrollViewProxy: scrollViewProxy, animate: true)
             }
         }
     }
@@ -34,3 +53,25 @@ struct ChatItemListView_Previews: PreviewProvider {
         }
     }
 }
+
+/// Publisher to read keyboard changes.
+/// https://stackoverflow.com/a/65784549/696517
+protocol KeyboardReadable {
+    var keyboardPublisher: AnyPublisher<Bool, Never> { get }
+}
+
+extension KeyboardReadable {
+    var keyboardPublisher: AnyPublisher<Bool, Never> {
+        Publishers.Merge(
+            NotificationCenter.default
+                .publisher(for: UIResponder.keyboardDidShowNotification)
+                .map { _ in true },
+            
+            NotificationCenter.default
+                .publisher(for: UIResponder.keyboardDidHideNotification)
+                .map { _ in false }
+        )
+        .eraseToAnyPublisher()
+    }
+}
+
