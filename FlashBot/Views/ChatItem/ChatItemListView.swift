@@ -2,34 +2,24 @@ import SwiftUI
 
 struct ChatItemListView: View {
     
-    var chatItems: [ChatItem]
+    @StateObject var lesson: Lesson
 
+    /// @TODO how not to load the full chat items?
 //    @FetchRequest(sortDescriptors: [
 //        SortDescriptor(\.postedAt, order: .reverse)
 //    ]) var chatItems: FetchedResults<ChatItem>
-    
+
     var body: some View {
-        ScrollView {
-            ScrollViewReader { scrollViewProxy in
-                LazyVStack {
-                    ForEach(chatItems) { chatItem in
-                        ChatItemRowView(chatItem: chatItem)
-                    }
+        
+        ScrollViewReader { scrollViewProxy in
+            List(lesson.safeChatItems) { chatItem in
+                ChatItemRowView(chatItem: chatItem).id(chatItem.id)
+            }
+            .onReceive(lesson.objectWillChange) { _ in
+                guard !lesson.safeChatItems.isEmpty else { return }
+                Task {
+                    scrollViewProxy.scrollTo(lesson.safeChatItems.last!.id, anchor: .top)
                 }
-                .onAppear {
-                    print("on appear")
-                    //withAnimation(Animation.easeInOut) {
-                    guard !chatItems.isEmpty else { return }
-                    scrollViewProxy.scrollTo(chatItems.last, anchor: .top)
-                    //}
-                }
-//                .onReceive(viewModel.$discussion) { _ in
-//                    guard !viewModel.discussion.isEmpty else { return }
-//
-//                    withAnimation(Animation.easeInOut) {
-//                        sp.scrollTo(viewModel.discussion.last!.uuid)
-//                    }
-//                }
             }
         }
     }
@@ -38,9 +28,9 @@ struct ChatItemListView: View {
 struct ChatItemListView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ChatItemListView(chatItems: PersistenceController.preview.fakeLessons[0].safeChatItems)
+            ChatItemListView(lesson: PersistenceController.preview.fakeLessons[0])
                 .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-            ChatItemListView(chatItems: [ChatItem]())
+            ChatItemListView(lesson: Lesson())
         }
     }
 }

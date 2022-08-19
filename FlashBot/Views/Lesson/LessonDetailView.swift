@@ -80,7 +80,7 @@ struct LessonDetailView: View {
     
     var body: some View {
         VStack {
-            ChatItemListView(chatItems: lesson.safeChatItems)
+            ChatItemListView(lesson: lesson)
             HStack {
                 TextField("Placeholder", text: $value)
                     .onSubmit {

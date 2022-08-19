@@ -4,7 +4,7 @@ import CoreData
 struct LessonListView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.lastPlayedAt)]) var lessons: FetchedResults<Lesson>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.lastPlayedAt, order: .reverse)]) var lessons: FetchedResults<Lesson>
     @State private var isShowingDetailView = false
     
     var body: some View {
