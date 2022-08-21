@@ -26,6 +26,7 @@
 		0284045028AFCEA200E5DDDA /* Waits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284044F28AFCEA200E5DDDA /* Waits.swift */; };
 		0284045228B144FD00E5DDDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284045128B144FD00E5DDDA /* AppDelegate.swift */; };
 		0284045A28B2335500E5DDDA /* DocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284045928B2335500E5DDDA /* DocumentPicker.swift */; };
+		0284045D28B29CA300E5DDDA /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 0284045C28B29CA300E5DDDA /* ZIPFoundation */; };
 		02C2DC7F28AA9AEE00E1281F /* FlashBotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2DC7E28AA9AEE00E1281F /* FlashBotApp.swift */; };
 		02C2DC8128AA9AEE00E1281F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2DC8028AA9AEE00E1281F /* ContentView.swift */; };
 		02C2DC8328AA9AF200E1281F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02C2DC8228AA9AF200E1281F /* Assets.xcassets */; };
@@ -65,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0284045D28B29CA300E5DDDA /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +184,9 @@
 			dependencies = (
 			);
 			name = FlashBot;
+			packageProductDependencies = (
+				0284045C28B29CA300E5DDDA /* ZIPFoundation */,
+			);
 			productName = FlashBot;
 			productReference = 02C2DC7B28AA9AEE00E1281F /* FlashBot.app */;
 			productType = "com.apple.product-type.application";
@@ -210,6 +215,9 @@
 				Base,
 			);
 			mainGroup = 02C2DC7228AA9AEE00E1281F;
+			packageReferences = (
+				0284045B28B29CA300E5DDDA /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
+			);
 			productRefGroup = 02C2DC7C28AA9AEE00E1281F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -459,6 +467,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0284045B28B29CA300E5DDDA /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.9;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0284045C28B29CA300E5DDDA /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0284045B28B29CA300E5DDDA /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		0205001428AC33BD003074F0 /* FlashBot.xcdatamodeld */ = {
