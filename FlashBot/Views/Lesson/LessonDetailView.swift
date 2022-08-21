@@ -33,6 +33,8 @@ struct LessonDetailView: View {
             await setupWaitForLessonTitle()
         case .setup_wait_for_lesson_entries:
             await setupWaitForLessonEntries()
+        case .setup_finished:
+            print("ready")
         }
     }
     
@@ -72,10 +74,19 @@ struct LessonDetailView: View {
         
         lesson.appendBotMessage(text: "Nous avons besoin d'un dataset, entrez en un")
         
-        // lesson.state = LessonSate.setup_wait_for_lesson_title.rawValue
-        // try? managedObjectContext.save()
-        
-        // await botNextAction()
+        let chatItem = ChatItem.create(context: managedObjectContext)
+        chatItem.type = ChatItemType.actionButtonsUser
+        chatItem.choices = [
+            ChatItemChoice(name: "Import", action: {
+                print("Import action")
+                chatItem.type = ChatItemType.basicUser
+                chatItem.content = "File sent"
+                // lesson.state = LessonSate.setup_finished
+                try? managedObjectContext.save()
+                // await botNextAction()
+            })
+        ]
+        lesson.addToChatItems(chatItem)
     }
     
     var body: some View {

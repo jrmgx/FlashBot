@@ -6,6 +6,7 @@ public enum LessonSate: Int16 {
     case setup_presenting
     case setup_wait_for_lesson_title
     case setup_wait_for_lesson_entries
+    case setup_finished
 }
 
 extension Lesson {

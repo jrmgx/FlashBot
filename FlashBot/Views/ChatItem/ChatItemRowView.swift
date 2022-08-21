@@ -26,9 +26,19 @@ struct ChatItemRowView: View {
         case .actionButtonsUser:
             HStack {
                 Spacer()
-                Text("TODO BUTTON \(chatItem.content)")
-                    .padding()
-                    .background(.gray)
+                HStack {
+                    ForEach(chatItem.choices) { choice in
+                        Button(choice.name) {
+                            print("ok choice \(choice)")
+                            choice.action()
+                        }
+                        .padding(10)
+                        .background(.white)
+                        .cornerRadius(10)
+                    }
+                }
+                .padding()
+                .background(.gray)
             }
         }
     }
@@ -40,6 +50,7 @@ struct ChatItemRowView_Previews: PreviewProvider {
         Group {
             ChatItemRowView(chatItem: PersistenceController.preview.fakeChatItems[0])
             ChatItemRowView(chatItem: PersistenceController.preview.fakeChatItems[2])
+            ChatItemRowView(chatItem: PersistenceController.preview.fakeChatItems[3])
         }
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
         .previewLayout(.fixed(width: 300, height: 70))

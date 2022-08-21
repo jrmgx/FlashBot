@@ -26,7 +26,16 @@ class PersistenceController: ObservableObject {
         chatItem3.type = ChatItemType.basicUser
         chatItem3.postedAt = Date(timeIntervalSinceNow: 3000)
         
-        result.fakeChatItems = [chatItem1, chatItem2, chatItem3]
+        let chatItem4 = ChatItem.create(context: viewContext)
+        chatItem4.type = ChatItemType.actionButtonsUser
+        chatItem4.choices = [
+            ChatItemChoice(name: "Yes", action: { print("Yes")}),
+            ChatItemChoice(name: "No", action: { print("No")}),
+            ChatItemChoice(name: "Maybe", action: { print("Maybe")})
+        ]
+        chatItem4.postedAt = Date(timeIntervalSinceNow: 3500)
+        
+        result.fakeChatItems = [chatItem1, chatItem2, chatItem3, chatItem4]
         
         let lesson1 = Lesson.create(context: viewContext)
         lesson1.lastPlayedAt = Date(timeIntervalSinceNow: 500)
@@ -34,6 +43,7 @@ class PersistenceController: ObservableObject {
         lesson1.addToChatItems(chatItem1)
         lesson1.addToChatItems(chatItem2)
         lesson1.addToChatItems(chatItem3)
+        // lesson1.addToChatItems(chatItem4)
         
         for i in 0..<20 {
             var chatItem = ChatItem.create(context: viewContext)
