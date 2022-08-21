@@ -4,7 +4,7 @@ import CoreData
 struct LessonListView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.lastPlayedAt, order: .reverse)]) var lessons: FetchedResults<Lesson>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.lastPlayedAt_, order: .reverse)]) var lessons: FetchedResults<Lesson>
     @State private var isShowingDetailView = false
     
     var body: some View {
@@ -18,7 +18,7 @@ struct LessonListView: View {
                     }
                 }
                 NavigationLink(
-                    destination: LessonDetailView(lesson: Lesson.nouveau(context: managedObjectContext)),
+                    destination: LessonDetailView(lesson: Lesson.create(context: managedObjectContext)),
                     isActive: $isShowingDetailView
                 ) {
                     EmptyView()

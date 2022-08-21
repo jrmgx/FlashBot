@@ -14,19 +14,19 @@ extension Lesson {
         return NSFetchRequest<Lesson>(entityName: "Lesson")
     }
 
-    @NSManaged public var id: UUID?
-    @NSManaged public var lastPlayedAt: Date?
-    @NSManaged public var title: String?
-    @NSManaged public var chatItems: NSSet?
-    @NSManaged public var lessonEntries: NSSet?
-    @NSManaged public var state: Int16
+    @NSManaged public var id_: UUID?
+    @NSManaged public var lastPlayedAt_: Date?
+    @NSManaged public var title_: String?
+    @NSManaged public var chatItems_: NSSet?
+    @NSManaged public var lessonEntries_: NSSet?
+    @NSManaged public var state_: Int16
 
-    @nonobjc public class func nouveau(context: NSManagedObjectContext) -> Lesson {
-        let l = Lesson(context: context)
-        l.id = UUID()
-        l.lastPlayedAt = Date.now
-        l.state = LessonSate.setup_presenting.rawValue
-        return l
+    @nonobjc public class func create(context: NSManagedObjectContext) -> Lesson {
+        let lesson = Lesson(context: context)
+        lesson.id_ = UUID()
+        lesson.lastPlayedAt_ = Date.now
+        lesson.state_ = LessonSate.setup_presenting.rawValue
+        return lesson
     }
     
     public func appendBotMessage(text: String) {
@@ -35,10 +35,10 @@ extension Lesson {
             return
         }
         
-        let c = ChatItem.nouveau(context: managedObjectContext)
-        c.content = text
-        c.fromBot = true
-        addToChatItems(c)
+        let chatItem = ChatItem.create(context: managedObjectContext)
+        chatItem.content = text
+        chatItem.type = ChatItemType.basicBot
+        addToChatItems(chatItem)
     }
     
     public func appendUserMessage(text: String) {
@@ -47,35 +47,38 @@ extension Lesson {
             return
         }
         
-        let c = ChatItem.nouveau(context: managedObjectContext)
-        c.content = text
-        c.fromBot = false
-        addToChatItems(c)
+        let chatItem = ChatItem.create(context: managedObjectContext)
+        chatItem.content = text
+        chatItem.type = ChatItemType.basicUser
+        addToChatItems(chatItem)
     }
     
-    public var safeSate: LessonSate {
-        get { LessonSate.init(rawValue: state) ?? LessonSate.unknown }
+    public var state: LessonSate {
+        get { LessonSate.init(rawValue: state_) ?? LessonSate.unknown }
+        set { state_ = newValue.rawValue }
     }
     
-    public var safeLastPlayedAt: Date {
-        get { lastPlayedAt ?? Date.now }
+    public var lastPlayedAt: Date {
+        get { lastPlayedAt_ ?? Date.now }
+        set { lastPlayedAt_ = newValue }
     }
     
-    public var safeTitle: String {
-        get { title ?? "No Title" }
+    public var title: String {
+        get { title_ ?? "No Title" }
+        set { title_ = newValue }
     }
         
-    public var safeLessonEntries: [LessonEntry] {
-        let set = lessonEntries as? Set<LessonEntry> ?? []
+    public var lessonEntries: [LessonEntry] {
+        let set = lessonEntries_ as? Set<LessonEntry> ?? []
         return set.sorted {
             $0.score < $1.score
         }
     }
     
-    public var safeChatItems: [ChatItem] {
-        let set = chatItems as? Set<ChatItem> ?? []
+    public var chatItems: [ChatItem] {
+        let set = chatItems_ as? Set<ChatItem> ?? []
         return set.sorted {
-            $0.safePostedAt < $1.safePostedAt
+            $0.postedAt < $1.postedAt
         }
     }
     
@@ -86,37 +89,42 @@ extension Lesson {
 
 }
 
-// MARK: Generated accessors for chatItems
+// MARK: Generated accessors for chatItems_
 extension Lesson {
 
-    @objc(addChatItemsObject:)
-    @NSManaged public func addToChatItems(_ value: ChatItem)
+    public func addToChatItems(_ value: ChatItem) {
+        addToChatItems_(value)
+        lastPlayedAt = Date.now
+    }
+    
+    @objc(addChatItems_Object:)
+    @NSManaged public func addToChatItems_(_ value: ChatItem)
 
-    @objc(removeChatItemsObject:)
-    @NSManaged public func removeFromChatItems(_ value: ChatItem)
+    @objc(removeChatItems_Object:)
+    @NSManaged public func removeFromChatItems_(_ value: ChatItem)
 
-    @objc(addChatItems:)
-    @NSManaged public func addToChatItems(_ values: NSSet)
+    @objc(addChatItems_:)
+    @NSManaged public func addToChatItems_(_ values: NSSet)
 
-    @objc(removeChatItems:)
-    @NSManaged public func removeFromChatItems(_ values: NSSet)
+    @objc(removeChatItems_:)
+    @NSManaged public func removeFromChatItems_(_ values: NSSet)
 
 }
 
-// MARK: Generated accessors for lessonEntries
+// MARK: Generated accessors for lessonEntries_
 extension Lesson {
 
-    @objc(addLessonEntriesObject:)
-    @NSManaged public func addToLessonEntries(_ value: LessonEntry)
+    @objc(addLessonEntries_Object:)
+    @NSManaged public func addToLessonEntries_(_ value: LessonEntry)
 
-    @objc(removeLessonEntriesObject:)
-    @NSManaged public func removeFromLessonEntries(_ value: LessonEntry)
+    @objc(removeLessonEntries_Object:)
+    @NSManaged public func removeFromLessonEntries_(_ value: LessonEntry)
 
-    @objc(addLessonEntries:)
-    @NSManaged public func addToLessonEntries(_ values: NSSet)
+    @objc(addLessonEntries_:)
+    @NSManaged public func addToLessonEntries_(_ values: NSSet)
 
-    @objc(removeLessonEntries:)
-    @NSManaged public func removeFromLessonEntries(_ values: NSSet)
+    @objc(removeLessonEntries_:)
+    @NSManaged public func removeFromLessonEntries_(_ values: NSSet)
 
 }
 

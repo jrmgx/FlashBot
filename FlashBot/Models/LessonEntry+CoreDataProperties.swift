@@ -8,27 +8,31 @@ extension LessonEntry {
         return NSFetchRequest<LessonEntry>(entityName: "LessonEntry")
     }
 
-    @NSManaged public var id: UUID?
-    @NSManaged public var lastShownAt: Date?
-    @NSManaged public var score: Int16
-    @NSManaged public var translation: String?
-    @NSManaged public var word: String?
-    @NSManaged public var lesson: Lesson?
+    @NSManaged public var id_: UUID?
+    @NSManaged public var lastShownAt_: Date?
+    @NSManaged public var score_: Int16
+    @NSManaged public var translation_: String?
+    @NSManaged public var word_: String?
+    @NSManaged public var lesson_: Lesson?
         
-    public var safeLastShownAt: Date {
-        get { lastShownAt ?? Date.now }
+    public var lastShownAt: Date {
+        get { lastShownAt_ ?? Date.now }
+        set { lastShownAt_ = newValue }
     }
     
-    public var safeScore: Int16 {
-        get { score }
+    public var score: Int16 {
+        get { score_ }
+        set { score_ = newValue }
     }
 
-    public var safeTranslation: String {
-        get { translation ?? "Empty" }
+    public var translation: String {
+        get { translation_ ?? "Empty" }
+        set { translation_ = newValue }
     }
 
-    public var safeWord: String {
-        get { word ?? "Empty"}
+    public var word: String {
+        get { word_ ?? "Empty"}
+        set { word_ = newValue }
     }
 
 }

@@ -8,7 +8,7 @@ struct LessonDetailView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
 
     private func validate(text: String) {
-        if lesson.safeSate == .setup_wait_for_lesson_title {
+        if lesson.state == .setup_wait_for_lesson_title {
             lessonTitle = text
         }
         
@@ -21,7 +21,7 @@ struct LessonDetailView: View {
 
     private func botNextAction() async {
         // Resolve state
-        let state = lesson.safeSate
+        let state = lesson.state
         
         // Execute action
         switch state {
@@ -45,7 +45,7 @@ struct LessonDetailView: View {
         
         lesson.appendBotMessage(text: "First of all, give your lesson a great title.")
         lesson.appendBotMessage(text: "Maybe you're learning Spanish, so it could be 'Learning Spanish'.")
-        lesson.state = LessonSate.setup_wait_for_lesson_title.rawValue
+        lesson.state = LessonSate.setup_wait_for_lesson_title
         
         try? managedObjectContext.save()
         
@@ -58,7 +58,7 @@ struct LessonDetailView: View {
         
         lesson.title = lessonTitle
         lesson.appendBotMessage(text: "Super titre!")
-        lesson.state = LessonSate.setup_wait_for_lesson_entries.rawValue
+        lesson.state = LessonSate.setup_wait_for_lesson_entries
         
         try? managedObjectContext.save()
         
@@ -96,7 +96,7 @@ struct LessonDetailView: View {
                     //.padding()
             }
         }
-        .navigationTitle(lesson.title ?? "New Lesson")
+        .navigationTitle(lesson.title)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             Task {

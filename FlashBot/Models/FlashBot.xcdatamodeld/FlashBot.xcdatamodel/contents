@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21G72" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="ChatItem" representedClassName="ChatItem" syncable="YES">
-        <attribute name="content" optional="YES" attributeType="String"/>
-        <attribute name="fromBot" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="postedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="lesson" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Lesson" inverseName="chatItems" inverseEntity="Lesson"/>
+        <attribute name="content_" optional="YES" attributeType="String"/>
+        <attribute name="id_" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="postedAt_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="type_" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="lesson_" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Lesson" inverseName="chatItems_" inverseEntity="Lesson"/>
     </entity>
     <entity name="Lesson" representedClassName="Lesson" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="lastPlayedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="chatItems" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ChatItem" inverseName="lesson" inverseEntity="ChatItem"/>
-        <relationship name="lessonEntries" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LessonEntry" inverseName="lesson" inverseEntity="LessonEntry"/>
+        <attribute name="id_" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="lastPlayedAt_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="state_" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="title_" optional="YES" attributeType="String"/>
+        <relationship name="chatItems_" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ChatItem" inverseName="lesson_" inverseEntity="ChatItem"/>
+        <relationship name="lessonEntries_" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LessonEntry" inverseName="lesson_" inverseEntity="LessonEntry"/>
     </entity>
     <entity name="LessonEntry" representedClassName="LessonEntry" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="lastShownAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="score" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="translation" optional="YES" attributeType="String"/>
-        <attribute name="word" optional="YES" attributeType="String"/>
-        <relationship name="lesson" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Lesson" inverseName="lessonEntries" inverseEntity="Lesson"/>
+        <attribute name="id_" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="lastShownAt_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="score_" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="translation_" optional="YES" attributeType="String"/>
+        <attribute name="word_" optional="YES" attributeType="String"/>
+        <relationship name="lesson_" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Lesson" inverseName="lessonEntries_" inverseEntity="Lesson"/>
     </entity>
     <elements>
-        <element name="ChatItem" positionX="-54" positionY="9" width="128" height="133"/>
+        <element name="ChatItem" positionX="-54" positionY="9" width="128" height="118"/>
         <element name="Lesson" positionX="-63" positionY="-9" width="128" height="133"/>
-        <element name="LessonEntry" positionX="-36" positionY="18" width="128" height="119"/>
+        <element name="LessonEntry" positionX="-36" positionY="18" width="128" height="133"/>
     </elements>
 </model>

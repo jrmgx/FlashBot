@@ -5,7 +5,7 @@ struct LessonRowView: View {
     @StateObject var lesson: Lesson
     
     var body: some View {
-        Text(lesson.safeTitle)
+        Text(lesson.title)
     }
 }
 

@@ -13,14 +13,14 @@ struct ChatItemListView: View, KeyboardReadable {
     @State private var isKeyboardVisible = false
     
     private func scrollBottom(scrollViewProxy: ScrollViewProxy, animate: Bool) {
-        guard !lesson.safeChatItems.isEmpty else { return }
+        guard !lesson.chatItems.isEmpty else { return }
         Task {
             if animate {
                 withAnimation(Animation.easeInOut) {
-                    scrollViewProxy.scrollTo(lesson.safeChatItems.last!.id, anchor: .top)
+                    scrollViewProxy.scrollTo(lesson.chatItems.last!.id, anchor: .top)
                 }
             } else {
-                scrollViewProxy.scrollTo(lesson.safeChatItems.last!.id, anchor: .top)
+                scrollViewProxy.scrollTo(lesson.chatItems.last!.id, anchor: .top)
             }
         }
     }
@@ -28,7 +28,7 @@ struct ChatItemListView: View, KeyboardReadable {
     var body: some View {
         
         ScrollViewReader { scrollViewProxy in
-            List(lesson.safeChatItems) { chatItem in
+            List(lesson.chatItems) { chatItem in
                 ChatItemRowView(chatItem: chatItem).id(chatItem.id)
             }
             .onAppear {

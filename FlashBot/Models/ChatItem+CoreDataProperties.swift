@@ -1,6 +1,12 @@
 import Foundation
 import CoreData
 
+public enum ChatItemType: Int16 {
+    case unknown
+    case basicBot
+    case basicUser
+    case actionButtonsUser
+}
 
 extension ChatItem {
 
@@ -14,36 +20,34 @@ extension ChatItem {
         return request
     }
 
-    @NSManaged public var content: String?
-    @NSManaged public var fromBot: Bool
-    @NSManaged public var id: UUID?
-    @NSManaged public var postedAt: Date?
-    @NSManaged public var type: Int16
-    @NSManaged public var lesson: Lesson?
+    @NSManaged public var content_: String?
+    @NSManaged public var fromBot_: Bool
+    @NSManaged public var id_: UUID?
+    @NSManaged public var postedAt_: Date?
+    @NSManaged public var type_: Int16
+    @NSManaged public var lesson_: Lesson?
 
-    @nonobjc public class func nouveau(context: NSManagedObjectContext) -> ChatItem {
-        let cc = ChatItem(context: context)
-        cc.id = UUID()
-        cc.fromBot = true
-        cc.postedAt = Date.now
-        cc.type = 1
-        return cc
+    @nonobjc public class func create(context: NSManagedObjectContext) -> ChatItem {
+        let chatItem = ChatItem(context: context)
+        chatItem.id_ = UUID()
+        chatItem.postedAt_ = Date.now
+        chatItem.type_ = ChatItemType.basicBot.rawValue
+        return chatItem
     }
     
-    public var safeContent: String {
-        get { content ?? "" }
-    }
-    
-    public var safeFromBot: Bool {
-        get { fromBot }
+    public var content: String {
+        get { content_ ?? "" }
+        set { content_ = newValue }
     }
         
-    public var safePostedAt: Date {
-        get { postedAt ?? Date.now }
+    public var postedAt: Date {
+        get { postedAt_ ?? Date.now }
+        set { postedAt_ = newValue }
     }
     
-    public var safeType: Int16 {
-        get { type }
+    public var type: ChatItemType {
+        get { ChatItemType.init(rawValue: type_) ?? ChatItemType.unknown }
+        set { type_ = newValue.rawValue }
     }
 }
 

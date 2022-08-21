@@ -11,31 +11,24 @@ class PersistenceController: ObservableObject {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         
-        let chatItem1 = ChatItem(context: viewContext)
-        chatItem1.id = UUID()
+        let chatItem1 = ChatItem.create(context: viewContext)
         chatItem1.content = "Hello"
-        chatItem1.fromBot = true
+        chatItem1.type = ChatItemType.basicBot
         chatItem1.postedAt = Date(timeIntervalSinceNow: 1000)
-        chatItem1.type = 1
         
-        let chatItem2 = ChatItem(context: viewContext)
-        chatItem2.id = UUID()
+        let chatItem2 = ChatItem.create(context: viewContext)
         chatItem2.content = "This is a message"
-        chatItem2.fromBot = true
+        chatItem2.type = ChatItemType.basicBot
         chatItem2.postedAt = Date(timeIntervalSinceNow: 2000)
-        chatItem2.type = 1
         
-        let chatItem3 = ChatItem(context: viewContext)
-        chatItem3.id = UUID()
+        let chatItem3 = ChatItem.create(context: viewContext)
         chatItem3.content = "Gato"
-        chatItem3.fromBot = false
+        chatItem3.type = ChatItemType.basicUser
         chatItem3.postedAt = Date(timeIntervalSinceNow: 3000)
-        chatItem3.type = 2
         
         result.fakeChatItems = [chatItem1, chatItem2, chatItem3]
         
-        let lesson1 = Lesson(context: viewContext)
-        lesson1.id = UUID()
+        let lesson1 = Lesson.create(context: viewContext)
         lesson1.lastPlayedAt = Date(timeIntervalSinceNow: 500)
         lesson1.title = "Spanish => French"
         lesson1.addToChatItems(chatItem1)
@@ -43,17 +36,14 @@ class PersistenceController: ObservableObject {
         lesson1.addToChatItems(chatItem3)
         
         for i in 0..<20 {
-            var chatItem = ChatItem(context: viewContext)
-            chatItem.id = UUID()
+            var chatItem = ChatItem.create(context: viewContext)
             chatItem.content = "Message \(i)"
-            chatItem.fromBot = i % 2 == 0
+            chatItem.type = i % 2 == 0 ? ChatItemType.basicBot : ChatItemType.basicUser
             chatItem.postedAt = Date(timeIntervalSinceNow: 3500 + Double(i))
-            chatItem.type = 1
             lesson1.addToChatItems(chatItem)
         }
         
-        let lesson2 = Lesson(context: viewContext)
-        lesson2.id = UUID()
+        let lesson2 = Lesson.create(context: viewContext)
         lesson2.lastPlayedAt = Date(timeIntervalSinceNow: 5000)
         lesson2.title = "Electronic"
         

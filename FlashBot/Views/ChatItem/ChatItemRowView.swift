@@ -5,18 +5,28 @@ struct ChatItemRowView: View {
     @StateObject var chatItem: ChatItem
     
     var body: some View {
-        if chatItem.fromBot {
+        switch chatItem.type {
+        case .unknown:
+            EmptyView()
+        case .basicBot:
             HStack {
-                Text(chatItem.safeContent)
+                Text(chatItem.content)
                     .colorInvert()
                     .padding()
                     .background(.blue)
                 Spacer()
             }
-        } else {
+        case .basicUser:
             HStack {
                 Spacer()
-                Text(chatItem.safeContent)
+                Text(chatItem.content)
+                    .padding()
+                    .background(.gray)
+            }
+        case .actionButtonsUser:
+            HStack {
+                Spacer()
+                Text("TODO BUTTON \(chatItem.content)")
                     .padding()
                     .background(.gray)
             }
