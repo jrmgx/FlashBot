@@ -13,10 +13,11 @@ extension LessonEntry {
     @NSManaged public var score_: Int16
     @NSManaged public var translation_: String?
     @NSManaged public var word_: String?
+    @NSManaged public var details_: String?
     @NSManaged public var lesson_: Lesson?
         
     public var lastShownAt: Date {
-        get { lastShownAt_ ?? Date.now }
+        get { lastShownAt_ ?? Date() }
         set { lastShownAt_ = newValue }
     }
     
@@ -33,6 +34,11 @@ extension LessonEntry {
     public var word: String {
         get { word_ ?? "Empty"}
         set { word_ = newValue }
+    }
+    
+    public var details: String? {
+        get { details_ }
+        set { details_ = newValue }
     }
 
 }

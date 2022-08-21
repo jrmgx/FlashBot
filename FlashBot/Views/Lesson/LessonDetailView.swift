@@ -5,6 +5,8 @@ struct LessonDetailView: View {
     @State private var value: String = ""
     @State private var lessonTitle = ""
     @StateObject var lesson: Lesson
+    @State private var showDocumentPicker = false
+    @State private var fileContent = ""
     @Environment(\.managedObjectContext) var managedObjectContext
 
     private func validate(text: String) {
@@ -79,11 +81,12 @@ struct LessonDetailView: View {
         chatItem.choices = [
             ChatItemChoice(name: "Import", action: {
                 print("Import action")
-                chatItem.type = ChatItemType.basicUser
-                chatItem.content = "File sent"
-                // lesson.state = LessonSate.setup_finished
-                try? managedObjectContext.save()
-                // await botNextAction()
+                showDocumentPicker = true
+//                chatItem.type = ChatItemType.basicUser
+//                chatItem.content = "File sent"
+//                // lesson.state = LessonSate.setup_finished
+//                try? managedObjectContext.save()
+//                // await botNextAction()
             })
         ]
         lesson.addToChatItems(chatItem)
@@ -113,6 +116,9 @@ struct LessonDetailView: View {
             Task {
                 await botNextAction()
             }
+        }
+        .sheet(isPresented: $showDocumentPicker) {
+            DocumentPicker(fileContent: $fileContent)
         }
     }
 }

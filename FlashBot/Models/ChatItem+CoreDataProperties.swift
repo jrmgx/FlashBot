@@ -30,7 +30,7 @@ extension ChatItem {
     @nonobjc public class func create(context: NSManagedObjectContext) -> ChatItem {
         let chatItem = ChatItem(context: context)
         chatItem.id_ = UUID()
-        chatItem.postedAt_ = Date.now
+        chatItem.postedAt_ = Date()
         chatItem.type_ = ChatItemType.basicBot.rawValue
         return chatItem
     }
@@ -41,7 +41,7 @@ extension ChatItem {
     }
         
     public var postedAt: Date {
-        get { postedAt_ ?? Date.now }
+        get { postedAt_ ?? Date() }
         set { postedAt_ = newValue }
     }
     

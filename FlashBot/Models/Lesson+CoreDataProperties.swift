@@ -25,7 +25,7 @@ extension Lesson {
     @nonobjc public class func create(context: NSManagedObjectContext) -> Lesson {
         let lesson = Lesson(context: context)
         lesson.id_ = UUID()
-        lesson.lastPlayedAt_ = Date.now
+        lesson.lastPlayedAt_ = Date()
         lesson.state_ = LessonSate.setup_presenting.rawValue
         return lesson
     }
@@ -60,7 +60,7 @@ extension Lesson {
     }
     
     public var lastPlayedAt: Date {
-        get { lastPlayedAt_ ?? Date.now }
+        get { lastPlayedAt_ ?? Date() }
         set { lastPlayedAt_ = newValue }
     }
     
@@ -95,7 +95,7 @@ extension Lesson {
 
     public func addToChatItems(_ value: ChatItem) {
         addToChatItems_(value)
-        lastPlayedAt = Date.now
+        lastPlayedAt = Date()
     }
     
     @objc(addChatItems_Object:)
