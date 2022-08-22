@@ -83,11 +83,11 @@ struct LessonDetailView: View {
                 print("Import action")
                 
                 showDocumentPicker = true
-//                chatItem.type = ChatItemType.basicUser
-//                chatItem.content = "File sent"
-//                // lesson.state = LessonSate.setup_finished
-//                try? managedObjectContext.save()
-//                // await botNextAction()
+                chatItem.type = ChatItemType.basicUser
+                chatItem.content = "File sent"
+                lesson.state = LessonSate.setup_finished
+                try? managedObjectContext.save()
+                Task { await botNextAction() }
             })
         ]
         lesson.addToChatItems(chatItem)
@@ -130,7 +130,10 @@ struct LessonDetailView: View {
         do {
             let path = try ImportBundle.unzipToTemp(zipfile: url)
             let lessonDTO = try ImportBundle.readJson(tempDirectory: path)
+            try ImportBundle.saveLesson(lessonDTO: lessonDTO, lesson: lesson)
             print("Lesson importés: \(lessonDTO)")
+        } catch FlashBotError.generalError(let message) {
+            print("FlashBotError when reading Bundle: \(message)")
         } catch {
             print("Error when reading Bundle: \(error)")
         }

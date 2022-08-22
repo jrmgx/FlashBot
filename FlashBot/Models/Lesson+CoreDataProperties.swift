@@ -21,6 +21,7 @@ extension Lesson {
     @NSManaged public var chatItems_: NSSet?
     @NSManaged public var lessonEntries_: NSSet?
     @NSManaged public var state_: Int16
+    @NSManaged public var path_: String?
 
     @nonobjc public class func create(context: NSManagedObjectContext) -> Lesson {
         let lesson = Lesson(context: context)
@@ -67,6 +68,11 @@ extension Lesson {
     public var title: String {
         get { title_ ?? "No Title" }
         set { title_ = newValue }
+    }
+    
+    public var path: String {
+        get { path_ ?? "No Path" }
+        set { path_ = newValue }
     }
         
     public var lessonEntries: [LessonEntry] {
@@ -115,6 +121,11 @@ extension Lesson {
 // MARK: Generated accessors for lessonEntries_
 extension Lesson {
 
+    public func addToLessonEntries(_ value: LessonEntry) {
+        addToLessonEntries_(value)
+        lastPlayedAt = Date()
+    }
+    
     @objc(addLessonEntries_Object:)
     @NSManaged public func addToLessonEntries_(_ value: LessonEntry)
 

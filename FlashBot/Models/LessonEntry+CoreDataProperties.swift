@@ -16,6 +16,13 @@ extension LessonEntry {
     @NSManaged public var details_: String?
     @NSManaged public var lesson_: Lesson?
         
+    @nonobjc public class func create(context: NSManagedObjectContext) -> LessonEntry {
+        let lessonEntry = LessonEntry(context: context)
+        lessonEntry.id_ = UUID()
+        lessonEntry.lastShownAt = Date()
+        return lessonEntry
+    }
+    
     public var lastShownAt: Date {
         get { lastShownAt_ ?? Date() }
         set { lastShownAt_ = newValue }
@@ -24,6 +31,11 @@ extension LessonEntry {
     public var score: Int16 {
         get { score_ }
         set { score_ = newValue }
+    }
+    
+    /// TODO add images via lesson.path + self.word path check
+    public var image: String? {
+        nil
     }
 
     public var translation: String {

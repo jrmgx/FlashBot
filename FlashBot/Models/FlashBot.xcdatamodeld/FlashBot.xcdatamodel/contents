@@ -10,6 +10,7 @@
     <entity name="Lesson" representedClassName="Lesson" syncable="YES">
         <attribute name="id_" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="lastPlayedAt_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="path_" optional="YES" attributeType="String"/>
         <attribute name="state_" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title_" optional="YES" attributeType="String"/>
         <relationship name="chatItems_" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ChatItem" inverseName="lesson_" inverseEntity="ChatItem"/>
@@ -26,7 +27,7 @@
     </entity>
     <elements>
         <element name="ChatItem" positionX="-54" positionY="9" width="128" height="118"/>
-        <element name="Lesson" positionX="-63" positionY="-9" width="128" height="133"/>
+        <element name="Lesson" positionX="-63" positionY="-9" width="128" height="148"/>
         <element name="LessonEntry" positionX="-36" positionY="18" width="128" height="148"/>
     </elements>
 </model>

@@ -1,41 +1,6 @@
 import Foundation
 import ZIPFoundation
-
-/* {
-    "title": "Lesson title",
-    "pathUUID": "UUID",
-    "entries": [{
-        "status": "NEW|UPDATED|DELETED",
-        "translation": "String",
-        "word": "String",
-        "details": "Optional",
-    }, ...]
-} */
-
-struct LessonEntryImport: Codable, CustomStringConvertible {
-    
-    let status: String
-    let translation: String
-    let word: String
-    let details: String?
-    
-    public var description: String {
-        return "LessonEntryImport: \(word) => \(translation)"
-    }
-}
-
-struct LessonImport: Codable, CustomStringConvertible {
-    
-    let title: String
-    let pathUUID: String
-    let entries: [LessonEntryImport]
-    
-    public var description: String {
-        return "LessonImport: \(title)\n" + entries.reduce("") { partialResult, entry in
-            return partialResult + entry.description + "\n"
-        }
-    }
-}
+import CoreData
 
 struct ImportBundle {
     
@@ -58,16 +23,37 @@ struct ImportBundle {
     /// Read the lesson.json file and return the corresponding data
     /// - Parameter file: lesson.json URL from the extracted bundle
     /// - Returns: LessonImport DTO
-    public static func readJson(tempDirectory: URL) throws -> LessonImport {
+    public static func readJson(tempDirectory: URL) throws -> LessonDTO {
         
         let file = tempDirectory.appendingPathComponent("lesson.json")
         let data = try Data.init(contentsOf: file)
         let decoder = JSONDecoder()
         
-        return try decoder.decode(LessonImport.self, from: data)
+        return try decoder.decode(LessonDTO.self, from: data)
     }
     
-    public static func saveLesson() {
+    
+    /// Save the lesson entries in the lesson (as well as related images)
+    /// - Parameters:
+    ///   - lessonDTO: parsed lesson DTO
+    ///   - lesson: current lesson object
+    public static func saveLesson(lessonDTO: LessonDTO, lesson: Lesson) throws {
         
+        guard let context = lesson.managedObjectContext else {
+            throw FlashBotError.generalError(message: "NSManagedConext not accessible in saveLesson")
+        }
+        
+        lesson.path = lessonDTO.pathUUID
+        // TODO Copy images into path
+        
+        for lessonEntryDTO in lessonDTO.entries {
+            let lessonEntry = LessonEntry.create(context: context)
+            lessonEntry.word = lessonEntryDTO.word
+            lessonEntry.translation = lessonEntryDTO.translation
+            lessonEntry.details = lessonEntryDTO.details
+            lesson.addToLessonEntries_(lessonEntry)
+        }
+        
+        try context.save()
     }
 }
