@@ -6,7 +6,7 @@ struct LessonDetailView: View {
     @State private var lessonTitle = ""
     @StateObject var lesson: Lesson
     @State private var showDocumentPicker = false
-    @State private var fileContent = ""
+    @State private var fileUrl: URL? = nil
     @Environment(\.managedObjectContext) var managedObjectContext
 
     private func validate(text: String) {
@@ -81,6 +81,7 @@ struct LessonDetailView: View {
         chatItem.choices = [
             ChatItemChoice(name: "Import", action: {
                 print("Import action")
+                
                 showDocumentPicker = true
 //                chatItem.type = ChatItemType.basicUser
 //                chatItem.content = "File sent"
@@ -118,7 +119,20 @@ struct LessonDetailView: View {
             }
         }
         .sheet(isPresented: $showDocumentPicker) {
-            DocumentPicker(fileContent: $fileContent)
+            DocumentPicker(fileUrl: $fileUrl.onChange(fileUrlChanged))
+        }
+    }
+    
+    func fileUrlChanged(url: URL?) {
+        guard let url = url else { return }
+        print("We have some URL: \(url)")
+        
+        do {
+            let path = try ImportBundle.unzipToTemp(zipfile: url)
+            let lessonDTO = try ImportBundle.readJson(tempDirectory: path)
+            print("Lesson importés: \(lessonDTO)")
+        } catch {
+            print("Error when reading Bundle: \(error)")
         }
     }
 }

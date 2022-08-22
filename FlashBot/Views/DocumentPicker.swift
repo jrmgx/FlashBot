@@ -5,10 +5,10 @@ struct DocumentPicker: UIViewControllerRepresentable {
 
     typealias UIViewControllerType = UIDocumentPickerViewController
     
-    @Binding var fileContent: String
+    @Binding var fileUrl: URL?
     
     func makeCoordinator() -> DocumentPickerCoordinator {
-        return DocumentPickerCoordinator(fileContent: $fileContent)
+        return DocumentPickerCoordinator(fileUrl: $fileUrl)
     }
 
     func makeUIViewController(context: Context) -> UIDocumentPickerViewController {
@@ -24,21 +24,24 @@ struct DocumentPicker: UIViewControllerRepresentable {
 
 class DocumentPickerCoordinator: NSObject, UIDocumentPickerDelegate, UINavigationControllerDelegate {
     
-    @Binding var fileContent: String
+    @Binding var fileUrl: URL?
     
-    init(fileContent: Binding<String>) {
-        _fileContent = fileContent
+    init(fileUrl: Binding<URL?>) {
+        _fileUrl = fileUrl
     }
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         //
         print(urls)
-        let fileURL = urls[0]
-        do {
-            fileContent = try String(contentsOf: fileURL, encoding: .utf8)
-            print(fileContent)
-        } catch let error {
-            print(error.localizedDescription)
-        }
+        //guard let urlFirst = urls.first else { return }
+        fileUrl = urls.first
+        //fileUrl = urls.first
+        //let fileURL = urls[0]
+        //do {
+        //    fileContent = try String(contentsOf: fileURL, encoding: .utf8)
+        //    print(fileContent)
+        //} catch let error {
+        //    print(error.localizedDescription)
+        //}
     }
 }

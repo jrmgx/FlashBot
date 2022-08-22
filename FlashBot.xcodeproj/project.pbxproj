@@ -27,6 +27,8 @@
 		0284045228B144FD00E5DDDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284045128B144FD00E5DDDA /* AppDelegate.swift */; };
 		0284045A28B2335500E5DDDA /* DocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284045928B2335500E5DDDA /* DocumentPicker.swift */; };
 		0284045D28B29CA300E5DDDA /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 0284045C28B29CA300E5DDDA /* ZIPFoundation */; };
+		0284045F28B3556800E5DDDA /* ImportBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284045E28B3556800E5DDDA /* ImportBundle.swift */; };
+		0284046128B3EBC800E5DDDA /* Binding+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284046028B3EBC800E5DDDA /* Binding+Extension.swift */; };
 		02C2DC7F28AA9AEE00E1281F /* FlashBotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2DC7E28AA9AEE00E1281F /* FlashBotApp.swift */; };
 		02C2DC8128AA9AEE00E1281F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2DC8028AA9AEE00E1281F /* ContentView.swift */; };
 		02C2DC8328AA9AF200E1281F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02C2DC8228AA9AF200E1281F /* Assets.xcassets */; };
@@ -54,6 +56,8 @@
 		0284044F28AFCEA200E5DDDA /* Waits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waits.swift; sourceTree = "<group>"; };
 		0284045128B144FD00E5DDDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0284045928B2335500E5DDDA /* DocumentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPicker.swift; sourceTree = "<group>"; };
+		0284045E28B3556800E5DDDA /* ImportBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportBundle.swift; sourceTree = "<group>"; };
+		0284046028B3EBC800E5DDDA /* Binding+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extension.swift"; sourceTree = "<group>"; };
 		02C2DC7B28AA9AEE00E1281F /* FlashBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02C2DC7E28AA9AEE00E1281F /* FlashBotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashBotApp.swift; sourceTree = "<group>"; };
 		02C2DC8028AA9AEE00E1281F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -115,6 +119,8 @@
 			isa = PBXGroup;
 			children = (
 				0284044F28AFCEA200E5DDDA /* Waits.swift */,
+				0284045E28B3556800E5DDDA /* ImportBundle.swift */,
+				0284046028B3EBC800E5DDDA /* Binding+Extension.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -256,8 +262,10 @@
 				0222ADAA28ACC9020017FCE9 /* ChatItem+CoreDataClass.swift in Sources */,
 				022389F728AAAC1200DB95BB /* LessonListView.swift in Sources */,
 				0205003428ACBDD4003074F0 /* SettingsView.swift in Sources */,
+				0284045F28B3556800E5DDDA /* ImportBundle.swift in Sources */,
 				02C2DC8128AA9AEE00E1281F /* ContentView.swift in Sources */,
 				0222ADA628ACC8CB0017FCE9 /* ChatItem+CoreDataProperties.swift in Sources */,
+				0284046128B3EBC800E5DDDA /* Binding+Extension.swift in Sources */,
 				0205001628AC33BD003074F0 /* FlashBot.xcdatamodeld in Sources */,
 				02C2DC7F28AA9AEE00E1281F /* FlashBotApp.swift in Sources */,
 				022389E928AA9ED100DB95BB /* AvatarView.swift in Sources */,
