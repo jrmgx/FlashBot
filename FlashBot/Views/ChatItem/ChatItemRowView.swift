@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct ChatItemRowView: View {
-    
+
     @StateObject var chatItem: ChatItem
-    
+
     var body: some View {
         switch chatItem.type {
         case .unknown:
@@ -45,7 +45,7 @@ struct ChatItemRowView: View {
 }
 
 struct ChatItemRowView_Previews: PreviewProvider {
-    
+
     static var previews: some View {
         Group {
             ChatItemRowView(chatItem: PersistenceController.preview.fakeChatItems[0])

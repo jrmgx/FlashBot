@@ -2,7 +2,7 @@ import SwiftUI
 import Combine
 
 struct ChatItemListView: View, KeyboardReadable {
-    
+
     @StateObject var lesson: Lesson
 
     /// @TODO how not to load the full chat items?
@@ -11,7 +11,7 @@ struct ChatItemListView: View, KeyboardReadable {
 //    ]) var chatItems: FetchedResults<ChatItem>
 
     @State private var isKeyboardVisible = false
-    
+
     private func scrollBottom(scrollViewProxy: ScrollViewProxy, animate: Bool) {
         guard !lesson.chatItems.isEmpty else { return }
         Task {
@@ -24,9 +24,9 @@ struct ChatItemListView: View, KeyboardReadable {
             }
         }
     }
-    
+
     var body: some View {
-        
+
         ScrollViewReader { scrollViewProxy in
             List(lesson.chatItems) { chatItem in
                 ChatItemRowView(chatItem: chatItem).id(chatItem.id)
@@ -66,7 +66,7 @@ extension KeyboardReadable {
             NotificationCenter.default
                 .publisher(for: UIResponder.keyboardDidShowNotification)
                 .map { _ in true },
-            
+
             NotificationCenter.default
                 .publisher(for: UIResponder.keyboardDidHideNotification)
                 .map { _ in false }
@@ -74,4 +74,3 @@ extension KeyboardReadable {
         .eraseToAnyPublisher()
     }
 }
-

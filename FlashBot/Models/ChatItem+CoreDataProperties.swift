@@ -13,44 +13,44 @@ extension ChatItem {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<ChatItem> {
         return NSFetchRequest<ChatItem>(entityName: "ChatItem")
     }
-    
+
     @nonobjc public class func fetchRequest100() -> NSFetchRequest<ChatItem> {
         let request: NSFetchRequest<ChatItem> = ChatItem.fetchRequest()
         request.fetchLimit = 100
         return request
     }
 
-    @NSManaged public var content_: String?
-    @NSManaged public var fromBot_: Bool
-    @NSManaged public var id_: UUID?
-    @NSManaged public var postedAt_: Date?
-    @NSManaged public var type_: Int16
-    @NSManaged public var lesson_: Lesson?
+    @NSManaged public var contentInternal: String?
+    @NSManaged public var fromBotInternal: Bool
+    @NSManaged public var idInternal: UUID?
+    @NSManaged public var postedAtInternal: Date?
+    @NSManaged public var typeInternal: Int16
+    @NSManaged public var lessonInternal: Lesson?
 
     @nonobjc public class func create(context: NSManagedObjectContext) -> ChatItem {
         let chatItem = ChatItem(context: context)
-        chatItem.id_ = UUID()
-        chatItem.postedAt_ = Date()
-        chatItem.type_ = ChatItemType.basicBot.rawValue
+        chatItem.idInternal = UUID()
+        chatItem.postedAtInternal = Date()
+        chatItem.typeInternal = ChatItemType.basicBot.rawValue
         return chatItem
     }
-    
+
     public var content: String {
-        get { content_ ?? "" }
-        set { content_ = newValue }
+        get { contentInternal ?? "" }
+        set { contentInternal = newValue }
     }
-        
+
     public var postedAt: Date {
-        get { postedAt_ ?? Date() }
-        set { postedAt_ = newValue }
+        get { postedAtInternal ?? Date() }
+        set { postedAtInternal = newValue }
     }
-    
+
     public var type: ChatItemType {
-        get { ChatItemType.init(rawValue: type_) ?? ChatItemType.unknown }
-        set { type_ = newValue.rawValue }
+        get { ChatItemType.init(rawValue: typeInternal) ?? ChatItemType.unknown }
+        set { typeInternal = newValue.rawValue }
     }
 }
 
-extension ChatItem : Identifiable {
+extension ChatItem: Identifiable {
 
 }

@@ -2,11 +2,13 @@ import SwiftUI
 import CoreData
 
 struct LessonListView: View {
-    
+
     @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.lastPlayedAt_, order: .reverse)]) var lessons: FetchedResults<Lesson>
+    @FetchRequest(sortDescriptors: [
+        SortDescriptor(\.lastPlayedAtInternal, order: .reverse)
+    ]) var lessons: FetchedResults<Lesson>
     @State private var isShowingDetailView = false
-    
+
     var body: some View {
         NavigationView {
             VStack {

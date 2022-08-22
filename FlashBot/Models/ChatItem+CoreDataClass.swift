@@ -6,12 +6,12 @@ public struct ChatItemChoice: Identifiable {
         name.hashValue
     }
     public var name: String
-    public var action: () -> ()
+    public var action: () -> Void
 }
 
 @objc(ChatItem)
 public class ChatItem: NSManagedObject {
-    
+
     public var choices = [ChatItemChoice]()
 
 }

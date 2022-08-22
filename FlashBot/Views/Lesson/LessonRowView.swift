@@ -1,16 +1,16 @@
 import SwiftUI
 
 struct LessonRowView: View {
-    
+
     @StateObject var lesson: Lesson
-    
+
     var body: some View {
         Text(lesson.title)
     }
 }
 
 struct LessonView_Previews: PreviewProvider {
-    
+
     static var previews: some View {
         Group {
             LessonRowView(lesson: PersistenceController.preview.fakeLessons[0])

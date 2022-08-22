@@ -191,6 +191,7 @@
 			buildConfigurationList = 02C2DC8E28AA9AF200E1281F /* Build configuration list for PBXNativeTarget "FlashBot" */;
 			buildPhases = (
 				02C2DC7728AA9AEE00E1281F /* Sources */,
+				0284046828B424B000E5DDDA /* ShellScript */,
 				02C2DC7828AA9AEE00E1281F /* Frameworks */,
 				02C2DC7928AA9AEE00E1281F /* Resources */,
 			);
@@ -253,6 +254,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0284046828B424B000E5DDDA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint --fix && swiftlint\nelse\n    echo \"SwiftLint not installed\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		02C2DC7728AA9AEE00E1281F /* Sources */ = {

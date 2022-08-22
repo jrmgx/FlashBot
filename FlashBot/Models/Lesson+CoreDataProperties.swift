@@ -3,10 +3,10 @@ import CoreData
 
 public enum LessonSate: Int16 {
     case unknown
-    case setup_presenting
-    case setup_wait_for_lesson_title
-    case setup_wait_for_lesson_entries
-    case setup_finished
+    case setupPresenting
+    case setupWaitForLessonTitle
+    case setupWaitForLessonEntries
+    case setupFinished
 }
 
 extension Lesson {
@@ -15,80 +15,80 @@ extension Lesson {
         return NSFetchRequest<Lesson>(entityName: "Lesson")
     }
 
-    @NSManaged public var id_: UUID?
-    @NSManaged public var lastPlayedAt_: Date?
-    @NSManaged public var title_: String?
-    @NSManaged public var chatItems_: NSSet?
-    @NSManaged public var lessonEntries_: NSSet?
-    @NSManaged public var state_: Int16
-    @NSManaged public var path_: String?
+    @NSManaged public var idInternal: UUID?
+    @NSManaged public var lastPlayedAtInternal: Date?
+    @NSManaged public var titleInternal: String?
+    @NSManaged public var chatItemsInternal: NSSet?
+    @NSManaged public var lessonEntriesInternal: NSSet?
+    @NSManaged public var stateInternal: Int16
+    @NSManaged public var pathInternal: String?
 
     @nonobjc public class func create(context: NSManagedObjectContext) -> Lesson {
         let lesson = Lesson(context: context)
-        lesson.id_ = UUID()
-        lesson.lastPlayedAt_ = Date()
-        lesson.state_ = LessonSate.setup_presenting.rawValue
+        lesson.idInternal = UUID()
+        lesson.lastPlayedAtInternal = Date()
+        lesson.stateInternal = LessonSate.setupPresenting.rawValue
         return lesson
     }
-    
+
     public func appendBotMessage(text: String) {
         guard let managedObjectContext = managedObjectContext else {
             print("Could not get managedObjectContext while appendBotMessage")
             return
         }
-        
+
         let chatItem = ChatItem.create(context: managedObjectContext)
         chatItem.content = text
         chatItem.type = ChatItemType.basicBot
         addToChatItems(chatItem)
     }
-    
+
     public func appendUserMessage(text: String) {
         guard let managedObjectContext = managedObjectContext else {
             print("Could not get managedObjectContext while appendBotMessage")
             return
         }
-        
+
         let chatItem = ChatItem.create(context: managedObjectContext)
         chatItem.content = text
         chatItem.type = ChatItemType.basicUser
         addToChatItems(chatItem)
     }
-    
+
     public var state: LessonSate {
-        get { LessonSate.init(rawValue: state_) ?? LessonSate.unknown }
-        set { state_ = newValue.rawValue }
+        get { LessonSate.init(rawValue: stateInternal) ?? LessonSate.unknown }
+        set { stateInternal = newValue.rawValue }
     }
-    
+
     public var lastPlayedAt: Date {
-        get { lastPlayedAt_ ?? Date() }
-        set { lastPlayedAt_ = newValue }
+        get { lastPlayedAtInternal ?? Date() }
+        set { lastPlayedAtInternal = newValue }
     }
-    
+
     public var title: String {
-        get { title_ ?? "No Title" }
-        set { title_ = newValue }
+        get { titleInternal ?? "No Title" }
+        set { titleInternal = newValue }
     }
-    
+
     public var path: String {
-        get { path_ ?? "No Path" }
-        set { path_ = newValue }
+        get { pathInternal ?? "No Path" }
+        set { pathInternal = newValue }
     }
-        
+
     public var lessonEntries: [LessonEntry] {
-        let set = lessonEntries_ as? Set<LessonEntry> ?? []
+        let set = lessonEntriesInternal as? Set<LessonEntry> ?? []
         return set.sorted {
             $0.score < $1.score
         }
     }
-    
+
     public var chatItems: [ChatItem] {
-        let set = chatItems_ as? Set<ChatItem> ?? []
+        let set = chatItemsInternal as? Set<ChatItem> ?? []
         return set.sorted {
             $0.postedAt < $1.postedAt
         }
     }
-    
+
 //    override public func willChangeValue(forKey key: String) {
 //        super.willChangeValue(forKey: key)
 //        self.objectWillChange.send()
@@ -100,21 +100,21 @@ extension Lesson {
 extension Lesson {
 
     public func addToChatItems(_ value: ChatItem) {
-        addToChatItems_(value)
+        addToChatItemsInternal(value)
         lastPlayedAt = Date()
     }
-    
-    @objc(addChatItems_Object:)
-    @NSManaged public func addToChatItems_(_ value: ChatItem)
 
-    @objc(removeChatItems_Object:)
-    @NSManaged public func removeFromChatItems_(_ value: ChatItem)
+    @objc(addChatItemsInternalObject:)
+    @NSManaged public func addToChatItemsInternal(_ value: ChatItem)
 
-    @objc(addChatItems_:)
-    @NSManaged public func addToChatItems_(_ values: NSSet)
+    @objc(removeChatItemsInternalObject:)
+    @NSManaged public func removeFromChatItemsInternal(_ value: ChatItem)
 
-    @objc(removeChatItems_:)
-    @NSManaged public func removeFromChatItems_(_ values: NSSet)
+    @objc(addChatItemsInternal:)
+    @NSManaged public func addToChatItemsInternal(_ values: NSSet)
+
+    @objc(removeChatItemsInternal:)
+    @NSManaged public func removeFromChatItemsInternal(_ values: NSSet)
 
 }
 
@@ -122,24 +122,24 @@ extension Lesson {
 extension Lesson {
 
     public func addToLessonEntries(_ value: LessonEntry) {
-        addToLessonEntries_(value)
+        addToLessonEntriesInternal(value)
         lastPlayedAt = Date()
     }
-    
-    @objc(addLessonEntries_Object:)
-    @NSManaged public func addToLessonEntries_(_ value: LessonEntry)
 
-    @objc(removeLessonEntries_Object:)
-    @NSManaged public func removeFromLessonEntries_(_ value: LessonEntry)
+    @objc(addLessonEntriesInternalObject:)
+    @NSManaged public func addToLessonEntriesInternal(_ value: LessonEntry)
 
-    @objc(addLessonEntries_:)
-    @NSManaged public func addToLessonEntries_(_ values: NSSet)
+    @objc(removeLessonEntriesInternalObject:)
+    @NSManaged public func removeFromLessonEntriesInternal(_ value: LessonEntry)
 
-    @objc(removeLessonEntries_:)
-    @NSManaged public func removeFromLessonEntries_(_ values: NSSet)
+    @objc(addLessonEntriesInternal:)
+    @NSManaged public func addToLessonEntriesInternal(_ values: NSSet)
+
+    @objc(removeLessonEntriesInternal:)
+    @NSManaged public func removeFromLessonEntriesInternal(_ values: NSSet)
 
 }
 
-extension Lesson : Identifiable {
+extension Lesson: Identifiable {
 
 }

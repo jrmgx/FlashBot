@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
 
-    //@Environment(\.scenePhase) var scenePhase
+    // @Environment(\.scenePhase) var scenePhase
 
     var body: some View {
         TabView {
