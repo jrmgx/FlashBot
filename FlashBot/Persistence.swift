@@ -29,9 +29,9 @@ class PersistenceController: ObservableObject {
         let chatItem4 = ChatItem.create(context: viewContext)
         chatItem4.type = ChatItemType.actionButtonsUser
         chatItem4.choices = [
-            ChatItemChoice(name: "Yes", action: { print("Yes")}),
-            ChatItemChoice(name: "No", action: { print("No")}),
-            ChatItemChoice(name: "Maybe", action: { print("Maybe")})
+            ChatItemChoice(name: "Yes") { _ in print("Yes")},
+            ChatItemChoice(name: "No") { _ in print("No")},
+            ChatItemChoice(name: "Maybe") { _ in print("Maybe")}
         ]
         chatItem4.postedAt = Date(timeIntervalSinceNow: 3500)
 

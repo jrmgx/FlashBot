@@ -29,9 +29,11 @@ struct ChatItemRowView: View {
                 HStack {
                     ForEach(chatItem.choices) { choice in
                         Button(choice.name) {
-                            print("ok choice \(choice)")
-                            choice.action()
+                            print("ok choice \(choice) button: \(self)")
+                            choice.action(choice)
                         }
+                        // https://www.hackingwithswift.com/quick-start/swiftui/how-to-disable-the-overlay-color-for-images-inside-button-and-navigationlink
+                        .buttonStyle(PlainButtonStyle())
                         .padding(10)
                         .background(.white)
                         .cornerRadius(10)

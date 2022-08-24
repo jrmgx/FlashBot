@@ -43,6 +43,7 @@
 		0205001728AC33C3003074F0 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		0205003328ACBDD4003074F0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		0205003528ACBE13003074F0 /* LessonSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LessonSettingView.swift; path = FlashBot/Views/LessonSettingView.swift; sourceTree = SOURCE_ROOT; };
+		0217503628B55F0700C154F1 /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		0222ADA128ACC8CB0017FCE9 /* Lesson+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lesson+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0222ADA228ACC8CB0017FCE9 /* LessonEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LessonEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0222ADA328ACC8CB0017FCE9 /* ChatItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -171,6 +172,7 @@
 				022389EA28AAA50700DB95BB /* Views */,
 				02C2DC8228AA9AF200E1281F /* Assets.xcassets */,
 				02C2DC8428AA9AF200E1281F /* Preview Content */,
+				0217503628B55F0700C154F1 /* Playground.playground */,
 			);
 			path = FlashBot;
 			sourceTree = "<group>";

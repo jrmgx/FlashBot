@@ -3,10 +3,19 @@ import CoreData
 
 public enum LessonSate: Int16 {
     case unknown
+    // Setup
     case setupPresenting
     case setupWaitForLessonTitle
     case setupWaitForLessonEntries
     case setupFinished
+    // Session
+    case sessionCanStart
+    case sessionNextQuestion
+    case sessionWaitForAnswer
+    case sessionRightAnswer
+    case sessionWaitForFeedback
+    case sessionWrongAnswer
+    case sessionOver
 }
 
 extension Lesson {
@@ -88,15 +97,9 @@ extension Lesson {
             $0.postedAt < $1.postedAt
         }
     }
-
-//    override public func willChangeValue(forKey key: String) {
-//        super.willChangeValue(forKey: key)
-//        self.objectWillChange.send()
-//    }
-
 }
 
-// MARK: Generated accessors for chatItems_
+// MARK: Generated accessors for chatItemsInternal
 extension Lesson {
 
     public func addToChatItems(_ value: ChatItem) {
@@ -118,7 +121,7 @@ extension Lesson {
 
 }
 
-// MARK: Generated accessors for lessonEntries_
+// MARK: Generated accessors for lessonEntriesInternal
 extension Lesson {
 
     public func addToLessonEntries(_ value: LessonEntry) {

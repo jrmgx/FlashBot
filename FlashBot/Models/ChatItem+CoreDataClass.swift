@@ -6,7 +6,7 @@ public struct ChatItemChoice: Identifiable {
         name.hashValue
     }
     public var name: String
-    public var action: () -> Void
+    public var action: (ChatItemChoice) -> Void
 }
 
 @objc(ChatItem)
