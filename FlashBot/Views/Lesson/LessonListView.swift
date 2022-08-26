@@ -11,7 +11,7 @@ struct LessonListView: View {
 
     var body: some View {
         NavigationView {
-            VStack {
+            VStack(alignment: .center, spacing: nil) {
                 List(lessons) { lesson in
                     NavigationLink {
                         LessonDetailView(lesson: lesson)
@@ -19,6 +19,7 @@ struct LessonListView: View {
                         LessonRowView(lesson: lesson)
                     }
                 }
+                .background(.red)
                 NavigationLink(
                     destination: LessonDetailView(lesson: Lesson.create(context: managedObjectContext)),
                     isActive: $isShowingDetailView
@@ -28,8 +29,16 @@ struct LessonListView: View {
                 Button("New Lesson") {
                     isShowingDetailView = true
                 }
+                .padding()
             }
+            .background(.red)
         }
+        .onAppear {
+            UITableView.appearance().separatorStyle = .none
+            UITableViewCell.appearance().backgroundColor = .green
+            UITableView.appearance().backgroundColor = .green
+        }
+        .background(.blue)
         .navigationTitle("Lessons")
     }
 }

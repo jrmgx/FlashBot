@@ -7,11 +7,11 @@ struct Waits {
     }
 
     public static func untilTrue(condition: () -> Bool) async {
+        print("Waits.untilTrue ...")
         while !condition() {
-            print("on attends ...")
             try? await Task.sleep(nanoseconds: UInt64(0.5 * Double(NSEC_PER_SEC)))
         }
-        print("on a fini d'attendre !")
+        print("Waits.untilTrue (resolved)")
     }
 
 }

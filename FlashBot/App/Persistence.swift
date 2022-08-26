@@ -12,7 +12,7 @@ class PersistenceController: ObservableObject {
         let viewContext = result.container.viewContext
 
         let chatItem1 = ChatItem.create(context: viewContext)
-        chatItem1.content = "Hello"
+        chatItem1.content = "Hello how are you today?\nAvec un retour de ligne."
         chatItem1.type = ChatItemType.basicBot
         chatItem1.postedAt = Date(timeIntervalSinceNow: 1000)
 
@@ -22,7 +22,7 @@ class PersistenceController: ObservableObject {
         chatItem2.postedAt = Date(timeIntervalSinceNow: 2000)
 
         let chatItem3 = ChatItem.create(context: viewContext)
-        chatItem3.content = "Gato"
+        chatItem3.content = "I'm fine this is a Gato"
         chatItem3.type = ChatItemType.basicUser
         chatItem3.postedAt = Date(timeIntervalSinceNow: 3000)
 
@@ -40,18 +40,19 @@ class PersistenceController: ObservableObject {
         let lesson1 = Lesson.create(context: viewContext)
         lesson1.lastPlayedAt = Date(timeIntervalSinceNow: 500)
         lesson1.title = "Spanish => French"
-        lesson1.addToChatItems(chatItem1)
-        lesson1.addToChatItems(chatItem2)
-        lesson1.addToChatItems(chatItem3)
-        // lesson1.addToChatItems(chatItem4)
 
         for index in 0..<20 {
             var chatItem = ChatItem.create(context: viewContext)
             chatItem.content = "Message \(index)"
             chatItem.type = index % 2 == 0 ? ChatItemType.basicBot : ChatItemType.basicUser
-            chatItem.postedAt = Date(timeIntervalSinceNow: 3500 + Double(index))
+            chatItem.postedAt = Date(timeIntervalSinceNow: 500 + Double(index))
             lesson1.addToChatItems(chatItem)
         }
+
+        lesson1.addToChatItems(chatItem1)
+        lesson1.addToChatItems(chatItem2)
+        lesson1.addToChatItems(chatItem3)
+        // lesson1.addToChatItems(chatItem4)
 
         let lesson2 = Lesson.create(context: viewContext)
         lesson2.lastPlayedAt = Date(timeIntervalSinceNow: 5000)

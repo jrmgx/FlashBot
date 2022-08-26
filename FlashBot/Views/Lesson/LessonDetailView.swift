@@ -228,7 +228,8 @@ struct LessonDetailView: View {
         VStack {
             ChatItemListView(lesson: lesson)
             HStack {
-                TextField("Placeholder", text: $inputValue)
+                ZStack {
+                    TextField("Placeholder", text: $inputValue)
                     .onSubmit {
                         validate(text: inputValue)
                     }
@@ -236,14 +237,38 @@ struct LessonDetailView: View {
                     .disableAutocorrection(true)
                     .border(.secondary)
                     .padding()
-//                Button("IDK") {
-//                    print("Button IDK")
-//                }
-                    // .padding()
+                    Button(
+                        action: {
+
+                        },
+                        label: {
+                            Text("I Don't\nKnow")
+                            .multilineTextAlignment(.center)
+                            .lineSpacing(-10)
+                            .font(.system(size: 14))
+                            .lineLimit(2)
+                        }
+                    )
+                    .buttonStyle(PlainButtonStyle())
+                    .padding()
+                }
+                Button("Send") {
+                    print("Send")
+                }
+                .padding()
             }
         }
-        .navigationTitle(lesson.title)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                VStack {
+                    Text("Title").font(.headline)
+                    Button("Subtitle") {
+                        // ACTION
+                    }
+                }
+            }
+        }
         .sheet(isPresented: $showDocumentPicker) {
             DocumentPicker(fileUrl: $fileUrl.onChange(fileUrlChanged))
         }

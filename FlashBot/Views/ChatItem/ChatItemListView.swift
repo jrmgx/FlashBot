@@ -29,7 +29,9 @@ struct ChatItemListView: View, KeyboardReadable {
 
         ScrollViewReader { scrollViewProxy in
             List(lesson.chatItems) { chatItem in
-                ChatItemRowView(chatItem: chatItem).id(chatItem.id)
+                ChatItemRowView(chatItem: chatItem)
+                .id(chatItem.id)
+                .listRowSeparator(.hidden)
             }
             .onAppear {
                 scrollBottom(scrollViewProxy: scrollViewProxy, animate: false)
@@ -49,7 +51,6 @@ struct ChatItemListView_Previews: PreviewProvider {
         Group {
             ChatItemListView(lesson: PersistenceController.preview.fakeLessons[0])
                 .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-            ChatItemListView(lesson: Lesson())
         }
     }
 }

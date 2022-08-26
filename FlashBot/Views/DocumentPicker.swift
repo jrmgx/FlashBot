@@ -31,17 +31,6 @@ class DocumentPickerCoordinator: NSObject, UIDocumentPickerDelegate, UINavigatio
     }
 
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-        //
-        print(urls)
-        // guard let urlFirst = urls.first else { return }
         fileUrl = urls.first
-        // fileUrl = urls.first
-        // let fileURL = urls[0]
-        // do {
-        //    fileContent = try String(contentsOf: fileURL, encoding: .utf8)
-        //    print(fileContent)
-        // } catch let error {
-        //    print(error.localizedDescription)
-        // }
     }
 }

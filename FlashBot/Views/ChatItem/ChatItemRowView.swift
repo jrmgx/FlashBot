@@ -11,17 +11,21 @@ struct ChatItemRowView: View {
         case .basicBot:
             HStack {
                 Text(chatItem.content)
-                    .colorInvert()
-                    .padding()
-                    .background(.blue)
+                .lineLimit(nil)
+                .colorInvert()
+                .padding()
+                .background(.blue)
+                .cornerRadius(25)
                 Spacer()
             }
         case .basicUser:
             HStack {
                 Spacer()
                 Text(chatItem.content)
-                    .padding()
-                    .background(.gray)
+                .lineLimit(nil)
+                .padding()
+                .background(Color(.sRGB, red: 0.8, green: 0.95, blue: 0.85, opacity: 1))
+                .cornerRadius(25)
             }
         case .actionButtonsUser:
             HStack {
@@ -34,13 +38,15 @@ struct ChatItemRowView: View {
                         }
                         // https://www.hackingwithswift.com/quick-start/swiftui/how-to-disable-the-overlay-color-for-images-inside-button-and-navigationlink
                         .buttonStyle(PlainButtonStyle())
-                        .padding(10)
+                        .padding(.vertical, 6)
+                        .padding(.horizontal, 12)
                         .background(.white)
-                        .cornerRadius(10)
+                        .cornerRadius(12.5)
                     }
                 }
                 .padding()
-                .background(.gray)
+                .background(Color(.sRGB, red: 0.8, green: 0.95, blue: 0.85, opacity: 1))
+                .cornerRadius(25)
             }
         }
     }
@@ -55,6 +61,6 @@ struct ChatItemRowView_Previews: PreviewProvider {
             ChatItemRowView(chatItem: PersistenceController.preview.fakeChatItems[3])
         }
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-        .previewLayout(.fixed(width: 300, height: 70))
+        .previewLayout(.fixed(width: 300, height: 150))
     }
 }

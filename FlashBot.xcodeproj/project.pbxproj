@@ -56,7 +56,7 @@
 		022389F828AAAC5300DB95BB /* LessonRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonRowView.swift; sourceTree = "<group>"; };
 		022389FA28AAD3B900DB95BB /* LessonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetailView.swift; sourceTree = "<group>"; };
 		022389FF28AADC9300DB95BB /* ChatItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatItemListView.swift; sourceTree = "<group>"; };
-		0284044E28ACCFEB00E5DDDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0284044E28ACCFEB00E5DDDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0284044F28AFCEA200E5DDDA /* Waits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waits.swift; sourceTree = "<group>"; };
 		0284045128B144FD00E5DDDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0284045928B2335500E5DDDA /* DocumentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPicker.swift; sourceTree = "<group>"; };
@@ -143,6 +143,18 @@
 			path = ChatItem;
 			sourceTree = "<group>";
 		};
+		0283961F28B9316B003540AA /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0284044E28ACCFEB00E5DDDA /* Info.plist */,
+				02C2DC7E28AA9AEE00E1281F /* FlashBotApp.swift */,
+				0284046628B4223D00E5DDDA /* FlashBotError.swift */,
+				0284045128B144FD00E5DDDA /* AppDelegate.swift */,
+				0205001728AC33C3003074F0 /* Persistence.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		02C2DC7228AA9AEE00E1281F = {
 			isa = PBXGroup;
 			children = (
@@ -162,11 +174,7 @@
 		02C2DC7D28AA9AEE00E1281F /* FlashBot */ = {
 			isa = PBXGroup;
 			children = (
-				0284044E28ACCFEB00E5DDDA /* Info.plist */,
-				02C2DC7E28AA9AEE00E1281F /* FlashBotApp.swift */,
-				0284046628B4223D00E5DDDA /* FlashBotError.swift */,
-				0284045128B144FD00E5DDDA /* AppDelegate.swift */,
-				0205001728AC33C3003074F0 /* Persistence.swift */,
+				0283961F28B9316B003540AA /* App */,
 				022389FD28AADBD500DB95BB /* Helper */,
 				022389EB28AAA51800DB95BB /* Models */,
 				022389EA28AAA50700DB95BB /* Views */,
