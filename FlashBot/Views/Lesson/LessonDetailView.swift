@@ -10,7 +10,7 @@ struct LessonDetailView: View {
     @State private var inputValue: String = ""
     @FocusState var textFieldFocused: Bool
     @State var textFieldEnabled = true
-    @State var botEventLoopActive = false
+    @State var eventLoopActive = false
 
     // Setup
     @State var lessonTitle = ""
@@ -35,7 +35,7 @@ struct LessonDetailView: View {
             HStack {
                 ZStack {
                     TextField("Text", text: $inputValue)
-                    .disabled(!textFieldEnabled || !givenFeedback)
+                    // .disabled(!textFieldEnabled || !givenFeedback)
                     .onSubmit {
                         validate(text: inputValue)
                         textFieldFocused = true
@@ -54,7 +54,10 @@ struct LessonDetailView: View {
                         Spacer()
                         Button(
                             action: {
-                                Task { await sessionIDontKnow() }
+                                guard lesson.state == LessonSate.sessionWaitForAnswer else {
+                                    return
+                                }
+                                Task { await startEventLoop(withIDontKnow: true) }
                                 inputValue = ""
                                 textFieldFocused = true
                             },
@@ -89,13 +92,12 @@ struct LessonDetailView: View {
             DocumentPicker(fileUrl: $fileUrl.onChange(fileUrlChanged))
         }
         .onAppear {
-            botEventLoopActive = true
             Task {
-                await botEventLoop()
+                await startEventLoop()
             }
         }
         .onDisappear {
-            botEventLoopActive = false
+            stopEventLoop()
         }
     }
 
@@ -104,11 +106,11 @@ struct LessonDetailView: View {
     /// - Parameter text: submited text
     private func validate(text: String) {
         if lesson.state == .setupWaitForLessonTitle {
-            lessonTitle = text
+            Task { await startEventLoop(withLessonTitle: text) }
         }
 
         if lesson.state == .sessionWaitForAnswer {
-            givenAnswer = text
+            Task { await startEventLoop(withAnswer: text) }
         }
 
         lesson.appendUserMessage(text: text)
@@ -127,14 +129,10 @@ struct LessonDetailView: View {
         do {
             let path = try ImportBundle.unzipToTemp(zipfile: url)
             let lessonDTO = try ImportBundle.readJson(tempDirectory: path)
-            try ImportBundle.saveLesson(lessonDTO: lessonDTO, lesson: lesson)
-            print("Lesson importés: \(lessonDTO)")
-
-            lesson.state = LessonSate.setupFinished
-            try? managedObjectContext.save()
+            Task { try await startEventLoop(withLessonEntries: lessonDTO) }
 
         } catch FlashBotError.generalError(let message) {
-            print("FlashBotError when reading Bundle: \(message)")
+            print("Error when reading Bundle: \(message)")
         } catch {
             print("Error when reading Bundle: \(error)")
         }

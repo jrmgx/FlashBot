@@ -4,9 +4,10 @@ public enum LessonSate: Int16 {
     case unknown
     // Setup
     case setupPresenting
+    case setupAskForLessonTitle
     case setupWaitForLessonTitle
+    case setupAskForLessonEntries
     case setupWaitForLessonEntries
-    case setupFinished
     // Session
     case sessionRestart
     case sessionCanStart
@@ -20,11 +21,18 @@ public enum LessonSate: Int16 {
     case exceptionalNoMoreEntries
 }
 
- func <(left: LessonSate, right: LessonSate) -> Bool {
+func < (left: LessonSate, right: LessonSate) -> Bool {
     return left.rawValue < right.rawValue
 }
 
- func >(left: LessonSate, right: LessonSate) -> Bool {
+func > (left: LessonSate, right: LessonSate) -> Bool {
     return left.rawValue > right.rawValue
 }
 
+func <= (left: LessonSate, right: LessonSate) -> Bool {
+    return left.rawValue <= right.rawValue
+}
+
+func >= (left: LessonSate, right: LessonSate) -> Bool {
+    return left.rawValue >= right.rawValue
+}
