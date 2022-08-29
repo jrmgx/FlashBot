@@ -8,255 +8,71 @@ struct LessonDetailView: View {
     @StateObject var lesson: Lesson
 
     @State private var inputValue: String = ""
-    @State private var botEventLoopActive = false
+    @FocusState var textFieldFocused: Bool
+    @State var textFieldEnabled = true
+    @State var botEventLoopActive = false
 
     // Setup
-    @State private var lessonTitle = ""
-    @State private var showDocumentPicker = false
+    @State var lessonTitle = ""
+    @State var showDocumentPicker = false
     @State private var fileUrl: URL?
 
     // Session
-    @State private var givenAnswer = ""
-    @State private var numberOfWord = 0
-    @State private var currentLessonEntry: LessonEntry?
-    @State private var givenFeedback = false
+    @State var sessionNewStart = true
+    @State var givenAnswer = ""
+    @State var numberOfWord = 0
+    @State var currentLessonEntry: LessonEntry!
+    @State var givenFeedback = true
 
-    private func botEventLoop() async {
-        guard botEventLoopActive else {
-            return
-        }
-
-        // Resolve state
-        let state = lesson.state
-
-        // Execute action
-        switch state {
-
-        // Setup
-        case .setupPresenting:
-            await setupPresenting()
-        case .setupWaitForLessonTitle:
-            await setupWaitForLessonTitle()
-        case .setupWaitForLessonEntries:
-            await setupWaitForLessonEntries()
-        case .setupFinished:
-            lesson.state = LessonSate.sessionCanStart
-
-        // Session
-        case .sessionCanStart:
-            await sessionCanStart()
-        case .sessionNextQuestion:
-            await sessionNextQuestion()
-        case .sessionWaitForAnswer:
-            await sessionWaitForAnswer()
-        case .sessionRightAnswer:
-            await sessionRightAnswer()
-        case .sessionWrongAnswer:
-            await sessionWrongAnswer()
-        default:
-            print("Unknown state for current lesson.")
-            // Not much to do, so wait to prevent fast looping
-            await Waits.seconds(seconds: 5)
-        }
-
-        // Loop
-        await botEventLoop()
-    }
-
-    private func setupPresenting() async {
-
-        await Waits.seconds(seconds: 0.5)
-
-        lesson.appendBotMessage(text: "Hello!\nLet's configure your new lesson together.")
-        await Waits.seconds(seconds: 1)
-
-        lesson.appendBotMessage(text: "First of all, give your lesson a great title.")
-        lesson.appendBotMessage(text: "Maybe you're learning Spanish, so it could be 'Learning Spanish'.")
-        lesson.state = LessonSate.setupWaitForLessonTitle
-
-        try? managedObjectContext.save()
-    }
-
-    private func setupWaitForLessonTitle() async {
-
-        await Waits.untilTrue { !lessonTitle.isEmpty }
-
-        lesson.title = lessonTitle
-        lesson.appendBotMessage(text: "Great title!")
-        lesson.state = LessonSate.setupWaitForLessonEntries
-
-        try? managedObjectContext.save()
-    }
-
-    private func setupWaitForLessonEntries() async {
-
-        await Waits.seconds(seconds: 0.5)
-
-        lesson.appendBotMessage(text: "Now we need a dataset, find one and import it!")
-
-        let chatItem = ChatItem.create(context: managedObjectContext)
-        chatItem.type = ChatItemType.actionButtonsUser
-        chatItem.choices = [
-            ChatItemChoice(name: "Import") { _ in
-                showDocumentPicker = true
-                chatItem.type = ChatItemType.basicUser
-                chatItem.content = "File sent"
-            }
-        ]
-        lesson.addToChatItems(chatItem)
-
-        // Don't save lesson now, it will be saved when the import is over
-    }
-
-    private func sessionCanStart() async {
-        await Waits.seconds(seconds: 0.5)
-        lesson.appendBotMessage(text: "It seems that you are ready for a new sessin")
-        await Waits.seconds(seconds: 0.3)
-        lesson.appendBotMessage(text: "Let's go!")
-        lesson.state = LessonSate.sessionNextQuestion
-        try? managedObjectContext.save()
-    }
-
-    /// Pick an entry and show it to the user
-    private func sessionNextQuestion() async {
-        await Waits.seconds(seconds: 0.5)
-
-        guard let entry = LessonEntry.pickOne(entries: lesson.lessonEntries) else {
-            lesson.state = LessonSate.unknown
-            return
-        }
-
-        currentLessonEntry = entry
-
-        lesson.appendBotMessage(text: entry.word)
-        lesson.state = LessonSate.sessionWaitForAnswer
-        try? managedObjectContext.save()
-    }
-
-    private func sessionWaitForAnswer() async {
-        // TOOD stop les waits quand on presente plus
-        await Waits.untilTrue { !givenAnswer.isEmpty }
-        let currentAnswer = givenAnswer
-        print(currentAnswer)
-        givenAnswer = ""
-        numberOfWord += 1
-
-        // Check if good answer
-        // TODO for now it's random
-        await Waits.seconds(seconds: 0.5)
-
-        if Date.now.hashValue % 2 == 0 {
-            // Good
-            lesson.state = LessonSate.sessionRightAnswer
-        } else {
-            // Wrong
-            lesson.state = LessonSate.sessionWrongAnswer
-        }
-        try? managedObjectContext.save()
-    }
-
-    private func sessionRightAnswer() async {
-        await Waits.seconds(seconds: 0.5)
-        guard let entry = currentLessonEntry else {
-            // TODO should send a message or make the session over?
-            lesson.state = LessonSate.sessionNextQuestion
-            return
-        }
-
-        lesson.appendBotMessage(text: "Great job, \"\(entry.translation)\" is the right anwser!")
-        // lesson.state = LessonSate.sessionWaitForFeedback
-        try? managedObjectContext.save()
-
-        // Ask for feedback
-        let chatItem = ChatItem.create(context: managedObjectContext)
-        chatItem.type = ChatItemType.actionButtonsUser
-        chatItem.choices = [
-            ChatItemChoice(name: "Easy") { choice in
-                print("Tap Easy")
-                // TODO update score
-                updateFeedbackCommon(chatItem: chatItem, choice: choice)
-            },
-            ChatItemChoice(name: "Medium") { choice in
-                print("Tap Medium")
-                updateFeedbackCommon(chatItem: chatItem, choice: choice)
-            },
-            ChatItemChoice(name: "Hard") { choice in
-                print("Tap Hard")
-                updateFeedbackCommon(chatItem: chatItem, choice: choice)
-            },
-            ChatItemChoice(name: "Skip") { choice in
-                print("Tap Skip")
-                updateFeedbackCommon(chatItem: chatItem, choice: choice)
-            }
-        ]
-        lesson.addToChatItems(chatItem)
-        await Waits.untilTrue { givenFeedback }
-        givenFeedback = false
-    }
-
-    private func sessionWrongAnswer() async {
-        await Waits.seconds(seconds: 0.5)
-        guard let entry = currentLessonEntry else {
-            // TODO should send a message or make the session over?
-            lesson.state = LessonSate.sessionNextQuestion
-            return
-        }
-
-        lesson.appendBotMessage(text: "Ho noes, \"\(entry.translation)\" was the right anwser!")
-
-        updateStateIfSessionOver()
-        try? managedObjectContext.save()
-    }
-
-    private func updateFeedbackCommon(chatItem: ChatItem, choice: ChatItemChoice) {
-        givenFeedback = true
-        chatItem.type = ChatItemType.basicUser
-        chatItem.content = choice.name
-        updateStateIfSessionOver()
-        try? managedObjectContext.save()
-    }
-
-    private func updateStateIfSessionOver() {
-        if numberOfWord < 10 {
-            lesson.state = LessonSate.sessionNextQuestion
-        } else {
-            lesson.state = LessonSate.sessionOver
-        }
-    }
+    private let isDebug = true
 
     var body: some View {
         VStack {
+            if isDebug {
+                Text("\(String(describing: lesson.state)) \(numberOfWord)")
+            }
             ChatItemListView(lesson: lesson)
             HStack {
                 ZStack {
-                    TextField("Placeholder", text: $inputValue)
+                    TextField("Text", text: $inputValue)
+                    .disabled(!textFieldEnabled || !givenFeedback)
                     .onSubmit {
                         validate(text: inputValue)
+                        textFieldFocused = true
                     }
-                    .textInputAutocapitalization(.never)
+                    .focused($textFieldFocused)
+                    .keyboardType(.alphabet)
                     .disableAutocorrection(true)
-                    .border(.secondary)
-                    .padding()
-                    Button(
-                        action: {
-
-                        },
-                        label: {
-                            Text("I Don't\nKnow")
-                            .multilineTextAlignment(.center)
-                            .lineSpacing(-10)
-                            .font(.system(size: 14))
-                            .lineLimit(2)
-                        }
+                    .lineLimit(nil)
+                    .padding(12)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 100)
+                        .strokeBorder(Color.black, style: StrokeStyle(lineWidth: 1.0))
                     )
-                    .buttonStyle(PlainButtonStyle())
                     .padding()
+                    HStack {
+                        Spacer()
+                        Button(
+                            action: {
+                                Task { await sessionIDontKnow() }
+                                inputValue = ""
+                                textFieldFocused = true
+                            },
+                            label: {
+                                Text("I Don't\nKnow")
+                                .padding()
+                                .multilineTextAlignment(.center)
+                                .lineSpacing(0)
+                                .font(.system(size: 13))
+                                .lineLimit(2)
+                            }
+                        )
+                        .buttonStyle(PlainButtonStyle())
+                        .padding()
+                    }
                 }
-                Button("Send") {
-                    print("Send")
-                }
-                .padding()
             }
+            .padding(.vertical, -12)
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -299,6 +115,8 @@ struct LessonDetailView: View {
         try? managedObjectContext.save()
 
         inputValue = ""
+        textFieldFocused = true
+        /// TODO keep the keyboard open
     }
 
     /// Handling file selected by the user in the import process
@@ -327,8 +145,10 @@ struct LessonDetailView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             LessonDetailView(lesson: PersistenceController.preview.fakeLessons[0])
-                .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-            LessonDetailView(lesson: Lesson(context: PersistenceController.preview.container.viewContext))
+            .environment(
+                \.managedObjectContext,
+                PersistenceController.preview.container.viewContext
+            )
         }
     }
 }

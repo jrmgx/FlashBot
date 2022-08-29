@@ -1,23 +1,6 @@
 import Foundation
 import CoreData
 
-public enum LessonSate: Int16 {
-    case unknown
-    // Setup
-    case setupPresenting
-    case setupWaitForLessonTitle
-    case setupWaitForLessonEntries
-    case setupFinished
-    // Session
-    case sessionCanStart
-    case sessionNextQuestion
-    case sessionWaitForAnswer
-    case sessionRightAnswer
-    case sessionWaitForFeedback
-    case sessionWrongAnswer
-    case sessionOver
-}
-
 extension Lesson {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Lesson> {

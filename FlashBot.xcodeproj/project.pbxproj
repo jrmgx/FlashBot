@@ -36,6 +36,8 @@
 		02C2DC8128AA9AEE00E1281F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2DC8028AA9AEE00E1281F /* ContentView.swift */; };
 		02C2DC8328AA9AF200E1281F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02C2DC8228AA9AF200E1281F /* Assets.xcassets */; };
 		02C2DC8628AA9AF200E1281F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02C2DC8528AA9AF200E1281F /* Preview Assets.xcassets */; };
+		02ECB66828BC09AF0002A57D /* LessonDetailView+EventLoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ECB66728BC09AF0002A57D /* LessonDetailView+EventLoop.swift */; };
+		02ECB66A28BC15800002A57D /* LessonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ECB66928BC15800002A57D /* LessonState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +72,8 @@
 		02C2DC8028AA9AEE00E1281F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		02C2DC8228AA9AF200E1281F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02C2DC8528AA9AF200E1281F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		02ECB66728BC09AF0002A57D /* LessonDetailView+EventLoop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LessonDetailView+EventLoop.swift"; sourceTree = "<group>"; };
+		02ECB66928BC15800002A57D /* LessonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 				0222ADA328ACC8CB0017FCE9 /* ChatItem+CoreDataProperties.swift */,
 				0284046228B421C700E5DDDA /* LessonDTO.swift */,
 				0284046428B421FA00E5DDDA /* LessonEntryDTO.swift */,
+				02ECB66928BC15800002A57D /* LessonState.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 				022389F628AAAC1200DB95BB /* LessonListView.swift */,
 				022389F828AAAC5300DB95BB /* LessonRowView.swift */,
 				022389FA28AAD3B900DB95BB /* LessonDetailView.swift */,
+				02ECB66728BC09AF0002A57D /* LessonDetailView+EventLoop.swift */,
 				0205003528ACBE13003074F0 /* LessonSettingView.swift */,
 			);
 			path = Lesson;
@@ -294,6 +300,8 @@
 				022389FB28AAD3B900DB95BB /* LessonDetailView.swift in Sources */,
 				0205001828AC33C3003074F0 /* Persistence.swift in Sources */,
 				0284045028AFCEA200E5DDDA /* Waits.swift in Sources */,
+				02ECB66A28BC15800002A57D /* LessonState.swift in Sources */,
+				02ECB66828BC09AF0002A57D /* LessonDetailView+EventLoop.swift in Sources */,
 				0222ADA428ACC8CB0017FCE9 /* Lesson+CoreDataProperties.swift in Sources */,
 				0284046728B4223D00E5DDDA /* FlashBotError.swift in Sources */,
 				0222ADAB28ACC9020017FCE9 /* LessonEntry+CoreDataClass.swift in Sources */,

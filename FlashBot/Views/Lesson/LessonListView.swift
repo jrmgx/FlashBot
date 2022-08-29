@@ -12,19 +12,24 @@ struct LessonListView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .center, spacing: nil) {
-                List(lessons) { lesson in
-                    NavigationLink {
-                        LessonDetailView(lesson: lesson)
-                    } label: {
-                        LessonRowView(lesson: lesson)
+                if !lessons.isEmpty {
+                    List(lessons) { lesson in
+                        NavigationLink {
+                            LessonDetailView(lesson: lesson)
+                        } label: {
+                            LessonRowView(lesson: lesson)
+                        }
                     }
+                    .background(.red)
                 }
-                .background(.red)
                 NavigationLink(
                     destination: LessonDetailView(lesson: Lesson.create(context: managedObjectContext)),
                     isActive: $isShowingDetailView
                 ) {
                     EmptyView()
+                }
+                if lessons.isEmpty {
+                    Image("AvatarDefault")
                 }
                 Button("New Lesson") {
                     isShowingDetailView = true
