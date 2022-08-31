@@ -253,6 +253,10 @@ extension LessonDetailView {
     }
 
     func startEventLoop(withIDontKnow idk: Bool) async {
+        guard lesson.state == LessonSate.sessionWaitForAnswer else {
+            return
+        }
+
         lesson.appendUserMessage(text: "I don't know")
         await Waits.seconds(seconds: 0.5)
 

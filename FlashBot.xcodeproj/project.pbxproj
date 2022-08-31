@@ -23,6 +23,7 @@
 		022389F928AAAC5300DB95BB /* LessonRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389F828AAAC5300DB95BB /* LessonRowView.swift */; };
 		022389FB28AAD3B900DB95BB /* LessonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389FA28AAD3B900DB95BB /* LessonDetailView.swift */; };
 		02238A0028AADC9300DB95BB /* ChatItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389FF28AADC9300DB95BB /* ChatItemListView.swift */; };
+		0279B42C28BDE5A200DC7780 /* LessonDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0279B42B28BDE5A200DC7780 /* LessonDetailHeaderView.swift */; };
 		0284045028AFCEA200E5DDDA /* Waits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284044F28AFCEA200E5DDDA /* Waits.swift */; };
 		0284045228B144FD00E5DDDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284045128B144FD00E5DDDA /* AppDelegate.swift */; };
 		0284045A28B2335500E5DDDA /* DocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284045928B2335500E5DDDA /* DocumentPicker.swift */; };
@@ -58,6 +59,7 @@
 		022389F828AAAC5300DB95BB /* LessonRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonRowView.swift; sourceTree = "<group>"; };
 		022389FA28AAD3B900DB95BB /* LessonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetailView.swift; sourceTree = "<group>"; };
 		022389FF28AADC9300DB95BB /* ChatItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatItemListView.swift; sourceTree = "<group>"; };
+		0279B42B28BDE5A200DC7780 /* LessonDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetailHeaderView.swift; sourceTree = "<group>"; };
 		0284044E28ACCFEB00E5DDDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0284044F28AFCEA200E5DDDA /* Waits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waits.swift; sourceTree = "<group>"; };
 		0284045128B144FD00E5DDDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				022389F628AAAC1200DB95BB /* LessonListView.swift */,
 				022389F828AAAC5300DB95BB /* LessonRowView.swift */,
 				022389FA28AAD3B900DB95BB /* LessonDetailView.swift */,
+				0279B42B28BDE5A200DC7780 /* LessonDetailHeaderView.swift */,
 				02ECB66728BC09AF0002A57D /* LessonDetailView+EventLoop.swift */,
 				0205003528ACBE13003074F0 /* LessonSettingView.swift */,
 			);
@@ -310,6 +313,7 @@
 				02238A0028AADC9300DB95BB /* ChatItemListView.swift in Sources */,
 				0284045228B144FD00E5DDDA /* AppDelegate.swift in Sources */,
 				0222ADAA28ACC9020017FCE9 /* ChatItem+CoreDataClass.swift in Sources */,
+				0279B42C28BDE5A200DC7780 /* LessonDetailHeaderView.swift in Sources */,
 				022389F728AAAC1200DB95BB /* LessonListView.swift in Sources */,
 				0205003428ACBDD4003074F0 /* SettingsView.swift in Sources */,
 				0284045F28B3556800E5DDDA /* ImportBundle.swift in Sources */,

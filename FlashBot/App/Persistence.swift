@@ -40,6 +40,7 @@ class PersistenceController: ObservableObject {
         let lesson1 = Lesson.create(context: viewContext)
         lesson1.lastPlayedAt = Date(timeIntervalSinceNow: 500)
         lesson1.title = "Spanish => French"
+        lesson1.state = LessonSate.sessionWaitForAnswer
 
         for index in 0..<20 {
             var chatItem = ChatItem.create(context: viewContext)

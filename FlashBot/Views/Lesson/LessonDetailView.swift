@@ -50,28 +50,27 @@ struct LessonDetailView: View {
                         .strokeBorder(Color.black, style: StrokeStyle(lineWidth: 1.0))
                     )
                     .padding()
-                    HStack {
-                        Spacer()
-                        Button(
-                            action: {
-                                guard lesson.state == LessonSate.sessionWaitForAnswer else {
-                                    return
+                    if lesson.state == LessonSate.sessionWaitForAnswer {
+                        HStack {
+                            Spacer()
+                            Button(
+                                action: {
+                                    Task { await startEventLoop(withIDontKnow: true) }
+                                    inputValue = ""
+                                    textFieldFocused = true
+                                },
+                                label: {
+                                    Text("I Don't\nKnow")
+                                    .padding()
+                                    .multilineTextAlignment(.center)
+                                    .lineSpacing(0)
+                                    .font(.system(size: 13))
+                                    .lineLimit(2)
                                 }
-                                Task { await startEventLoop(withIDontKnow: true) }
-                                inputValue = ""
-                                textFieldFocused = true
-                            },
-                            label: {
-                                Text("I Don't\nKnow")
-                                .padding()
-                                .multilineTextAlignment(.center)
-                                .lineSpacing(0)
-                                .font(.system(size: 13))
-                                .lineLimit(2)
-                            }
-                        )
-                        .buttonStyle(PlainButtonStyle())
-                        .padding()
+                            )
+                            .buttonStyle(PlainButtonStyle())
+                            .padding()
+                        }
                     }
                 }
             }
@@ -80,12 +79,12 @@ struct LessonDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
-                VStack {
-                    Text("Title").font(.headline)
-                    Button("Subtitle") {
-                        // ACTION
-                    }
-                }
+                LessonDetailHeaderView(
+                    title: lesson.title,
+                    actionAdd: menuActionAddWord,
+                    actionTranslate: menuActionTranslate,
+                    actionSettings: menuActionSettings
+                )
             }
         }
         .sheet(isPresented: $showDocumentPicker) {
@@ -99,6 +98,18 @@ struct LessonDetailView: View {
         .onDisappear {
             stopEventLoop()
         }
+    }
+
+    private func menuActionAddWord() {
+        print("Tap on add word")
+    }
+
+    private func menuActionTranslate() {
+        print("Tap on translate")
+    }
+
+    private func menuActionSettings() {
+        print("Tap on settings")
     }
 
     /// Handling text submited by the user
