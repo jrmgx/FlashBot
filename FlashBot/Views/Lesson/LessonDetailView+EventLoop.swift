@@ -10,11 +10,12 @@ extension LessonDetailView {
         eventLoopActive = true
 
         // Resolve state
-        let state = lesson.state
-//        if sessionNewStart && lesson.state > LessonSate.sessionRestart {
-//            state = LessonSate.sessionRestart
-//        }
-//        sessionNewStart = false
+        var state = lesson.state
+        if sessionNewStart && lesson.state > LessonSate.sessionRestart {
+            state = LessonSate.sessionRestart
+            lesson.state = LessonSate.sessionRestart
+        }
+        sessionNewStart = false
 
         // Execute action
         switch state {
@@ -128,21 +129,41 @@ extension LessonDetailView {
     private func sessionCanStart() async {
         await Waits.seconds(seconds: 0.5)
         lesson.appendBotMessage(text: "It seems that you are ready for a new session")
+
+        let chatItem = ChatItem.create(context: managedObjectContext)
+        chatItem.type = ChatItemType.actionButtonsUser
+        chatItem.choices = [
+            ChatItemChoice(name: "Start a new session!") { _ in
+                chatItem.content = "Start a new session!"
+                Task { await startEventLoop(withNewSession: true) }
+            }
+        ]
+        lesson.addToChatItems(chatItem)
+
+        stopEventLoop()
+        // lesson.state = LessonSate.sessionNextQuestion
+
+        // try? managedObjectContext.save()
+    }
+
+    func startEventLoop(withNewSession: Bool) async {
         await Waits.seconds(seconds: 0.3)
         lesson.appendBotMessage(text: "Let's go!")
-
         lesson.state = LessonSate.sessionNextQuestion
 
         try? managedObjectContext.save()
+
+        await startEventLoop()
     }
 
     private func sessionRestart() async {
-        await Waits.seconds(seconds: 0.5)
-        lesson.appendBotMessage(text: "It's been a while, let's start a new session!")
-
-        lesson.state = LessonSate.sessionNextQuestion
-
-        try? managedObjectContext.save()
+//        await Waits.seconds(seconds: 0.5)
+//        lesson.appendBotMessage(text: "It's been a while, let's start a new session!")
+//
+//        lesson.state = LessonSate.sessionNextQuestion
+//
+//        try? managedObjectContext.save()
+        await sessionCanStart()
     }
 
     /// Pick an entry and show it to the user
@@ -166,21 +187,35 @@ extension LessonDetailView {
         stopEventLoop()
     }
 
+    private func normalize(text: String) -> String? {
+
+       return text
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .lowercased()
+            .applyingTransform(.stripDiacritics, reverse: false)
+    }
+
     func startEventLoop(withAnswer answer: String) async {
 
         numberOfWord += 1
 
         // Check if good answer
-        // TODO for now it's random
-        await Waits.seconds(seconds: 0.5)
+        let normalizedAnswer = normalize(text: answer)
+        let normalizedEntry = normalize(text: currentLessonEntry.translation)
 
-        if Date.now.hashValue % 2 == 0 {
+        if
+            let normalizedEntry = normalizedEntry,
+            let normalizedAnswer = normalizedAnswer,
+            normalizedAnswer.elementsEqual(normalizedEntry)
+        {
             // Good
             lesson.state = LessonSate.sessionRightAnswer
         } else {
             // Wrong
             lesson.state = LessonSate.sessionWrongAnswer
         }
+
+        await Waits.seconds(seconds: 0.5)
 
         try? managedObjectContext.save()
 
@@ -257,6 +292,8 @@ extension LessonDetailView {
             return
         }
 
+        numberOfWord += 1
+
         lesson.appendUserMessage(text: "I don't know")
         await Waits.seconds(seconds: 0.5)
 
@@ -280,10 +317,12 @@ extension LessonDetailView {
         await Waits.seconds(seconds: 0.5)
         lesson.appendBotMessage(text: "Great, your session is over!")
 
-        await Waits.seconds(seconds: 10)
+        numberOfWord = 0
 
-        lesson.state = LessonSate.sessionNextQuestion
+        lesson.state = LessonSate.sessionCanStart
 
         try? managedObjectContext.save()
+
+        // stopEventLoop()
     }
 }

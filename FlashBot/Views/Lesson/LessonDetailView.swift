@@ -11,6 +11,7 @@ struct LessonDetailView: View {
     @FocusState var textFieldFocused: Bool
     @State var textFieldEnabled = true
     @State var eventLoopActive = false
+    @State private var showSettings = false
 
     // Setup
     @State var lessonTitle = ""
@@ -82,13 +83,16 @@ struct LessonDetailView: View {
                 LessonDetailHeaderView(
                     title: lesson.title,
                     actionAdd: menuActionAddWord,
-                    actionTranslate: menuActionTranslate,
+                    actionTranslate: nil, // menuActionTranslate,
                     actionSettings: menuActionSettings
                 )
             }
         }
         .sheet(isPresented: $showDocumentPicker) {
             DocumentPicker(fileUrl: $fileUrl.onChange(fileUrlChanged))
+        }
+        .sheet(isPresented: $showSettings) {
+            LessonSettingView()
         }
         .onAppear {
             Task {
@@ -110,6 +114,7 @@ struct LessonDetailView: View {
 
     private func menuActionSettings() {
         print("Tap on settings")
+        showSettings = true
     }
 
     /// Handling text submited by the user
