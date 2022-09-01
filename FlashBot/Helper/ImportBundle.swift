@@ -10,7 +10,7 @@ struct ImportBundle {
     public static func unzipToTemp(zipfile: URL) throws -> URL {
 
         var downloadTempDirectory = try FileManager.default.url(
-            for: .downloadsDirectory,
+            for: .documentDirectory,
             in: .userDomainMask,
             appropriateFor: nil,
             create: true

@@ -80,12 +80,16 @@ struct LessonDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
-                LessonDetailHeaderView(
-                    title: lesson.title,
-                    actionAdd: menuActionAddWord,
-                    actionTranslate: nil, // menuActionTranslate,
-                    actionSettings: menuActionSettings
-                )
+                if lesson.state > LessonSate.setupWaitForLessonEntries {
+                    LessonDetailHeaderView(
+                        title: lesson.title,
+                        actionAdd: menuActionAddWord,
+                        actionTranslate: nil, // menuActionTranslate,
+                        actionSettings: menuActionSettings
+                    )
+                } else {
+                    Text(lesson.title)
+                }
             }
         }
         .sheet(isPresented: $showDocumentPicker) {
@@ -121,6 +125,12 @@ struct LessonDetailView: View {
     /// It can use the lesson.state for specific actions
     /// - Parameter text: submited text
     private func validate(text: String) {
+
+        guard let text = text.normalize(), text.lengthOfBytes(using: .utf8) > 0 else {
+            inputValue = ""
+            return
+        }
+
         if lesson.state == .setupWaitForLessonTitle {
             Task { await startEventLoop(withLessonTitle: text) }
         }

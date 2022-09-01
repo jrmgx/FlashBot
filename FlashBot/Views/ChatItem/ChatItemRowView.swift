@@ -12,7 +12,7 @@ struct ChatItemRowView: View {
             HStack {
                 Text(chatItem.content)
                 .lineLimit(nil)
-                .colorInvert()
+                .foregroundColor(.white)
                 .padding()
                 .background(.blue)
                 .cornerRadius(25)

@@ -39,6 +39,7 @@ extension LessonDetailView {
         default:
             print("Unknown state for current lesson.")
             // Not much to do, so wait to prevent fast looping
+            lesson.appendBotMessage(text: "Unknown state for current lesson.")
             await Waits.seconds(seconds: 5)
         }
 
@@ -99,7 +100,7 @@ extension LessonDetailView {
             ChatItemChoice(name: "Import") { _ in
                 showDocumentPicker = true
                 chatItem.type = ChatItemType.basicUser
-                chatItem.content = "File sent"
+                chatItem.content = "Picker Open"
             }
         ]
         lesson.addToChatItems(chatItem)
@@ -114,6 +115,7 @@ extension LessonDetailView {
 
     func startEventLoop(withLessonEntries lessonDTO: LessonDTO) async throws {
 
+        lesson.appendUserMessage(text: "File Sent")
         try ImportBundle.saveLesson(lessonDTO: lessonDTO, lesson: lesson)
         print("Lesson importés: \(lessonDTO)")
         await Waits.seconds(seconds: 0.5)
@@ -157,12 +159,6 @@ extension LessonDetailView {
     }
 
     private func sessionRestart() async {
-//        await Waits.seconds(seconds: 0.5)
-//        lesson.appendBotMessage(text: "It's been a while, let's start a new session!")
-//
-//        lesson.state = LessonSate.sessionNextQuestion
-//
-//        try? managedObjectContext.save()
         await sessionCanStart()
     }
 
@@ -187,21 +183,13 @@ extension LessonDetailView {
         stopEventLoop()
     }
 
-    private func normalize(text: String) -> String? {
-
-       return text
-            .trimmingCharacters(in: .whitespacesAndNewlines)
-            .lowercased()
-            .applyingTransform(.stripDiacritics, reverse: false)
-    }
-
     func startEventLoop(withAnswer answer: String) async {
 
         numberOfWord += 1
 
         // Check if good answer
-        let normalizedAnswer = normalize(text: answer)
-        let normalizedEntry = normalize(text: currentLessonEntry.translation)
+        let normalizedAnswer = answer.normalize()
+        let normalizedEntry = currentLessonEntry.translation.normalize()
 
         if
             let normalizedEntry = normalizedEntry,
@@ -225,7 +213,7 @@ extension LessonDetailView {
     private func sessionRightAnswer() async {
         await Waits.seconds(seconds: 0.5)
 
-        lesson.appendBotMessage(text: "Great job, \"\(currentLessonEntry.translation)\" is the right anwser!")
+        lesson.appendBotMessage(text: "✅ Great job,\n\"\(currentLessonEntry.translation)\" is the right anwser!")
 
         lesson.state = LessonSate.sessionWaitForFeedback
 
@@ -235,22 +223,22 @@ extension LessonDetailView {
         let chatItem = ChatItem.create(context: managedObjectContext)
         chatItem.type = ChatItemType.actionButtonsUser
         chatItem.choices = [
-            ChatItemChoice(name: "Easy") { choice in
+            ChatItemChoice(name: "👍") { choice in
                 updateFeedbackCommon(
                     chatItem: chatItem, choice: choice, score: LessonEntry.scoreEasy
                 )
             },
-            ChatItemChoice(name: "Medium") { choice in
+            ChatItemChoice(name: "⛅️") { choice in
                 updateFeedbackCommon(
                     chatItem: chatItem, choice: choice, score: LessonEntry.scoreMedium
                 )
             },
-            ChatItemChoice(name: "Hard") { choice in
+            ChatItemChoice(name: "👎") { choice in
                 updateFeedbackCommon(
                     chatItem: chatItem, choice: choice, score: LessonEntry.scoreHard
                 )
             },
-            ChatItemChoice(name: "Skip") { choice in
+            ChatItemChoice(name: "🗑") { choice in
                 updateFeedbackCommon(
                     chatItem: chatItem, choice: choice, score: LessonEntry.scoreSkip
                 )
@@ -280,7 +268,7 @@ extension LessonDetailView {
     private func sessionWrongAnswer() async {
         await Waits.seconds(seconds: 0.5)
 
-        lesson.appendBotMessage(text: "Ho noes, \"\(currentLessonEntry.translation)\" was the right anwser!")
+        lesson.appendBotMessage(text: "❌ Ho noes,\n\"\(currentLessonEntry.translation)\" was the right anwser!")
 
         lessonUpdateStateIfSessionOver()
 
@@ -297,7 +285,7 @@ extension LessonDetailView {
         lesson.appendUserMessage(text: "I don't know")
         await Waits.seconds(seconds: 0.5)
 
-        lesson.appendBotMessage(text: "No problem, it was \"\(currentLessonEntry.translation)\"")
+        lesson.appendBotMessage(text: "➡️ No problem,\nit was \"\(currentLessonEntry.translation)\"")
 
         lessonUpdateStateIfSessionOver()
         try? managedObjectContext.save()
@@ -322,7 +310,15 @@ extension LessonDetailView {
         lesson.state = LessonSate.sessionCanStart
 
         try? managedObjectContext.save()
+    }
+}
 
-        // stopEventLoop()
+extension String {
+    func normalize() -> String? {
+
+       return self
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .lowercased()
+            .applyingTransform(.stripDiacritics, reverse: false)
     }
 }

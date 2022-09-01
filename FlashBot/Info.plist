@@ -2,6 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>net.gangneux.flashbot</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+		</dict>
+	</array>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -20,5 +29,49 @@
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<false/>
 	</dict>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Flash Bot Lesson</string>
+			<key>UTTypeIconFiles</key>
+			<array/>
+			<key>UTTypeIdentifier</key>
+			<string>net.gangneux.flashbotLesson</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>flashbot</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+	<key>UTImportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Flash Bot Lesson</string>
+			<key>UTTypeIconFiles</key>
+			<array/>
+			<key>UTTypeIdentifier</key>
+			<string>net.gangneux.flashbotLesson</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>flashbot</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>
