@@ -52,8 +52,8 @@ struct ImportBundle {
 
         for lessonEntryDTO in lessonDTO.entries {
             let lessonEntry = LessonEntry.create(context: context)
-            lessonEntry.word = lessonEntryDTO.word
-            lessonEntry.translation = lessonEntryDTO.translation
+            lessonEntry.word = lessonEntryDTO.word.lowercased()
+            lessonEntry.translation = lessonEntryDTO.translation.lowercased()
             lessonEntry.details = lessonEntryDTO.details
             lesson.addToLessonEntriesInternal(lessonEntry)
         }

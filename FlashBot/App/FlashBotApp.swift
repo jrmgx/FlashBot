@@ -3,7 +3,7 @@ import SwiftUI
 @main
 struct FlashBotApp: App {
 
-    public static let isDebug = false
+    public static let isDebug = true
 
     // @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject private var persistenceController = PersistenceController.shared

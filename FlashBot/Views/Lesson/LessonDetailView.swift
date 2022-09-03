@@ -118,6 +118,7 @@ struct LessonDetailView: View {
 
     private func menuActionAddWord() {
         print("Tap on add word")
+        Task { await addWord() }
     }
 
     private func menuActionTranslate() {
@@ -145,6 +146,10 @@ struct LessonDetailView: View {
 
         if lesson.state == .sessionWaitForAnswer {
             Task { await startEventLoop(withAnswer: text) }
+        }
+
+        if lesson.state == .addWordWaitForWord {
+            Task { await startEventLoop(withNewWord: text) }
         }
 
         lesson.appendUserMessage(text: text)

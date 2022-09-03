@@ -17,6 +17,8 @@ public enum LessonSate: Int16 {
     case sessionWaitForFeedback
     case sessionWrongAnswer
     case sessionOver
+    // Add word
+    case addWordWaitForWord
     // Exceptional
     case exceptionalNoMoreEntries
 }

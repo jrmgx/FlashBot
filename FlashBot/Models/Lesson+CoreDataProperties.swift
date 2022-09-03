@@ -47,6 +47,20 @@ extension Lesson {
         addToChatItems(chatItem)
     }
 
+    public func appendLessonEntry(word: String, translation: String) {
+        guard let managedObjectContext = managedObjectContext else {
+            print("Could not get managedObjectContext while appendBotMessage")
+            return
+        }
+        
+        // Gard and fail // TODO check if the word already exist in the lesson
+
+        let lessonEntry = LessonEntry.create(context: managedObjectContext)
+        lessonEntry.word = word
+        lessonEntry.translation = translation
+        addToLessonEntries(lessonEntry)
+    }
+
     public var state: LessonSate {
         get { LessonSate.init(rawValue: stateInternal) ?? LessonSate.unknown }
         set { stateInternal = newValue.rawValue }

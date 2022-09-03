@@ -36,6 +36,10 @@ extension LessonDetailView {
         case .sessionWaitForFeedback: stopEventLoop()
         case .sessionWrongAnswer: await sessionWrongAnswer()
         case .sessionOver: await sessionOver()
+
+        // Add word
+        case .addWordWaitForWord: stopEventLoop()
+
         default:
             print("Unknown state for current lesson.")
             // Not much to do, so wait to prevent fast looping
@@ -293,6 +297,50 @@ extension LessonDetailView {
         await startEventLoop()
     }
 
+    func addWord() async {
+
+        stopEventLoop()
+        lesson.state = LessonSate.addWordWaitForWord
+
+        lesson.appendBotMessage(text: "To add a word: enter it, then an equal sign, and then its signification")
+        lesson.appendBotMessage(text: "Like this:\nEnfants = Children")
+
+        try? managedObjectContext.save()
+
+    }
+
+    func startEventLoop(withNewWord word: String) async {
+
+        let sub = word.split(separator: "=")
+        guard sub.count == 2, let first = sub.first, let second = sub.last else {
+            lesson.appendBotMessage(text: "Oops the format does not seem right")
+            await addWord()
+            return
+        }
+
+        // TODO check if the word already exist in the lesson
+        
+        let word = first
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .lowercased()
+        let translation = second
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .lowercased()
+        lesson.appendLessonEntry(word: word, translation: translation)
+        await Waits.seconds(seconds: 0.5)
+        lesson.appendBotMessage(
+            text: "Great I added \"\(word)\" meaning \"\(translation)\""
+        )
+
+        numberOfWord = 0
+
+        lesson.state = LessonSate.sessionCanStart
+
+        try? managedObjectContext.save()
+
+        await startEventLoop()
+    }
+
     private func lessonUpdateStateIfSessionOver() {
         if numberOfWord < 10 {
             lesson.state = LessonSate.sessionNextQuestion
@@ -310,15 +358,5 @@ extension LessonDetailView {
         lesson.state = LessonSate.sessionCanStart
 
         try? managedObjectContext.save()
-    }
-}
-
-extension String {
-    func normalize() -> String? {
-
-       return self
-            .trimmingCharacters(in: .whitespacesAndNewlines)
-            .lowercased()
-            .applyingTransform(.stripDiacritics, reverse: false)
     }
 }
