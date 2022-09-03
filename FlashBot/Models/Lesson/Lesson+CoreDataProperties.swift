@@ -52,7 +52,7 @@ extension Lesson {
             print("Could not get managedObjectContext while appendBotMessage")
             return
         }
-        
+
         // Gard and fail // TODO check if the word already exist in the lesson
 
         let lessonEntry = LessonEntry.create(context: managedObjectContext)

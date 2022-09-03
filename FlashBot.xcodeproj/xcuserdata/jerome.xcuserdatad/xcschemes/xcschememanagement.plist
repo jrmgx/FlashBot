@@ -4,10 +4,24 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>DeeplAPI (Playground).xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>FlashBot.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>OrderingLesson (Playground).xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>Playground (Playground) 1.xcscheme</key>
 		<dict>

@@ -319,7 +319,7 @@ extension LessonDetailView {
         }
 
         // TODO check if the word already exist in the lesson
-        
+
         let word = first
             .trimmingCharacters(in: .whitespacesAndNewlines)
             .lowercased()
