@@ -25,14 +25,13 @@ struct LessonDetailView: View {
     @State var currentLessonEntry: LessonEntry!
     @State var givenFeedback = true
 
-    private let isDebug = true
-
     var body: some View {
         VStack {
-            if isDebug {
+            if FlashBotApp.isDebug {
                 Text("\(String(describing: lesson.state)) \(numberOfWord)")
             }
             ChatItemListView(lesson: lesson)
+            .background(Color("ChatBackground"))
             HStack {
                 ZStack {
                     TextField("Text", text: $inputValue)
@@ -102,6 +101,15 @@ struct LessonDetailView: View {
             Task {
                 await startEventLoop()
             }
+
+//                if FlashBotApp.isDebug {
+//                    UITableView.appearance().separatorStyle = .none
+//                    UITableViewCell.appearance().backgroundColor = .green
+//                    UITableView.appearance().backgroundColor = .green
+//                } else {
+//                    UITableView.appearance().backgroundColor = .white
+//                }
+
         }
         .onDisappear {
             stopEventLoop()

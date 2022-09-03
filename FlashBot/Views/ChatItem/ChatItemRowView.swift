@@ -12,9 +12,9 @@ struct ChatItemRowView: View {
             HStack {
                 Text(chatItem.content)
                 .lineLimit(nil)
-                .foregroundColor(.white)
+                .foregroundColor(Color("ChatTextBot"))
                 .padding()
-                .background(.blue)
+                .background(Color("ChatBubbleBot"))
                 .cornerRadius(25)
                 Spacer()
             }
@@ -23,8 +23,9 @@ struct ChatItemRowView: View {
                 Spacer()
                 Text(chatItem.content)
                 .lineLimit(nil)
+                .foregroundColor(Color("ChatTextUser"))
                 .padding()
-                .background(Color(.sRGB, red: 0.8, green: 0.95, blue: 0.85, opacity: 1))
+                .background(Color("ChatBubbleUser"))
                 .cornerRadius(25)
             }
         case .actionButtonsUser:
@@ -40,12 +41,12 @@ struct ChatItemRowView: View {
                         .buttonStyle(PlainButtonStyle())
                         .padding(.vertical, 6)
                         .padding(.horizontal, 12)
-                        .background(.white)
+                        .background(.background)
                         .cornerRadius(12.5)
                     }
                 }
                 .padding()
-                .background(Color(.sRGB, red: 0.8, green: 0.95, blue: 0.85, opacity: 1))
+                .background(Color("ChatBubbleUser"))
                 .cornerRadius(25)
             }
         }

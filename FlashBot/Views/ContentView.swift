@@ -6,7 +6,7 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-            Color.pink.ignoresSafeArea()
+            // Color.pink.ignoresSafeArea()
             TabView {
                 LessonListView()
                 .tabItem {
@@ -17,16 +17,18 @@ struct ContentView: View {
                     Label("Text", systemImage: "list.dash")
                 }
             }
-            .accentColor(.red)
+            .accentColor(Color("AccentColor"))
             .onAppear {
-                let appearance = UITabBarAppearance()
-                appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
-                appearance.backgroundColor = UIColor(Color.orange.opacity(0.5))
-
-                // Use this appearance when scrolling behind the TabView:
-                UITabBar.appearance().standardAppearance = appearance
-                // Use this appearance when scrolled all the way up:
-                UITabBar.appearance().scrollEdgeAppearance = appearance
+                if FlashBotApp.isDebug {
+//                    let appearance = UITabBarAppearance()
+//                    appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+//                    appearance.backgroundColor = UIColor(Color.orange.opacity(0.5))
+//
+//                    // Use this appearance when scrolling behind the TabView:
+//                    UITabBar.appearance().standardAppearance = appearance
+//                    // Use this appearance when scrolled all the way up:
+//                    UITabBar.appearance().scrollEdgeAppearance = appearance
+                }
             }
             .onOpenURL { url in
                 print("Incoming url: \(url)")

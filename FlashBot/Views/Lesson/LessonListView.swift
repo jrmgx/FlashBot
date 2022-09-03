@@ -20,7 +20,6 @@ struct LessonListView: View {
                             LessonRowView(lesson: lesson)
                         }
                     }
-                    .background(.red)
                 }
                 NavigationLink(
                     destination: LessonDetailView(lesson: Lesson.create(context: managedObjectContext)),
@@ -36,14 +35,20 @@ struct LessonListView: View {
                 }
                 .padding()
             }
-            .background(.red)
+            .background(Color("Background"))
         }
         .onAppear {
-            UITableView.appearance().separatorStyle = .none
-            UITableViewCell.appearance().backgroundColor = .green
-            UITableView.appearance().backgroundColor = .green
+            // TODO could move this line
+            UITableView.appearance().backgroundColor = .clear
+//            if FlashBotApp.isDebug {
+//                UITableView.appearance().separatorStyle = .none
+//                UITableViewCell.appearance().backgroundColor = .green
+//                UITableView.appearance().backgroundColor = .green
+//            } else {
+//                // UITableView.appearance().backgroundColor = .orange
+//            }
         }
-        .background(.blue)
+        // .background(.blue)
         .navigationTitle("Lessons")
     }
 }
