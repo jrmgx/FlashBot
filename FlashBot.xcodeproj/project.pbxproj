@@ -23,14 +23,12 @@
 		022389F928AAAC5300DB95BB /* LessonRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389F828AAAC5300DB95BB /* LessonRowView.swift */; };
 		022389FB28AAD3B900DB95BB /* LessonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389FA28AAD3B900DB95BB /* LessonDetailView.swift */; };
 		02238A0028AADC9300DB95BB /* ChatItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389FF28AADC9300DB95BB /* ChatItemListView.swift */; };
-		024B60DE28C3BD360072DD85 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 024B60DD28C3BD360072DD85 /* Alamofire */; };
 		024B60E428C3C2F90072DD85 /* DeeplTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024B60E328C3C2F90072DD85 /* DeeplTranslation.swift */; };
 		024B60E628C3C31E0072DD85 /* DeeplResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024B60E528C3C31E0072DD85 /* DeeplResponse.swift */; };
 		024B60E828C3C36F0072DD85 /* Deepl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024B60E728C3C36F0072DD85 /* Deepl.swift */; };
 		0279B42C28BDE5A200DC7780 /* LessonDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0279B42B28BDE5A200DC7780 /* LessonDetailHeaderView.swift */; };
 		0284045028AFCEA200E5DDDA /* Waits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284044F28AFCEA200E5DDDA /* Waits.swift */; };
 		0284045228B144FD00E5DDDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284045128B144FD00E5DDDA /* AppDelegate.swift */; };
-		0284045A28B2335500E5DDDA /* DocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284045928B2335500E5DDDA /* DocumentPicker.swift */; };
 		0284045D28B29CA300E5DDDA /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 0284045C28B29CA300E5DDDA /* ZIPFoundation */; };
 		0284045F28B3556800E5DDDA /* ImportBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284045E28B3556800E5DDDA /* ImportBundle.swift */; };
 		0284046128B3EBC800E5DDDA /* Binding+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284046028B3EBC800E5DDDA /* Binding+Extension.swift */; };
@@ -71,7 +69,6 @@
 		0284044E28ACCFEB00E5DDDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0284044F28AFCEA200E5DDDA /* Waits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waits.swift; sourceTree = "<group>"; };
 		0284045128B144FD00E5DDDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0284045928B2335500E5DDDA /* DocumentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPicker.swift; sourceTree = "<group>"; };
 		0284045E28B3556800E5DDDA /* ImportBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportBundle.swift; sourceTree = "<group>"; };
 		0284046028B3EBC800E5DDDA /* Binding+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extension.swift"; sourceTree = "<group>"; };
 		0284046228B421C700E5DDDA /* LessonDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDTO.swift; sourceTree = "<group>"; };
@@ -94,7 +91,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0284045D28B29CA300E5DDDA /* ZIPFoundation in Frameworks */,
-				024B60DE28C3BD360072DD85 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,7 +102,6 @@
 			children = (
 				02C2DC8028AA9AEE00E1281F /* ContentView.swift */,
 				0205003328ACBDD4003074F0 /* SettingsView.swift */,
-				0284045928B2335500E5DDDA /* DocumentPicker.swift */,
 				022389E828AA9ED100DB95BB /* AvatarView.swift */,
 				022389FC28AADBCC00DB95BB /* Lesson */,
 				022389FE28AADBE100DB95BB /* ChatItem */,
@@ -258,7 +253,6 @@
 			buildConfigurationList = 02C2DC8E28AA9AF200E1281F /* Build configuration list for PBXNativeTarget "FlashBot" */;
 			buildPhases = (
 				02C2DC7728AA9AEE00E1281F /* Sources */,
-				0284046828B424B000E5DDDA /* ShellScript */,
 				02C2DC7828AA9AEE00E1281F /* Frameworks */,
 				02C2DC7928AA9AEE00E1281F /* Resources */,
 			);
@@ -269,7 +263,6 @@
 			name = FlashBot;
 			packageProductDependencies = (
 				0284045C28B29CA300E5DDDA /* ZIPFoundation */,
-				024B60DD28C3BD360072DD85 /* Alamofire */,
 			);
 			productName = FlashBot;
 			productReference = 02C2DC7B28AA9AEE00E1281F /* FlashBot.app */;
@@ -324,26 +317,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		0284046828B424B000E5DDDA /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "return 0\nif which swiftlint >/dev/null; then\n    swiftlint --fix && swiftlint\nelse\n    echo \"SwiftLint not installed\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		02C2DC7728AA9AEE00E1281F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -378,7 +351,6 @@
 				0205003628ACBE13003074F0 /* LessonSettingView.swift in Sources */,
 				022389F928AAAC5300DB95BB /* LessonRowView.swift in Sources */,
 				0284046328B421C700E5DDDA /* LessonDTO.swift in Sources */,
-				0284045A28B2335500E5DDDA /* DocumentPicker.swift in Sources */,
 				02CD88F428C391E50040A631 /* String+Extension.swift in Sources */,
 				022389F128AAA86300DB95BB /* ChatItemRowView.swift in Sources */,
 				024B60E828C3C36F0072DD85 /* Deepl.swift in Sources */,
@@ -607,11 +579,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		024B60DD28C3BD360072DD85 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 024B60DC28C3BD360072DD85 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
 		0284045C28B29CA300E5DDDA /* ZIPFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0284045B28B29CA300E5DDDA /* XCRemoteSwiftPackageReference "ZIPFoundation" */;

@@ -66,12 +66,16 @@ extension LessonEntry {
     /// - Parameter lessonEntries: array of entries
     /// - Returns: picked or nil
     public class func pickOne(entries: [LessonEntry]) -> LessonEntry? {
+        
         let byDate = entries.filter { lesson in
             lesson.score < 100
         }.sorted { lessonA, lessonB in
             lessonA.lastShownAt < lessonB.lastShownAt
         }
-        let byThrid = Array(byDate[..<(byDate.count/3)])
+        guard !byDate.isEmpty else {
+            return nil
+        }
+        let byThrid = Array(byDate[..<(max(1, byDate.count/3))])
         let byScore = byThrid.sorted { lessonA, lessonB in
             lessonA.score < lessonB.score
         }

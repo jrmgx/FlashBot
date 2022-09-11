@@ -40,6 +40,9 @@ extension LessonDetailView {
         // Add word
         case .addWordWaitForWord: stopEventLoop()
 
+        // Exceptional
+        case .exceptionalNoMoreEntries: stopEventLoop()
+            
         default:
             print("Unknown state for current lesson.")
             // Not much to do, so wait to prevent fast looping
@@ -102,9 +105,15 @@ extension LessonDetailView {
         chatItem.type = ChatItemType.actionButtonsUser
         chatItem.choices = [
             ChatItemChoice(name: "Import") { _ in
-                showDocumentPicker = true
+                showPicker = true
                 chatItem.type = ChatItemType.basicUser
                 chatItem.content = "Picker Open"
+            },
+            ChatItemChoice(name: "Start blank") { _ in
+                chatItem.type = ChatItemType.basicUser
+                chatItem.content = "Start blank"
+                
+                lesson.state = LessonSate.exceptionalNoMoreEntries
             }
         ]
         lesson.addToChatItems(chatItem)
@@ -170,7 +179,8 @@ extension LessonDetailView {
     private func sessionNextQuestion() async {
         guard let entry = LessonEntry.pickOne(entries: lesson.lessonEntries) else {
             lesson.state = LessonSate.exceptionalNoMoreEntries
-            // TODO améliorer avec l'affichage d'un message d'erreur dans le chat
+            lesson.appendBotMessage(text: "No more entries to practice with.")
+            lesson.appendBotMessage(text: "You should add some new words!")
             stopEventLoop()
             return
         }
@@ -192,8 +202,8 @@ extension LessonDetailView {
         numberOfWord += 1
 
         // Check if good answer
-        let normalizedAnswer = answer.normalize()
-        let normalizedEntry = currentLessonEntry.translation.normalize()
+        let normalizedAnswer = answer.normalizeWithTrimSpaceLowercaseRemoveDiacritics()
+        let normalizedEntry = currentLessonEntry.translation.normalizeWithTrimSpaceLowercaseRemoveDiacritics()
 
         if
             let normalizedEntry = normalizedEntry,

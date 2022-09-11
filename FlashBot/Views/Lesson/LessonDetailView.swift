@@ -1,5 +1,7 @@
 import SwiftUI
 import zlib
+import UniformTypeIdentifiers.UTType
+import Foundation
 
 struct LessonDetailView: View {
 
@@ -15,7 +17,7 @@ struct LessonDetailView: View {
 
     // Setup
     @State var lessonTitle = ""
-    @State var showDocumentPicker = false
+    @State var showPicker = false
     @State private var fileUrl: URL?
 
     // Session
@@ -91,8 +93,13 @@ struct LessonDetailView: View {
                 }
             }
         }
-        .sheet(isPresented: $showDocumentPicker) {
-            DocumentPicker(fileUrl: $fileUrl.onChange(fileUrlChanged))
+        .fileImporter(isPresented: $showPicker, allowedContentTypes: [UTType("net.gangneux.flashbotLesson")!]) { result in
+            switch result {
+            case .success(let url):
+                fileUrl(url: url)
+            case.failure:
+                print("File failed to load")
+            }
         }
         .sheet(isPresented: $showSettings) {
             LessonSettingView()
@@ -135,11 +142,12 @@ struct LessonDetailView: View {
     /// - Parameter text: submited text
     private func validate(text: String) {
 
-        guard let text = text.normalize(), text.lengthOfBytes(using: .utf8) > 0 else {
+        let text = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard text.lengthOfBytes(using: .utf8) > 0 else {
             inputValue = ""
             return
         }
-
+        
         if lesson.state == .setupWaitForLessonTitle {
             Task { await startEventLoop(withLessonTitle: text) }
         }
@@ -162,7 +170,7 @@ struct LessonDetailView: View {
 
     /// Handling file selected by the user in the import process
     /// - Parameter url: file path
-    private func fileUrlChanged(url: URL?) {
+    private func fileUrl(url: URL?) {
         guard let url = url else { return }
 
         do {

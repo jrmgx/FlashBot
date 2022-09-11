@@ -11,35 +11,47 @@ struct LessonListView: View {
 
     var body: some View {
         NavigationView {
-            VStack(alignment: .center, spacing: nil) {
-                if !lessons.isEmpty {
-                    List(lessons) { lesson in
-                        NavigationLink {
-                            LessonDetailView(lesson: lesson)
-                        } label: {
-                            LessonRowView(lesson: lesson)
-                        }
+            ZStack {
+                GeometryReader { geometry in
+                    HStack(alignment: .top, spacing: 100) {
+                        Spacer()
+                        Image("LogoTransparent")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100, height: 100, alignment: .top)
+                        Spacer()
                     }
+                    .position(x: geometry.size.width / 2, y: -50)
                 }
-                NavigationLink(
-                    destination: LessonDetailView(lesson: Lesson.create(context: managedObjectContext)),
-                    isActive: $isShowingDetailView
-                ) {
-                    EmptyView()
+                .zIndex(20)
+                VStack(alignment: .center, spacing: nil) {
+                    if !lessons.isEmpty {
+                        List(lessons) { lesson in
+                            NavigationLink {
+                                LessonDetailView(lesson: lesson)
+                            } label: {
+                                LessonRowView(lesson: lesson)
+                            }
+                        }
+                        .background(lessons.isEmpty ? .clear : Color("Background"))
+                    }
+                    NavigationLink(
+                        destination: LessonDetailView(lesson: Lesson.create(context: managedObjectContext)),
+                        isActive: $isShowingDetailView)
+                    {
+                        EmptyView()
+                    }
+                    if lessons.isEmpty {
+                        Image("LogoTransparent")
+                    }
+                    Button("New Lesson") {
+                        isShowingDetailView = true
+                    }
+                    .padding()
                 }
-                if lessons.isEmpty {
-                    Image("AvatarDefault")
-                }
-                Button("New Lesson") {
-                    isShowingDetailView = true
-                }
-                .padding()
             }
-            .background(Color("Background"))
         }
         .onAppear {
-            // TODO could move this line
-            UITableView.appearance().backgroundColor = .clear
 //            if FlashBotApp.isDebug {
 //                UITableView.appearance().separatorStyle = .none
 //                UITableViewCell.appearance().backgroundColor = .green
@@ -48,7 +60,6 @@ struct LessonListView: View {
 //                // UITableView.appearance().backgroundColor = .orange
 //            }
         }
-        // .background(.blue)
         .navigationTitle("Lessons")
     }
 }

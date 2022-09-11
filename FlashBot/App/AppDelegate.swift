@@ -7,7 +7,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
-        print("Your code here")
+        UITableView.appearance().backgroundColor = .clear
         return true
     }
 }

@@ -10,11 +10,11 @@ struct ContentView: View {
             TabView {
                 LessonListView()
                 .tabItem {
-                    Label("Menu", systemImage: "list.dash")
+                    Label("Lessons", systemImage: "list.dash")
                 }
                 SettingsView()
                 .tabItem {
-                    Label("Text", systemImage: "list.dash")
+                    Label("Settings", systemImage: "list.dash")
                 }
             }
             .accentColor(Color("AccentColor"))

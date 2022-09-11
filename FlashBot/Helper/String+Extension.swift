@@ -1,7 +1,7 @@
 import Foundation
 
 extension String {
-    func normalize() -> String? {
+    func normalizeWithTrimSpaceLowercaseRemoveDiacritics() -> String? {
 
        return self
             .trimmingCharacters(in: .whitespacesAndNewlines)

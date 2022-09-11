@@ -2,7 +2,7 @@ import SwiftUI
 
 struct AvatarView: View {
     var body: some View {
-        Image("AvatarDefault")
+        Image("LogoTransparent")
         .clipShape(Circle())
         .overlay {
             Circle().stroke(.white, lineWidth: 4)
