@@ -78,21 +78,18 @@ struct LessonDetailView: View {
             }
             .padding(.vertical, -12)
         }
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(lesson.title)
         .toolbar {
-            ToolbarItem(placement: .principal) {
-                if lesson.state > LessonSate.setupWaitForLessonEntries {
-                    LessonDetailHeaderView(
-                        title: lesson.title,
-                        actionAdd: menuActionAddWord,
-                        actionTranslate: nil, // menuActionTranslate,
-                        actionSettings: menuActionSettings
-                    )
-                } else {
-                    Text(lesson.title)
-                }
+            ToolbarItem(placement: .primaryAction) {
+                LessonDetailToolbarButtonPrimary(
+                    actionAdd: menuActionAddWord,
+                    actionTranslate: menuActionTranslate,
+                    actionSettings: menuActionSettings
+                )
             }
         }
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarBackground(Color("Background"), for: .navigationBar)
         .fileImporter(isPresented: $showPicker, allowedContentTypes: [UTType("net.gangneux.flashbotLesson")!]) { result in
             switch result {
             case .success(let url):
@@ -108,15 +105,6 @@ struct LessonDetailView: View {
             Task {
                 await startEventLoop()
             }
-
-//                if FlashBotApp.isDebug {
-//                    UITableView.appearance().separatorStyle = .none
-//                    UITableViewCell.appearance().backgroundColor = .green
-//                    UITableView.appearance().backgroundColor = .green
-//                } else {
-//                    UITableView.appearance().backgroundColor = .white
-//                }
-
         }
         .onDisappear {
             stopEventLoop()

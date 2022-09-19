@@ -13,7 +13,9 @@ struct ChatItemListView: View, KeyboardReadable {
     @State private var isKeyboardVisible = false
 
     private func scrollBottom(scrollViewProxy: ScrollViewProxy, animate: Bool) {
-        guard !lesson.chatItems.isEmpty else { return }
+        // TODO does nothing as iOS 16 will crash on this
+        // https://developer.apple.com/forums/thread/712510
+        /*guard !lesson.chatItems.isEmpty else { return }
         Task {
             if animate {
                 withAnimation(Animation.easeInOut) {
@@ -22,7 +24,7 @@ struct ChatItemListView: View, KeyboardReadable {
             } else {
                 scrollViewProxy.scrollTo(lesson.chatItems.last!.id, anchor: .top)
             }
-        }
+        }*/
     }
 
     var body: some View {
@@ -33,6 +35,7 @@ struct ChatItemListView: View, KeyboardReadable {
                 .id(chatItem.id)
                 .listRowSeparator(.hidden)
             }
+            .scrollContentBackground(.hidden)
             .onAppear {
                 scrollBottom(scrollViewProxy: scrollViewProxy, animate: false)
             }

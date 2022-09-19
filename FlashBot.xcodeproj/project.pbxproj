@@ -26,7 +26,6 @@
 		024B60E428C3C2F90072DD85 /* DeeplTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024B60E328C3C2F90072DD85 /* DeeplTranslation.swift */; };
 		024B60E628C3C31E0072DD85 /* DeeplResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024B60E528C3C31E0072DD85 /* DeeplResponse.swift */; };
 		024B60E828C3C36F0072DD85 /* Deepl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024B60E728C3C36F0072DD85 /* Deepl.swift */; };
-		0279B42C28BDE5A200DC7780 /* LessonDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0279B42B28BDE5A200DC7780 /* LessonDetailHeaderView.swift */; };
 		0284045028AFCEA200E5DDDA /* Waits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284044F28AFCEA200E5DDDA /* Waits.swift */; };
 		0284045228B144FD00E5DDDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284045128B144FD00E5DDDA /* AppDelegate.swift */; };
 		0284045D28B29CA300E5DDDA /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 0284045C28B29CA300E5DDDA /* ZIPFoundation */; };
@@ -42,6 +41,8 @@
 		02CD88F428C391E50040A631 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CD88F328C391E50040A631 /* String+Extension.swift */; };
 		02ECB66828BC09AF0002A57D /* LessonDetailView+EventLoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ECB66728BC09AF0002A57D /* LessonDetailView+EventLoop.swift */; };
 		02ECB66A28BC15800002A57D /* LessonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ECB66928BC15800002A57D /* LessonState.swift */; };
+		02EEF2B228D78DC9007DC43C /* LessonDetailToolbarButtonPrimary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EEF2B128D78DC9007DC43C /* LessonDetailToolbarButtonPrimary.swift */; };
+		02EEF2B428D7AD91007DC43C /* NSRegularExpression+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EEF2B328D7AD91007DC43C /* NSRegularExpression+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,7 +66,6 @@
 		024B60E328C3C2F90072DD85 /* DeeplTranslation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplTranslation.swift; sourceTree = "<group>"; };
 		024B60E528C3C31E0072DD85 /* DeeplResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplResponse.swift; sourceTree = "<group>"; };
 		024B60E728C3C36F0072DD85 /* Deepl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deepl.swift; sourceTree = "<group>"; };
-		0279B42B28BDE5A200DC7780 /* LessonDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetailHeaderView.swift; sourceTree = "<group>"; };
 		0284044E28ACCFEB00E5DDDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0284044F28AFCEA200E5DDDA /* Waits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waits.swift; sourceTree = "<group>"; };
 		0284045128B144FD00E5DDDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +83,8 @@
 		02CD88F528C3B2370040A631 /* DeeplAPI.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = DeeplAPI.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		02ECB66728BC09AF0002A57D /* LessonDetailView+EventLoop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LessonDetailView+EventLoop.swift"; sourceTree = "<group>"; };
 		02ECB66928BC15800002A57D /* LessonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonState.swift; sourceTree = "<group>"; };
+		02EEF2B128D78DC9007DC43C /* LessonDetailToolbarButtonPrimary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonDetailToolbarButtonPrimary.swift; sourceTree = "<group>"; };
+		02EEF2B328D7AD91007DC43C /* NSRegularExpression+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRegularExpression+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +129,7 @@
 				022389F628AAAC1200DB95BB /* LessonListView.swift */,
 				022389F828AAAC5300DB95BB /* LessonRowView.swift */,
 				022389FA28AAD3B900DB95BB /* LessonDetailView.swift */,
-				0279B42B28BDE5A200DC7780 /* LessonDetailHeaderView.swift */,
+				02EEF2B128D78DC9007DC43C /* LessonDetailToolbarButtonPrimary.swift */,
 				02ECB66728BC09AF0002A57D /* LessonDetailView+EventLoop.swift */,
 				0205003528ACBE13003074F0 /* LessonSettingView.swift */,
 			);
@@ -141,6 +143,7 @@
 				0284045E28B3556800E5DDDA /* ImportBundle.swift */,
 				0284046028B3EBC800E5DDDA /* Binding+Extension.swift */,
 				02CD88F328C391E50040A631 /* String+Extension.swift */,
+				02EEF2B328D7AD91007DC43C /* NSRegularExpression+Extension.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				022389FB28AAD3B900DB95BB /* LessonDetailView.swift in Sources */,
 				0205001828AC33C3003074F0 /* Persistence.swift in Sources */,
 				0284045028AFCEA200E5DDDA /* Waits.swift in Sources */,
+				02EEF2B428D7AD91007DC43C /* NSRegularExpression+Extension.swift in Sources */,
 				02ECB66A28BC15800002A57D /* LessonState.swift in Sources */,
 				024B60E428C3C2F90072DD85 /* DeeplTranslation.swift in Sources */,
 				02ECB66828BC09AF0002A57D /* LessonDetailView+EventLoop.swift in Sources */,
@@ -338,7 +342,6 @@
 				02238A0028AADC9300DB95BB /* ChatItemListView.swift in Sources */,
 				0284045228B144FD00E5DDDA /* AppDelegate.swift in Sources */,
 				0222ADAA28ACC9020017FCE9 /* ChatItem+CoreDataClass.swift in Sources */,
-				0279B42C28BDE5A200DC7780 /* LessonDetailHeaderView.swift in Sources */,
 				022389F728AAAC1200DB95BB /* LessonListView.swift in Sources */,
 				0205003428ACBDD4003074F0 /* SettingsView.swift in Sources */,
 				0284045F28B3556800E5DDDA /* ImportBundle.swift in Sources */,
@@ -354,6 +357,7 @@
 				02CD88F428C391E50040A631 /* String+Extension.swift in Sources */,
 				022389F128AAA86300DB95BB /* ChatItemRowView.swift in Sources */,
 				024B60E828C3C36F0072DD85 /* Deepl.swift in Sources */,
+				02EEF2B228D78DC9007DC43C /* LessonDetailToolbarButtonPrimary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +496,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -523,6 +528,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
