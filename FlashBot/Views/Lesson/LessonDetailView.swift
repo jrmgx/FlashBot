@@ -112,16 +112,14 @@ struct LessonDetailView: View {
     }
 
     private func menuActionAddWord() {
-        print("Tap on add word")
         Task { await addWord() }
     }
 
     private func menuActionTranslate() {
-        print("Tap on translate")
+        Task { await translateWord() }
     }
 
     private func menuActionSettings() {
-        print("Tap on settings")
         showSettings = true
     }
 
@@ -135,25 +133,34 @@ struct LessonDetailView: View {
             inputValue = ""
             return
         }
+
         
-        if lesson.state == .setupWaitForLessonTitle {
-            Task { await startEventLoop(withLessonTitle: text) }
-        }
-
-        if lesson.state == .sessionWaitForAnswer {
-            Task { await startEventLoop(withAnswer: text) }
-        }
-
-        if lesson.state == .addWordWaitForWord {
-            Task { await startEventLoop(withNewWord: text) }
-        }
-
         lesson.appendUserMessage(text: text)
         try? managedObjectContext.save()
 
         inputValue = ""
         textFieldFocused = true
         /// TODO keep the keyboard open
+        
+        /// Handle specific text like adding an entry, asking for a translation...
+        Task {
+            if await applyCommand(text: text) {
+                // Noop
+            }
+            else if lesson.state == .setupWaitForLessonTitle {
+                await startEventLoop(withLessonTitle: text)
+            }
+            else if lesson.state == .sessionWaitForAnswer {
+                await startEventLoop(withAnswer: text)
+            }
+            else if lesson.state == .addWordWaitForWord {
+                await startEventLoop(withNewWord: text)
+            }
+            else if lesson.state == .askTranslationWaitForWord {
+                await translateLang(word: text)
+            }
+        }
+
     }
 
     /// Handling file selected by the user in the import process

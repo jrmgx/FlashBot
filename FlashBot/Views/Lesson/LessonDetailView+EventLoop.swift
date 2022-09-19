@@ -2,6 +2,21 @@ import Foundation
 
 extension LessonDetailView {
 
+    func applyCommand(text: String) async -> Bool {
+        // Adding entry: "word: word"
+        if text.contains(":") {
+            await startEventLoop(withNewWord: text)
+            return true
+        }
+        
+        if isTranslate(text) {
+            await startEventLoop(withTranslate: text)
+            return true
+        }
+        
+        return false
+    }
+    
     func startEventLoop() async {
         if eventLoopActive {
             return
@@ -307,21 +322,115 @@ extension LessonDetailView {
         await startEventLoop()
     }
 
+    func translateWord() async {
+        stopEventLoop()
+        lesson.state = LessonSate.askTranslationWaitForWord
+
+        lesson.appendBotMessage(text: "Which word you want to translate?")
+
+        try? managedObjectContext.save()
+    }
+    
+    /// For now it's only fr <=> es
+    func translateLang(word text: String) async {
+        stopEventLoop()
+        lesson.state = LessonSate.askTranslationWaitForLang
+        try? managedObjectContext.save()
+
+        // Ask for lang
+        let chatItem = ChatItem.create(context: managedObjectContext)
+        chatItem.type = ChatItemType.actionButtonsUser
+        chatItem.choices = [
+            ChatItemChoice(name: "in French") { choice in
+                chatItem.type = ChatItemType.basicUser
+                chatItem.content = "\(text) in French"
+                try? managedObjectContext.save()
+                Task {
+                    await startEventLoop(withTranslate: "\(text) in French")
+                }
+            },
+            ChatItemChoice(name: "in Spanish") { choice in
+                chatItem.type = ChatItemType.basicUser
+                chatItem.content = "\(text) in Spanish"
+                try? managedObjectContext.save()
+                Task { await startEventLoop(withTranslate: "\(text) in Spanish") }
+            }
+        ]
+        lesson.addToChatItems(chatItem)
+
+        stopEventLoop()
+    }
+    
+    var regexEsToFr: NSRegularExpression {
+        NSRegularExpression(
+            "\\s+(en|in)\\s+(franc.s|french|fran.ais)$",
+            [.caseInsensitive]
+        )
+    }
+    var regexFrToEs: NSRegularExpression  {
+        NSRegularExpression(
+            "\\s+(en|in)\\s+(espagnol|spanish|espa.ol)$",
+            [.caseInsensitive]
+        )
+    }
+    
+    private func isTranslate(_ text: String) -> Bool {
+        return regexEsToFr.matches(text) || regexFrToEs.matches(text)
+    }
+    
+    func startEventLoop(withTranslate text: String) async {
+
+        print("Will translate: \(text)")
+        // Detect lang, if it ends with "en frances, in french" => es to fr
+        // if it ends with "en espagnol, in spanish" => fr to es
+        var sourceLang = "fr"
+        var targetLang = "es"
+        var word = text
+        
+        if regexEsToFr.matches(text) {
+            sourceLang = "es"
+            targetLang = "fr"
+            word = regexEsToFr.replace(source: text, by: "")
+        } else {
+            word = regexFrToEs.replace(source: text, by: "")
+        }
+        
+        /// TODO could show a "... is typing" indicator here
+        do {
+            let response = try await Deepl.translate(text: word, sourceLang: sourceLang, targetLang: targetLang)
+            print(response)
+            if let translation = response.translations.first?.text {
+                lesson.appendBotMessage(text: translation)
+            } else {
+                lesson.appendBotMessage(text: "I did not found any translation.")
+            }
+            
+        } catch {
+            print(error)
+            lesson.appendBotMessage(text: "An error occured while looking for a translation")
+        }
+        
+        lesson.state = LessonSate.sessionCanStart
+
+        try? managedObjectContext.save()
+
+        await startEventLoop()
+    }
+    
     func addWord() async {
 
         stopEventLoop()
         lesson.state = LessonSate.addWordWaitForWord
 
-        lesson.appendBotMessage(text: "To add a word: enter it, then an equal sign, and then its signification")
-        lesson.appendBotMessage(text: "Like this:\nEnfants = Children")
+        lesson.appendBotMessage(text: "To add a word: enter it, then a colon, and then its signification")
+        lesson.appendBotMessage(text: "Like this:\nEnfants: Children")
 
         try? managedObjectContext.save()
-
     }
 
     func startEventLoop(withNewWord word: String) async {
 
-        let sub = word.split(separator: "=")
+        let sub = word.split(separator: ":")
         guard sub.count == 2, let first = sub.first, let second = sub.last else {
             lesson.appendBotMessage(text: "Oops the format does not seem right")
             await addWord()
