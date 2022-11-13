@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21G72" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="ChatItem" representedClassName="ChatItem" syncable="YES">
+        <attribute name="contentInternal" optional="YES" attributeType="String"/>
+        <attribute name="idInternal" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="postedAtInternal" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="typeInternal" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="lessonInternal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Lesson" inverseName="chatItemsInternal" inverseEntity="Lesson"/>
+    </entity>
+    <entity name="Lesson" representedClassName="Lesson" syncable="YES">
+        <attribute name="idInternal" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="lastPlayedAtInternal" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="pathInternal" optional="YES" attributeType="String"/>
+        <attribute name="stateInternal" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="titleInternal" optional="YES" attributeType="String"/>
+        <relationship name="chatItemsInternal" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ChatItem" inverseName="lessonInternal" inverseEntity="ChatItem"/>
+        <relationship name="lessonEntriesInternal" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LessonEntry" inverseName="lessonInternal" inverseEntity="LessonEntry"/>
+    </entity>
+    <entity name="LessonEntry" representedClassName="LessonEntry" syncable="YES">
+        <attribute name="detailsInternal" optional="YES" attributeType="String"/>
+        <attribute name="idInternal" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="lastShownAtInternal" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="scoreInternal" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="translationInternal" optional="YES" attributeType="String"/>
+        <attribute name="wordInternal" optional="YES" attributeType="String"/>
+        <relationship name="lessonInternal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Lesson" inverseName="lessonEntriesInternal" inverseEntity="Lesson"/>
+    </entity>
+    <elements>
+        <element name="ChatItem" positionX="-54" positionY="9" width="128" height="118"/>
+        <element name="Lesson" positionX="-63" positionY="-9" width="128" height="148"/>
+        <element name="LessonEntry" positionX="-36" positionY="18" width="128" height="148"/>
+    </elements>
+</model>

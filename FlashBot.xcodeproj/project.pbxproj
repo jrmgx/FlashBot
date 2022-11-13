@@ -1,0 +1,609 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0205001628AC33BD003074F0 /* FlashBot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0205001428AC33BD003074F0 /* FlashBot.xcdatamodeld */; };
+		0205001828AC33C3003074F0 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0205001728AC33C3003074F0 /* Persistence.swift */; };
+		0205003428ACBDD4003074F0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0205003328ACBDD4003074F0 /* SettingsView.swift */; };
+		0205003628ACBE13003074F0 /* LessonSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0205003528ACBE13003074F0 /* LessonSettingView.swift */; };
+		0222ADA428ACC8CB0017FCE9 /* Lesson+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222ADA128ACC8CB0017FCE9 /* Lesson+CoreDataProperties.swift */; };
+		0222ADA528ACC8CB0017FCE9 /* LessonEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222ADA228ACC8CB0017FCE9 /* LessonEntry+CoreDataProperties.swift */; };
+		0222ADA628ACC8CB0017FCE9 /* ChatItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222ADA328ACC8CB0017FCE9 /* ChatItem+CoreDataProperties.swift */; };
+		0222ADAA28ACC9020017FCE9 /* ChatItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222ADA728ACC9020017FCE9 /* ChatItem+CoreDataClass.swift */; };
+		0222ADAB28ACC9020017FCE9 /* LessonEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222ADA828ACC9020017FCE9 /* LessonEntry+CoreDataClass.swift */; };
+		0222ADAC28ACC9020017FCE9 /* Lesson+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222ADA928ACC9020017FCE9 /* Lesson+CoreDataClass.swift */; };
+		022389E928AA9ED100DB95BB /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389E828AA9ED100DB95BB /* AvatarView.swift */; };
+		022389F128AAA86300DB95BB /* ChatItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389F028AAA86300DB95BB /* ChatItemRowView.swift */; };
+		022389F728AAAC1200DB95BB /* LessonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389F628AAAC1200DB95BB /* LessonListView.swift */; };
+		022389F928AAAC5300DB95BB /* LessonRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389F828AAAC5300DB95BB /* LessonRowView.swift */; };
+		022389FB28AAD3B900DB95BB /* LessonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389FA28AAD3B900DB95BB /* LessonDetailView.swift */; };
+		02238A0028AADC9300DB95BB /* ChatItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022389FF28AADC9300DB95BB /* ChatItemListView.swift */; };
+		024B60E428C3C2F90072DD85 /* DeeplTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024B60E328C3C2F90072DD85 /* DeeplTranslation.swift */; };
+		024B60E628C3C31E0072DD85 /* DeeplResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024B60E528C3C31E0072DD85 /* DeeplResponse.swift */; };
+		024B60E828C3C36F0072DD85 /* Deepl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024B60E728C3C36F0072DD85 /* Deepl.swift */; };
+		0284045028AFCEA200E5DDDA /* Waits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284044F28AFCEA200E5DDDA /* Waits.swift */; };
+		0284045228B144FD00E5DDDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284045128B144FD00E5DDDA /* AppDelegate.swift */; };
+		0284045D28B29CA300E5DDDA /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 0284045C28B29CA300E5DDDA /* ZIPFoundation */; };
+		0284045F28B3556800E5DDDA /* ImportBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284045E28B3556800E5DDDA /* ImportBundle.swift */; };
+		0284046128B3EBC800E5DDDA /* Binding+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284046028B3EBC800E5DDDA /* Binding+Extension.swift */; };
+		0284046328B421C700E5DDDA /* LessonDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284046228B421C700E5DDDA /* LessonDTO.swift */; };
+		0284046528B421FA00E5DDDA /* LessonEntryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284046428B421FA00E5DDDA /* LessonEntryDTO.swift */; };
+		0284046728B4223D00E5DDDA /* FlashBotError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284046628B4223D00E5DDDA /* FlashBotError.swift */; };
+		02C2DC7F28AA9AEE00E1281F /* FlashBotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2DC7E28AA9AEE00E1281F /* FlashBotApp.swift */; };
+		02C2DC8128AA9AEE00E1281F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C2DC8028AA9AEE00E1281F /* ContentView.swift */; };
+		02C2DC8328AA9AF200E1281F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02C2DC8228AA9AF200E1281F /* Assets.xcassets */; };
+		02C2DC8628AA9AF200E1281F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02C2DC8528AA9AF200E1281F /* Preview Assets.xcassets */; };
+		02CD88F428C391E50040A631 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CD88F328C391E50040A631 /* String+Extension.swift */; };
+		02ECB66828BC09AF0002A57D /* LessonDetailView+EventLoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ECB66728BC09AF0002A57D /* LessonDetailView+EventLoop.swift */; };
+		02ECB66A28BC15800002A57D /* LessonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ECB66928BC15800002A57D /* LessonState.swift */; };
+		02EEF2B228D78DC9007DC43C /* LessonDetailToolbarButtonPrimary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EEF2B128D78DC9007DC43C /* LessonDetailToolbarButtonPrimary.swift */; };
+		02EEF2B428D7AD91007DC43C /* NSRegularExpression+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EEF2B328D7AD91007DC43C /* NSRegularExpression+Extension.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0205001528AC33BD003074F0 /* FlashBot.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FlashBot.xcdatamodel; sourceTree = "<group>"; };
+		0205001728AC33C3003074F0 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		0205003328ACBDD4003074F0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		0205003528ACBE13003074F0 /* LessonSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LessonSettingView.swift; path = FlashBot/Views/LessonSettingView.swift; sourceTree = SOURCE_ROOT; };
+		0217503628B55F0700C154F1 /* OrderingLesson.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = OrderingLesson.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		0222ADA128ACC8CB0017FCE9 /* Lesson+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lesson+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0222ADA228ACC8CB0017FCE9 /* LessonEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LessonEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0222ADA328ACC8CB0017FCE9 /* ChatItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0222ADA728ACC9020017FCE9 /* ChatItem+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatItem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0222ADA828ACC9020017FCE9 /* LessonEntry+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LessonEntry+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0222ADA928ACC9020017FCE9 /* Lesson+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Lesson+CoreDataClass.swift"; sourceTree = "<group>"; };
+		022389E828AA9ED100DB95BB /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		022389F028AAA86300DB95BB /* ChatItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatItemRowView.swift; sourceTree = "<group>"; };
+		022389F628AAAC1200DB95BB /* LessonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonListView.swift; sourceTree = "<group>"; };
+		022389F828AAAC5300DB95BB /* LessonRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonRowView.swift; sourceTree = "<group>"; };
+		022389FA28AAD3B900DB95BB /* LessonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetailView.swift; sourceTree = "<group>"; };
+		022389FF28AADC9300DB95BB /* ChatItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatItemListView.swift; sourceTree = "<group>"; };
+		024B60E328C3C2F90072DD85 /* DeeplTranslation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplTranslation.swift; sourceTree = "<group>"; };
+		024B60E528C3C31E0072DD85 /* DeeplResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplResponse.swift; sourceTree = "<group>"; };
+		024B60E728C3C36F0072DD85 /* Deepl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deepl.swift; sourceTree = "<group>"; };
+		0284044E28ACCFEB00E5DDDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0284044F28AFCEA200E5DDDA /* Waits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waits.swift; sourceTree = "<group>"; };
+		0284045128B144FD00E5DDDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0284045E28B3556800E5DDDA /* ImportBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportBundle.swift; sourceTree = "<group>"; };
+		0284046028B3EBC800E5DDDA /* Binding+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extension.swift"; sourceTree = "<group>"; };
+		0284046228B421C700E5DDDA /* LessonDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDTO.swift; sourceTree = "<group>"; };
+		0284046428B421FA00E5DDDA /* LessonEntryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonEntryDTO.swift; sourceTree = "<group>"; };
+		0284046628B4223D00E5DDDA /* FlashBotError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashBotError.swift; sourceTree = "<group>"; };
+		02C2DC7B28AA9AEE00E1281F /* FlashBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		02C2DC7E28AA9AEE00E1281F /* FlashBotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashBotApp.swift; sourceTree = "<group>"; };
+		02C2DC8028AA9AEE00E1281F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		02C2DC8228AA9AF200E1281F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		02C2DC8528AA9AF200E1281F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		02CD88F328C391E50040A631 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		02CD88F528C3B2370040A631 /* DeeplAPI.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = DeeplAPI.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		02ECB66728BC09AF0002A57D /* LessonDetailView+EventLoop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LessonDetailView+EventLoop.swift"; sourceTree = "<group>"; };
+		02ECB66928BC15800002A57D /* LessonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonState.swift; sourceTree = "<group>"; };
+		02EEF2B128D78DC9007DC43C /* LessonDetailToolbarButtonPrimary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonDetailToolbarButtonPrimary.swift; sourceTree = "<group>"; };
+		02EEF2B328D7AD91007DC43C /* NSRegularExpression+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRegularExpression+Extension.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		02C2DC7828AA9AEE00E1281F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0284045D28B29CA300E5DDDA /* ZIPFoundation in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		022389EA28AAA50700DB95BB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				02C2DC8028AA9AEE00E1281F /* ContentView.swift */,
+				0205003328ACBDD4003074F0 /* SettingsView.swift */,
+				022389E828AA9ED100DB95BB /* AvatarView.swift */,
+				022389FC28AADBCC00DB95BB /* Lesson */,
+				022389FE28AADBE100DB95BB /* ChatItem */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		022389EB28AAA51800DB95BB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0205001428AC33BD003074F0 /* FlashBot.xcdatamodeld */,
+				024B60DF28C3C2920072DD85 /* Lesson */,
+				024B60E028C3C29B0072DD85 /* LessonEntry */,
+				024B60E128C3C2A50072DD85 /* ChatItem */,
+				024B60E228C3C2CD0072DD85 /* Deepl */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		022389FC28AADBCC00DB95BB /* Lesson */ = {
+			isa = PBXGroup;
+			children = (
+				022389F628AAAC1200DB95BB /* LessonListView.swift */,
+				022389F828AAAC5300DB95BB /* LessonRowView.swift */,
+				022389FA28AAD3B900DB95BB /* LessonDetailView.swift */,
+				02EEF2B128D78DC9007DC43C /* LessonDetailToolbarButtonPrimary.swift */,
+				02ECB66728BC09AF0002A57D /* LessonDetailView+EventLoop.swift */,
+				0205003528ACBE13003074F0 /* LessonSettingView.swift */,
+			);
+			path = Lesson;
+			sourceTree = "<group>";
+		};
+		022389FD28AADBD500DB95BB /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				0284044F28AFCEA200E5DDDA /* Waits.swift */,
+				0284045E28B3556800E5DDDA /* ImportBundle.swift */,
+				0284046028B3EBC800E5DDDA /* Binding+Extension.swift */,
+				02CD88F328C391E50040A631 /* String+Extension.swift */,
+				02EEF2B328D7AD91007DC43C /* NSRegularExpression+Extension.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		022389FE28AADBE100DB95BB /* ChatItem */ = {
+			isa = PBXGroup;
+			children = (
+				022389FF28AADC9300DB95BB /* ChatItemListView.swift */,
+				022389F028AAA86300DB95BB /* ChatItemRowView.swift */,
+			);
+			path = ChatItem;
+			sourceTree = "<group>";
+		};
+		024B60DF28C3C2920072DD85 /* Lesson */ = {
+			isa = PBXGroup;
+			children = (
+				0222ADA928ACC9020017FCE9 /* Lesson+CoreDataClass.swift */,
+				0222ADA128ACC8CB0017FCE9 /* Lesson+CoreDataProperties.swift */,
+				02ECB66928BC15800002A57D /* LessonState.swift */,
+				0284046228B421C700E5DDDA /* LessonDTO.swift */,
+			);
+			path = Lesson;
+			sourceTree = "<group>";
+		};
+		024B60E028C3C29B0072DD85 /* LessonEntry */ = {
+			isa = PBXGroup;
+			children = (
+				0222ADA828ACC9020017FCE9 /* LessonEntry+CoreDataClass.swift */,
+				0222ADA228ACC8CB0017FCE9 /* LessonEntry+CoreDataProperties.swift */,
+				0284046428B421FA00E5DDDA /* LessonEntryDTO.swift */,
+			);
+			path = LessonEntry;
+			sourceTree = "<group>";
+		};
+		024B60E128C3C2A50072DD85 /* ChatItem */ = {
+			isa = PBXGroup;
+			children = (
+				0222ADA728ACC9020017FCE9 /* ChatItem+CoreDataClass.swift */,
+				0222ADA328ACC8CB0017FCE9 /* ChatItem+CoreDataProperties.swift */,
+			);
+			path = ChatItem;
+			sourceTree = "<group>";
+		};
+		024B60E228C3C2CD0072DD85 /* Deepl */ = {
+			isa = PBXGroup;
+			children = (
+				024B60E528C3C31E0072DD85 /* DeeplResponse.swift */,
+				024B60E328C3C2F90072DD85 /* DeeplTranslation.swift */,
+				024B60E728C3C36F0072DD85 /* Deepl.swift */,
+			);
+			path = Deepl;
+			sourceTree = "<group>";
+		};
+		0283961F28B9316B003540AA /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0284044E28ACCFEB00E5DDDA /* Info.plist */,
+				02C2DC7E28AA9AEE00E1281F /* FlashBotApp.swift */,
+				0284046628B4223D00E5DDDA /* FlashBotError.swift */,
+				0284045128B144FD00E5DDDA /* AppDelegate.swift */,
+				0205001728AC33C3003074F0 /* Persistence.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		02C2DC7228AA9AEE00E1281F = {
+			isa = PBXGroup;
+			children = (
+				02C2DC7D28AA9AEE00E1281F /* FlashBot */,
+				02C2DC7C28AA9AEE00E1281F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		02C2DC7C28AA9AEE00E1281F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				02C2DC7B28AA9AEE00E1281F /* FlashBot.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		02C2DC7D28AA9AEE00E1281F /* FlashBot */ = {
+			isa = PBXGroup;
+			children = (
+				0283961F28B9316B003540AA /* App */,
+				022389FD28AADBD500DB95BB /* Helper */,
+				022389EB28AAA51800DB95BB /* Models */,
+				022389EA28AAA50700DB95BB /* Views */,
+				02C2DC8228AA9AF200E1281F /* Assets.xcassets */,
+				02C2DC8428AA9AF200E1281F /* Preview Content */,
+				02CD88F528C3B2370040A631 /* DeeplAPI.playground */,
+				0217503628B55F0700C154F1 /* OrderingLesson.playground */,
+			);
+			path = FlashBot;
+			sourceTree = "<group>";
+		};
+		02C2DC8428AA9AF200E1281F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				02C2DC8528AA9AF200E1281F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		02C2DC7A28AA9AEE00E1281F /* FlashBot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 02C2DC8E28AA9AF200E1281F /* Build configuration list for PBXNativeTarget "FlashBot" */;
+			buildPhases = (
+				02C2DC7728AA9AEE00E1281F /* Sources */,
+				02C2DC7828AA9AEE00E1281F /* Frameworks */,
+				02C2DC7928AA9AEE00E1281F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlashBot;
+			packageProductDependencies = (
+				0284045C28B29CA300E5DDDA /* ZIPFoundation */,
+			);
+			productName = FlashBot;
+			productReference = 02C2DC7B28AA9AEE00E1281F /* FlashBot.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		02C2DC7328AA9AEE00E1281F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					02C2DC7A28AA9AEE00E1281F = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 02C2DC7628AA9AEE00E1281F /* Build configuration list for PBXProject "FlashBot" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 02C2DC7228AA9AEE00E1281F;
+			packageReferences = (
+				0284045B28B29CA300E5DDDA /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
+				024B60DC28C3BD360072DD85 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
+			productRefGroup = 02C2DC7C28AA9AEE00E1281F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				02C2DC7A28AA9AEE00E1281F /* FlashBot */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		02C2DC7928AA9AEE00E1281F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02C2DC8628AA9AF200E1281F /* Preview Assets.xcassets in Resources */,
+				02C2DC8328AA9AF200E1281F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		02C2DC7728AA9AEE00E1281F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0222ADA528ACC8CB0017FCE9 /* LessonEntry+CoreDataProperties.swift in Sources */,
+				022389FB28AAD3B900DB95BB /* LessonDetailView.swift in Sources */,
+				0205001828AC33C3003074F0 /* Persistence.swift in Sources */,
+				0284045028AFCEA200E5DDDA /* Waits.swift in Sources */,
+				02EEF2B428D7AD91007DC43C /* NSRegularExpression+Extension.swift in Sources */,
+				02ECB66A28BC15800002A57D /* LessonState.swift in Sources */,
+				024B60E428C3C2F90072DD85 /* DeeplTranslation.swift in Sources */,
+				02ECB66828BC09AF0002A57D /* LessonDetailView+EventLoop.swift in Sources */,
+				024B60E628C3C31E0072DD85 /* DeeplResponse.swift in Sources */,
+				0222ADA428ACC8CB0017FCE9 /* Lesson+CoreDataProperties.swift in Sources */,
+				0284046728B4223D00E5DDDA /* FlashBotError.swift in Sources */,
+				0222ADAB28ACC9020017FCE9 /* LessonEntry+CoreDataClass.swift in Sources */,
+				0284046528B421FA00E5DDDA /* LessonEntryDTO.swift in Sources */,
+				0222ADAC28ACC9020017FCE9 /* Lesson+CoreDataClass.swift in Sources */,
+				02238A0028AADC9300DB95BB /* ChatItemListView.swift in Sources */,
+				0284045228B144FD00E5DDDA /* AppDelegate.swift in Sources */,
+				0222ADAA28ACC9020017FCE9 /* ChatItem+CoreDataClass.swift in Sources */,
+				022389F728AAAC1200DB95BB /* LessonListView.swift in Sources */,
+				0205003428ACBDD4003074F0 /* SettingsView.swift in Sources */,
+				0284045F28B3556800E5DDDA /* ImportBundle.swift in Sources */,
+				02C2DC8128AA9AEE00E1281F /* ContentView.swift in Sources */,
+				0222ADA628ACC8CB0017FCE9 /* ChatItem+CoreDataProperties.swift in Sources */,
+				0284046128B3EBC800E5DDDA /* Binding+Extension.swift in Sources */,
+				0205001628AC33BD003074F0 /* FlashBot.xcdatamodeld in Sources */,
+				02C2DC7F28AA9AEE00E1281F /* FlashBotApp.swift in Sources */,
+				022389E928AA9ED100DB95BB /* AvatarView.swift in Sources */,
+				0205003628ACBE13003074F0 /* LessonSettingView.swift in Sources */,
+				022389F928AAAC5300DB95BB /* LessonRowView.swift in Sources */,
+				0284046328B421C700E5DDDA /* LessonDTO.swift in Sources */,
+				02CD88F428C391E50040A631 /* String+Extension.swift in Sources */,
+				022389F128AAA86300DB95BB /* ChatItemRowView.swift in Sources */,
+				024B60E828C3C36F0072DD85 /* Deepl.swift in Sources */,
+				02EEF2B228D78DC9007DC43C /* LessonDetailToolbarButtonPrimary.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		02C2DC8C28AA9AF200E1281F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		02C2DC8D28AA9AF200E1281F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		02C2DC8F28AA9AF200E1281F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FlashBot/Preview Content\"";
+				DEVELOPMENT_TEAM = 2DCAPZPD6X;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlashBot/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Flash Bot";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.gangneux.FlashBot;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		02C2DC9028AA9AF200E1281F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FlashBot/Preview Content\"";
+				DEVELOPMENT_TEAM = 2DCAPZPD6X;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlashBot/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Flash Bot";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.gangneux.FlashBot;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		02C2DC7628AA9AEE00E1281F /* Build configuration list for PBXProject "FlashBot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				02C2DC8C28AA9AF200E1281F /* Debug */,
+				02C2DC8D28AA9AF200E1281F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		02C2DC8E28AA9AF200E1281F /* Build configuration list for PBXNativeTarget "FlashBot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				02C2DC8F28AA9AF200E1281F /* Debug */,
+				02C2DC9028AA9AF200E1281F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		024B60DC28C3BD360072DD85 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		0284045B28B29CA300E5DDDA /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.9;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0284045C28B29CA300E5DDDA /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0284045B28B29CA300E5DDDA /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		0205001428AC33BD003074F0 /* FlashBot.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0205001528AC33BD003074F0 /* FlashBot.xcdatamodel */,
+			);
+			currentVersion = 0205001528AC33BD003074F0 /* FlashBot.xcdatamodel */;
+			path = FlashBot.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 02C2DC7328AA9AEE00E1281F /* Project object */;
+}
